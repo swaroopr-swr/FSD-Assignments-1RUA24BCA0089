@@ -1,73 +1,40 @@
-# Getting Started with Create React App
+# Portfolio Website (Assignment 1)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description
+**Goal:** Design and develop responsive web pages using HTML, CSS, and modern layout techniques with interactive elements.
 
-## Available Scripts
+**Requirements:**
+- Look good on both mobile and desktop
+- Use HTML for structure
+- Use CSS for styling
+- Use modern layouts like Flexbox and CSS Grid
+- Add interactive elements such as buttons, forms, menus, animations, and hover effects
 
-In the project directory, you can run:
+**Example Criteria:**
+Build a portfolio website where:
+- The navigation menu adjusts for mobile screens.
+- Images resize automatically.
+- Buttons change color when hovered over.
+- A contact form accepts user input.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## What We Implemented
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+For this assignment, we built a modern, responsive portfolio application using **React** and **Vanilla CSS**. The design features a premium "dark mode" aesthetic with glassmorphism elements.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Key Features:
+1. **Responsive Navigation:** 
+   - Built using CSS Flexbox. It automatically stacks and centers navigation links on smaller mobile screens (`max-width: 600px`).
+2. **Modern Layouts:**
+   - **CSS Grid** is used in the Projects section (`grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))`) to create a fluid layout where project cards automatically wrap and expand based on the screen size.
+3. **Interactive Elements:**
+   - **Buttons** feature hover effects with a scale transform and drop-shadow (`transition: all 0.3s ease; transform: translateY(-2px);`).
+   - **Project Cards** elevate smoothly and brighten their borders when hovered over.
+4. **Responsive Images:**
+   - Images automatically adapt to the grid size and maintain their aspect ratio using `aspect-ratio: 4/3` and `object-fit: cover`.
+5. **Functional Contact Form:**
+   - A fully styled form that accepts Name, Email, and Message. It sits on a glassmorphism backdrop (`backdrop-filter: blur(12px)`) for a modern, sleek appearance.
 
 ## Final Output
 
