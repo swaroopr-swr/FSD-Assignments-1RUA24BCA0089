@@ -1,0 +1,95 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: calc(var(--navbar-height) + 4rem) 1rem 4rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.page-header {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.page-subtitle {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-top: var(--border-thick);
+  border-bottom: var(--border-thick);
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+}
+
+/* Brutalist Button Utility */
+.btn-primary {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: var(--border-thick);
+  padding: 0.75rem 1.5rem;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-hard);
+}
+
+.btn-primary:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-hard-hover);
+}
+
+.btn-primary:active {
+  transform: translate(4px, 4px);
+  box-shadow: var(--shadow-hard-active);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #000000;
+  border: var(--border-thin);
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+.btn-secondary:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.glass {
+  /* Removing glass properties in brutalism, kept class name to avoid JS changes */
+  background: #ffffff;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-hard);
+}
