@@ -91,7 +91,7 @@ const Home = () => {
           <NewsWidget />
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
             <button 
-              onClick={() => navigate('/browse')}
+              onClick={() => navigate('/superapp/browse')}
               style={{ backgroundColor: '#14C38E', color: 'white', borderRadius: '24px', padding: '1rem 2rem', border: 'none', cursor: 'pointer', fontSize: '1.2rem', fontWeight: 'bold' }}
             >
               Browse

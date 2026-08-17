@@ -45,7 +45,15 @@ const Dashboard = ({ onNavigate }) => {
       title: 'React Components Lab',
       desc: 'Analyze a UI and break it into reusable components with props and state.',
       concepts: ['React', 'Props', 'State', 'Reusability'],
-      spanClass: 'span-full' // Wide banner card
+      spanClass: 'span-2-col' 
+    },
+    {
+      id: 'superapp',
+      num: '05',
+      title: 'Capstone: Super App',
+      desc: 'An integrated multi-page React application using react-router-dom, localStorage persistence, and external APIs.',
+      concepts: ['React Router', 'Local Storage', 'APIs'],
+      spanClass: 'span-full' 
     },
   ];
 

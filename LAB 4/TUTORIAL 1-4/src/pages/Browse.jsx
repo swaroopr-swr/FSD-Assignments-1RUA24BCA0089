@@ -19,7 +19,7 @@ const Browse = () => {
     if (saved) {
       setCategories(JSON.parse(saved));
     } else {
-      navigate('/select-category');
+      navigate('/superapp/select-category');
     }
   }, [navigate]);
 
@@ -31,7 +31,7 @@ const Browse = () => {
           Super App
         </h1>
         <Button 
-          onClick={() => navigate('/home')}
+          onClick={() => navigate('/superapp/home')}
           style={{ backgroundColor: '#5746EA', color: 'white', borderRadius: '24px', padding: '0.75rem 2rem' }}
         >
           Homepage

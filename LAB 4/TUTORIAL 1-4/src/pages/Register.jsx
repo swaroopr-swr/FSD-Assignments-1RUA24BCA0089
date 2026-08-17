@@ -47,7 +47,7 @@ const Register = () => {
     e.preventDefault();
     if (validate()) {
       localStorage.setItem('superAppUser', JSON.stringify(formData));
-      navigate('/select-category');
+      navigate('/superapp/select-category');
     }
   };
 

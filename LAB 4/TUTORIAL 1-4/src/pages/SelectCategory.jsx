@@ -45,7 +45,7 @@ const SelectCategory = () => {
       return;
     }
     localStorage.setItem('superAppCategories', JSON.stringify(selected));
-    navigate('/home');
+    navigate('/superapp/home');
   };
 
   return (
