@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WeatherWidget from '../components/WeatherWidget';
+import NewsWidget from '../components/NewsWidget';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -88,9 +89,8 @@ const Home = () => {
           
         </div>
 
-        {/* Right Column (News) */}
-        <div style={{ backgroundColor: '#101744', borderRadius: '24px', padding: '1.5rem', border: '1px solid var(--border-color)' }}>
-           News Widget Coming Soon
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <NewsWidget />
         </div>
       </div>
     </div>
