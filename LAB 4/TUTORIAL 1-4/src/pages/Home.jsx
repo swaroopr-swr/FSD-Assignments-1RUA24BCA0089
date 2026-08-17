@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import WeatherWidget from '../components/WeatherWidget';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -72,10 +73,7 @@ const Home = () => {
               </div>
             </div>
             
-            {/* Weather & Date Card Placeholder */}
-            <div style={{ flex: 1, backgroundColor: '#101744', borderRadius: '24px', padding: '1.5rem', border: '1px solid var(--border-color)' }}>
-              Weather Widget Coming Soon
-            </div>
+            <WeatherWidget />
           </div>
           
           {/* Notes and Timer Row Placeholder */}
