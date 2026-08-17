@@ -1,7 +1,10 @@
-# Getting Started with Create React App
+# Web Development Lab (TUTORIAL 1-4)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🌍 **Live Deployment:** [https://bca-web-dev-lab.vercel.app](https://bca-web-dev-lab.vercel.app)
 
+This project is a React-based interactive academic demonstration platform featuring a modern SaaS aesthetic (Vercel/Linear style) with a Bento Grid layout.
+
+---
 ## Available Scripts
 
 In the project directory, you can run:
