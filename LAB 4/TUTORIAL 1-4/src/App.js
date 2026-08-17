@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Register from './pages/Register';
 import SelectCategory from './pages/SelectCategory';
 import Home from './pages/Home';
-// import Browse from './pages/Browse';
+import Browse from './pages/Browse';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/select-category" element={<SelectCategory />} />
           <Route path="/home" element={<Home />} />
-          {/* <Route path="/browse" element={<Browse />} /> */}
+          <Route path="/browse" element={<Browse />} />
         </Routes>
       </BrowserRouter>
     </>
