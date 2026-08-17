@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import WeatherWidget from '../components/WeatherWidget';
 import NewsWidget from '../components/NewsWidget';
 import NotesWidget from '../components/NotesWidget';
+import TimerWidget from '../components/TimerWidget';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -81,9 +82,7 @@ const Home = () => {
           {/* Notes and Timer Row Placeholder */}
           <div style={{ display: 'flex', gap: '2rem', flex: 1 }}>
              <NotesWidget />
-             <div style={{ flex: 1, backgroundColor: '#1E1E1E', borderRadius: '24px', padding: '1.5rem', border: '1px solid var(--border-color)' }}>
-               Timer Widget Coming Soon
-             </div>
+             <TimerWidget />
           </div>
           
         </div>
