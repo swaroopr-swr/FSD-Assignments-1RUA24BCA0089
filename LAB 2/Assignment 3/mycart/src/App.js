@@ -1,28 +1,39 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
+import { SearchProvider } from './context/SearchContext';
+import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
-import ProductList from './components/ProductList';
-import Cart from './components/Cart';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import ProductDetail from './pages/ProductDetail';
+import Checkout from './pages/Checkout';
+import CartPage from './pages/CartPage';
 import './App.css';
 
 function App() {
   return (
-    <CartProvider>
-      <div className="app-container">
-        <Navbar />
-        
-        <main className="main-content">
-          <header className="page-header">
-            <h1 className="page-title">Discover Premium Tech</h1>
-            <p className="page-subtitle">Elevate your digital lifestyle with our curated collection.</p>
-          </header>
-          
-          <ProductList />
-        </main>
-        
-        <Cart />
-      </div>
-    </CartProvider>
+    <Router>
+      <ScrollToTop />
+      <CartProvider>
+        <SearchProvider>
+          <div className="app-container">
+            <Navbar />
+            
+            <main className="main-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/cart" element={<CartPage />} />
+              </Routes>
+            </main>
+            
+            <Footer />
+          </div>
+        </SearchProvider>
+      </CartProvider>
+    </Router>
   );
 }
 

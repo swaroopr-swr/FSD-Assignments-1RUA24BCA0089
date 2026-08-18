@@ -1,0 +1,72 @@
+.amazon-footer {
+  background: #000000;
+  color: #ffffff;
+  margin-top: 4rem;
+  width: 100%;
+}
+
+.back-to-top {
+  background: #333333;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  border-top: var(--border-thick);
+  border-bottom: var(--border-thick);
+  text-transform: uppercase;
+}
+
+.back-to-top:hover {
+  background: #555555;
+}
+
+.footer-links-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .footer-links-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 900px) {
+  .footer-links-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footer-column h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-column a {
+  color: #cccccc;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.1s ease;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  color: #ffffff;
+}

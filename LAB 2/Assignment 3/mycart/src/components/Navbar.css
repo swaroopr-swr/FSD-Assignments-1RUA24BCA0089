@@ -1,12 +1,15 @@
-.navbar {
+.navbar-wrapper {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: var(--navbar-height);
   z-index: 100;
-  border-bottom: var(--border-thick);
   background: #ffffff;
+}
+
+.main-navbar {
+  height: var(--navbar-height);
+  border-bottom: var(--border-thick);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,21 +22,67 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 2rem;
 }
 
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 900;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   color: #000000;
   text-transform: uppercase;
 }
 
 .logo-icon {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
+}
+
+.search-form {
+  flex-grow: 1;
+  display: flex;
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px #000000;
+  transition: all 0.1s ease;
+  height: 50px;
+}
+
+.search-form:focus-within {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000000;
+}
+
+.search-input {
+  flex-grow: 1;
+  border: none;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  outline: none;
+  background: #ffffff;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.search-input::placeholder {
+  color: #a0a0a0;
+}
+
+.search-btn {
+  background: #000000;
+  color: #ffffff;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.1s;
+}
+
+.search-btn:hover {
+  background: #333333;
 }
 
 .nav-actions {
@@ -45,13 +94,16 @@
   position: relative;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   justify-content: center;
   color: #000000;
   background: #ffffff;
-  border: var(--border-thin);
-  padding: 0.75rem;
+  border: var(--border-thick);
+  padding: 0.5rem 1rem;
   transition: all 0.1s ease;
   box-shadow: 4px 4px 0px #000000;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 .cart-btn:hover {
@@ -68,23 +120,71 @@
 
 .cart-badge {
   position: absolute;
-  top: -10px;
-  right: -10px;
-  background-color: #000000;
-  color: #ffffff;
-  font-size: 0.8rem;
+  top: -12px;
+  right: -12px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 0.9rem;
   font-weight: 900;
-  height: 24px;
-  min-width: 24px;
+  height: 26px;
+  min-width: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 4px;
-  border: 2px solid #ffffff;
+  border: var(--border-thick);
 }
 
 .cart-btn:hover .cart-badge {
-  background-color: #ffffff;
+  background-color: #000000;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* Sub-navigation styling */
+.subnav {
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.subnav-container {
+  display: flex;
+  justify-content: flex-start;
+  overflow-x: auto;
+  gap: 0;
+  padding: 0;
+}
+
+.subnav-container::-webkit-scrollbar {
+  display: none;
+}
+
+.subnav-link {
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  border-right: 2px solid #333333;
+}
+
+.subnav-link:last-child {
+  border-right: none;
+}
+
+.subnav-link:hover, .subnav-link.active {
+  background: #ffffff;
   color: #000000;
-  border: 2px solid #000000;
+}
+
+@media (max-width: 768px) {
+  .search-form {
+    display: none; /* Hide complex search on mobile to save space, or make it a separate row */
+  }
+  .cart-text {
+    display: none;
+  }
 }
