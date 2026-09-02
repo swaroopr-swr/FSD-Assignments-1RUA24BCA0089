@@ -5,6 +5,7 @@ import HTTPExplorer from './pages/HTTPExplorer';
 import LayoutLab from './pages/LayoutLab';
 import JavaScriptLab from './pages/JavaScriptLab';
 import ReactComponentLab from './pages/ReactComponentLab';
+import ReactStateLab from './pages/ReactStateLab';
 
 function WebDevApp() {
   const [activeSection, setActiveSection] = useState('home');
@@ -33,6 +34,7 @@ function WebDevApp() {
     { id: 'layout-lab', title: 'Layout Lab (HTML/CSS)' },
     { id: 'javascript-lab', title: 'JavaScript Interactive Lab' },
     { id: 'react-components', title: 'React Component Lab' },
+    { id: 'react-state-lab', title: 'React State Interactions' },
     { id: 'superapp', title: 'Capstone: Super App' },
   ];
 
@@ -60,6 +62,8 @@ function WebDevApp() {
         return <JavaScriptLab />;
       case 'react-components':
         return <ReactComponentLab />;
+      case 'react-state-lab':
+        return <ReactStateLab />;
       case 'home':
       default:
         return <Dashboard onNavigate={handleNavigate} />;
@@ -196,6 +200,7 @@ function WebDevApp() {
               {renderNavLink('layout-lab', 'Layout')}
               {renderNavLink('javascript-lab', 'JavaScript')}
               {renderNavLink('react-components', 'React')}
+              {renderNavLink('react-state-lab', 'State')}
             </nav>
           </div>
         </header>

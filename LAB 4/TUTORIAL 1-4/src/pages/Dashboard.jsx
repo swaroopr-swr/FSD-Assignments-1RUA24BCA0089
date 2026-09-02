@@ -48,8 +48,16 @@ const Dashboard = ({ onNavigate }) => {
       spanClass: 'span-2-col' 
     },
     {
-      id: 'superapp',
+      id: 'react-state-lab',
       num: '05',
+      title: 'React State Interactions',
+      desc: 'Implement and trace React state updates and component interactions in an E-Commerce cart scenario.',
+      concepts: ['State', 'Props', 'Data Flow'],
+      spanClass: 'span-2-col' 
+    },
+    {
+      id: 'superapp',
+      num: '06',
       title: 'Capstone: Super App',
       desc: 'An integrated multi-page React application using react-router-dom, localStorage persistence, and external APIs.',
       concepts: ['React Router', 'Local Storage', 'APIs'],
@@ -108,7 +116,7 @@ const Dashboard = ({ onNavigate }) => {
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '1rem' }}>
         <h2 style={{ fontSize: '1.5rem', margin: 0 }}>Syllabus Modules</h2>
-        <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>4 Modules Available</span>
+        <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>5 Modules Available</span>
       </div>
 
       <div className="bento-grid">
