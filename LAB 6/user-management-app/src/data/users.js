@@ -1,0 +1,22 @@
+export const users = [
+  { id: 1, name: "John Doe", email: "john@example.com", city: "New York" },
+  { id: 2, name: "Jane Smith", email: "jane@example.com", city: "Los Angeles" },
+  { id: 3, name: "Mike Johnson", email: "mike@example.com", city: "Chicago" },
+  { id: 4, name: "Emily Davis", email: "emily@example.com", city: "Houston" },
+  { id: 5, name: "David Brown", email: "david@example.com", city: "Phoenix" },
+  { id: 6, name: "Sarah Wilson", email: "sarah@example.com", city: "Philadelphia" },
+  { id: 7, name: "Chris Evans", email: "chris@example.com", city: "San Antonio" },
+  { id: 8, name: "Jessica Taylor", email: "jessica@example.com", city: "San Diego" },
+  { id: 9, name: "Matthew Thomas", email: "matthew@example.com", city: "Dallas" },
+  { id: 10, name: "Ashley Moore", email: "ashley@example.com", city: "San Jose" },
+  { id: 11, name: "Joshua Jackson", email: "joshua@example.com", city: "Austin" },
+  { id: 12, name: "Amanda Martin", email: "amanda@example.com", city: "Jacksonville" },
+  { id: 13, name: "Andrew Lee", email: "andrew@example.com", city: "Fort Worth" },
+  { id: 14, name: "Melissa Perez", email: "melissa@example.com", city: "Columbus" },
+  { id: 15, name: "James White", email: "james@example.com", city: "Charlotte" },
+  { id: 16, name: "Nicole Harris", email: "nicole@example.com", city: "San Francisco" },
+  { id: 17, name: "Robert Clark", email: "robert@example.com", city: "Indianapolis" },
+  { id: 18, name: "Samantha Lewis", email: "samantha@example.com", city: "Seattle" },
+  { id: 19, name: "William Walker", email: "william@example.com", city: "Denver" },
+  { id: 20, name: "Elizabeth Hall", email: "elizabeth@example.com", city: "Washington" }
+];
