@@ -39,7 +39,7 @@ export const Cart = () => {
       setIsSubmitting(true);
       setError(null);
       
-      const response = await fetch('http://localhost:5001/api/orders', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5001'}/api/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
