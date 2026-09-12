@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-rust: #B7410E;
+  --color-ink: #1A1A1A;
+  --color-cream: #FDFBF7;
+  --color-paper: #F5F2EB;
+  --font-sans: 'Georgia', serif;
+  --font-serif: 'Georgia', serif;
+  --font-mono: 'Courier New', monospace;
+}
+
+/* Base styling */
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-serif);
+  background-image: radial-gradient(var(--color-rust) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.95;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: normal;
+}
+
+input, button {
+  font-family: var(--font-mono);
+}
+
+/* Ensure inputs are not boxed, underline style */
+.field-input {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--color-ink);
+  padding: 0.5rem 0;
+  outline: none;
+  width: 100%;
+}
+.field-input:focus {
+  border-bottom-color: var(--color-rust);
+}
+
+.tally-label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
