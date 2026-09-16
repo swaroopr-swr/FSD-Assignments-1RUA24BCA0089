@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>People Directory</title>
+</head>
+
+<body>
+
+    <h1>People Directory</h1>
+
+    <ul>
+
+        <% people.forEach((person, index) => { %>
+
+            <li>
+                <a href="/profile/<%= index %>">
+                    <%= person.name %>
+                </a>
+            </li>
+
+        <% }); %>
+
+    </ul>
+
+</body>
+
+</html>
