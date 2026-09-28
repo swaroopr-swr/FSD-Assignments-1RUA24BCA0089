@@ -1,0 +1,33 @@
+:root {
+  /* color */
+  --m-paper: #F6F1E7;
+  --m-paper-2: #EEE7D8;
+  --m-card: #FCFAF5;
+  --m-ink: #1F1B16;
+  --m-ink-soft: #5E574C;
+  --m-line: #DDD3C0;
+  --m-rust: #B4491F;
+  --m-rust-dark: #8F3712;
+  --m-rust-tint: #F3DDD0;
+  --m-moss: #4F6B4A;
+  --m-ochre: #C99A2E;
+  --m-danger: #A32A2A;
+
+  /* type */
+  --m-font-serif: Georgia, "Times New Roman", serif;
+  --m-font-mono: "Courier New", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* shape */
+  --m-radius-card: 16px;
+  --m-radius-media: 12px;
+  --m-radius-btn: 10px;
+  --m-shadow-card: 0 1px 2px rgba(31,27,22,.06), 0 10px 24px -14px rgba(31,27,22,.22);
+  --m-shadow-pop: 0 2px 4px rgba(31,27,22,.08), 0 18px 36px -18px rgba(31,27,22,.30);
+
+  /* layout */
+  --m-navbar-h: 64px;
+  --m-sidebar-w: 240px;
+  --m-rail-w: 72px;
+  --m-right-w: 320px;
+  --m-feed-max: 640px;
+}

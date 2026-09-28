@@ -1,0 +1,73 @@
+:root {
+  --bs-body-bg: var(--m-paper);
+  --bs-body-color: var(--m-ink);
+  --bs-body-font-family: var(--m-font-serif);
+  --bs-border-color: var(--m-line);
+  --bs-primary: var(--m-rust);
+  --bs-primary-rgb: 180, 73, 31;
+  --bs-link-color: var(--m-rust);
+  --bs-link-hover-color: var(--m-rust-dark);
+  --bs-border-radius: 10px;
+}
+
+.card {
+  background-color: var(--m-card);
+  border: 1px solid var(--m-line);
+  border-radius: var(--m-radius-card);
+  box-shadow: var(--m-shadow-card);
+}
+
+.modal-content {
+  background-color: var(--m-card);
+  border-radius: var(--m-radius-card);
+  box-shadow: var(--m-shadow-pop);
+  border: none;
+}
+
+.dropdown-menu {
+  background-color: var(--m-card);
+  border: 1px solid var(--m-line);
+  border-radius: 12px;
+  box-shadow: var(--m-shadow-pop);
+}
+
+.form-control:focus {
+  border-color: var(--m-rust);
+  box-shadow: none;
+}
+
+.badge {
+  font-family: var(--m-font-mono);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid var(--m-line);
+}
+
+.nav-tabs .nav-link {
+  font-family: var(--m-font-mono);
+  text-transform: uppercase;
+  color: var(--m-ink-soft);
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem 1rem;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--m-ink);
+  border-color: transparent;
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--m-rust);
+  background: transparent;
+  border-color: transparent;
+  border-bottom-color: var(--m-rust);
+}
+
+.offcanvas {
+  background-color: var(--m-card);
+  border-right: 1px solid var(--m-line);
+}
