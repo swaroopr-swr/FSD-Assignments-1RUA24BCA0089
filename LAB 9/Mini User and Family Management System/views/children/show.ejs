@@ -1,0 +1,106 @@
+<%- include('../partials/header') %>
+
+<div class="breadcrumbs">
+  <a href="/users"><i class="fa-solid fa-users"></i> Users</a>
+  <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+  <a href="/users/<%= user._id %>"><%= user.firstName %> <%= user.lastName || '' %></a>
+  <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+  <span><%= child.firstName %></span>
+</div>
+
+<div class="form-container" style="max-width: 700px;">
+  <div class="alert alert-success" style="margin-bottom: 2rem;">
+    <i class="fa-solid fa-circle-check" style="font-size: 1.25rem; margin-top: 0.1rem;"></i>
+    <div>
+      <strong>Relationship Verified (Main Thinking Challenge)</strong>
+      <p style="color: #d1fae5; font-size: 0.85rem; margin-top: 0.2rem;">
+        This child's <code style="background: rgba(0,0,0,0.2); padding: 2px 4px; border-radius: 4px;">parentId</code> matches User ID <strong><%= user._id %></strong>. Access granted!
+      </p>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle);">
+      <div style="display: flex; align-items: center; gap: 1.25rem;">
+        <% 
+          const initials = ((child.firstName ? child.firstName[0] : '') + (child.lastName ? child.lastName[0] : '')).toUpperCase() || 'C';
+        %>
+        <div class="avatar child-avatar" style="width: 64px; height: 64px; font-size: 1.6rem;">
+          <%= initials %>
+        </div>
+        <div>
+          <h1 style="font-size: 1.85rem;"><%= child.firstName %> <%= child.lastName || '' %></h1>
+          <span class="badge badge-cyan"><%= child.age %> years old</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem;">
+        <a href="/children/<%= child._id %>/edit" class="btn btn-secondary btn-sm" id="edit-child-detail-btn">
+          <i class="fa-solid fa-pen-to-square"></i> Edit
+        </a>
+        <form action="/children/<%= child._id %>?_method=DELETE" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete <%= child.firstName %>?');">
+          <button type="submit" class="btn btn-danger btn-sm" id="delete-child-detail-btn">
+            <i class="fa-solid fa-trash"></i> Delete
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2rem;">
+      <div class="info-list">
+        <h4 style="color: var(--text-highlight); font-size: 0.9rem; margin-bottom: 0.35rem;">
+          <i class="fa-solid fa-child" style="color: var(--accent-cyan);"></i> Child Details
+        </h4>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Full Name:</span>
+          <strong style="color: var(--text-primary);"><%= child.firstName %> <%= child.lastName || '—' %></strong>
+        </div>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Age:</span>
+          <span><%= child.age %></span>
+        </div>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Email:</span>
+          <span><%= child.email || 'No email provided' %></span>
+        </div>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Child ID:</span>
+          <code style="font-size: 0.75rem;"><%= child._id %></code>
+        </div>
+      </div>
+
+      <div class="info-list">
+        <h4 style="color: var(--text-highlight); font-size: 0.9rem; margin-bottom: 0.35rem;">
+          <i class="fa-solid fa-user-tie" style="color: var(--primary-light);"></i> Parent Details
+        </h4>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Parent:</span>
+          <strong style="color: var(--text-primary);"><%= user.firstName %> <%= user.lastName || '' %></strong>
+        </div>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Parent Email:</span>
+          <span><%= user.email %></span>
+        </div>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Parent ID:</span>
+          <code style="font-size: 0.75rem;"><%= user._id %></code>
+        </div>
+        <div class="info-item">
+          <span style="color: var(--text-muted); min-width: 80px;">Status:</span>
+          <span class="badge badge-emerald" style="font-size: 0.7rem;">Active Link</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <a href="/users/<%= user._id %>" class="btn btn-secondary">
+        <i class="fa-solid fa-arrow-left"></i> Back to User Profile
+      </a>
+      <a href="/users/<%= user._id %>/children" class="btn btn-primary">
+        <i class="fa-solid fa-list"></i> View All Siblings
+      </a>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

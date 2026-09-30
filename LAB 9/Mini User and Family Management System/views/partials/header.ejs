@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title + ' — FamilyHub' : 'Mini User & Family Management System' %></title>
+  <meta name="description" content="Full-Stack User & Family Management System built with Node.js, Express, EJS, MongoDB, and Mongoose.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-wrapper">
+      <a href="/users" class="brand">
+        <div class="brand-icon">
+          <i class="fa-solid fa-people-roof"></i>
+        </div>
+        <span>FamilyHub</span>
+      </a>
+
+      <div class="nav-actions">
+        <form action="/users" method="GET" class="nav-search" onsubmit="event.preventDefault(); const val = this.querySelector('input').value.trim(); if(val) window.location.href='/users/search/' + encodeURIComponent(val); else window.location.href='/users';">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input 
+            type="text" 
+            placeholder="Search by first name..." 
+            value="<%= typeof searchTerm !== 'undefined' ? searchTerm : '' %>"
+            id="nav-search-input"
+          >
+        </form>
+
+        <a href="/users" class="btn btn-secondary btn-sm" id="nav-all-users-btn">
+          <i class="fa-solid fa-users"></i>
+          <span>All Users</span>
+        </a>
+
+        <a href="/users/new" class="btn btn-primary btn-sm" id="nav-add-user-btn">
+          <i class="fa-solid fa-user-plus"></i>
+          <span>New User</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="container">

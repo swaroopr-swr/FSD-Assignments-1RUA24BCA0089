@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<div class="empty-state glass-card" style="margin-top: 2rem; padding: 4rem 2rem;">
+  <div class="empty-state-icon" style="width: 88px; height: 88px; font-size: 2.5rem; background: rgba(244, 63, 94, 0.15); color: var(--accent-rose);">
+    <i class="fa-solid fa-circle-exclamation"></i>
+  </div>
+
+  <h1 style="font-size: 2.25rem; color: var(--text-primary); margin-top: 0.5rem;">
+    <%= typeof title !== 'undefined' ? title : 'Error' %>
+  </h1>
+  
+  <p style="max-width: 480px; margin: 0.75rem auto 1.5rem; color: var(--text-secondary); font-size: 1.05rem;">
+    <%= typeof message !== 'undefined' ? message : 'An unexpected error occurred.' %>
+  </p>
+
+  <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+    <a href="/users" class="btn btn-primary">
+      <i class="fa-solid fa-house"></i>
+      <span>Back to Users Directory</span>
+    </a>
+    <button onclick="window.history.back()" class="btn btn-secondary">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Go Back</span>
+    </button>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,114 @@
+<%- include('../partials/header') %>
+
+<div class="breadcrumbs">
+  <a href="/users"><i class="fa-solid fa-users"></i> Users</a>
+  <% if (user) { %>
+    <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+    <a href="/users/<%= user._id %>"><%= user.firstName %> <%= user.lastName || '' %></a>
+  <% } %>
+  <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
+  <span>Edit <%= child.firstName %></span>
+</div>
+
+<div class="form-container">
+  <div class="glass-card">
+    <div class="form-header">
+      <div class="avatar child-avatar" style="margin: 0 auto 1rem; width: 64px; height: 64px; font-size: 1.5rem;">
+        <i class="fa-solid fa-user-pen"></i>
+      </div>
+      <h1>Edit Child Information</h1>
+      <p>Update profile details for <strong style="color: var(--text-primary);"><%= child.firstName %></strong></p>
+    </div>
+
+    <% if (typeof errors !== 'undefined' && errors && errors.length > 0) { %>
+      <div class="alert alert-danger" id="validation-errors-alert">
+        <i class="fa-solid fa-circle-exclamation" style="font-size: 1.25rem; margin-top: 0.1rem;"></i>
+        <div>
+          <strong>Please correct the following errors:</strong>
+          <ul>
+            <% errors.forEach(err => { %>
+              <li><%= err %></li>
+            <% }) %>
+          </ul>
+        </div>
+      </div>
+    <% } %>
+
+    <!-- Form submits via method-override PATCH -->
+    <form action="/children/<%= child._id %>?_method=PATCH" method="POST" id="edit-child-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="firstName">First Name <span class="required-star">*</span></label>
+          <div class="input-wrapper">
+            <i class="fa-regular fa-user input-icon"></i>
+            <input 
+              type="text" 
+              id="firstName" 
+              name="firstName" 
+              class="form-input" 
+              value="<%= child.firstName || '' %>"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="lastName">Last Name</label>
+          <div class="input-wrapper">
+            <i class="fa-regular fa-user input-icon"></i>
+            <input 
+              type="text" 
+              id="lastName" 
+              name="lastName" 
+              class="form-input" 
+              value="<%= child.lastName || '' %>"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label class="form-label" for="age">Age <span class="required-star">*</span></label>
+          <div class="input-wrapper">
+            <i class="fa-solid fa-cake-candles input-icon"></i>
+            <input 
+              type="number" 
+              id="age" 
+              name="age" 
+              min="0"
+              max="120"
+              class="form-input" 
+              value="<%= typeof child.age !== 'undefined' ? child.age : '' %>"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email</label>
+          <div class="input-wrapper">
+            <i class="fa-regular fa-envelope input-icon"></i>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              value="<%= child.email || '' %>"
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a href="<%= user ? '/users/' + user._id : '/users' %>" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary" id="update-child-btn">
+          <i class="fa-solid fa-check"></i>
+          <span>Save Changes</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

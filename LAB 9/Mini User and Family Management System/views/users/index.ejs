@@ -1,0 +1,85 @@
+<%- include('../partials/header') %>
+
+<div class="page-header">
+  <div class="header-title-group">
+    <% if (typeof searchTerm !== 'undefined' && searchTerm) { %>
+      <h1>Search Results</h1>
+      <p class="subtitle">Showing users matching "<strong style="color: var(--primary-light);"><%= searchTerm %></strong>"</p>
+    <% } else { %>
+      <h1>User Directory</h1>
+      <p class="subtitle">Browse registered user profiles and their family networks</p>
+    <% } %>
+  </div>
+
+  <div style="display: flex; gap: 0.75rem; align-items: center;">
+    <% if (typeof searchTerm !== 'undefined' && searchTerm) { %>
+      <a href="/users" class="btn btn-secondary btn-sm">
+        <i class="fa-solid fa-xmark"></i> Clear Filter
+      </a>
+    <% } %>
+    <a href="/users/new" class="btn btn-primary" id="create-user-btn">
+      <i class="fa-solid fa-user-plus"></i>
+      <span>Create User</span>
+    </a>
+  </div>
+</div>
+
+<% if (!users || users.length === 0) { %>
+  <div class="empty-state glass-card">
+    <div class="empty-state-icon">
+      <i class="fa-solid fa-user-slash"></i>
+    </div>
+    <h3>No Users Found</h3>
+    <% if (typeof searchTerm !== 'undefined' && searchTerm) { %>
+      <p>No user matches the name "<%= searchTerm %>". Try searching with a different term.</p>
+      <a href="/users" class="btn btn-secondary">View All Users</a>
+    <% } else { %>
+      <p>No users have been created yet in the database. Start by creating the first user profile!</p>
+      <a href="/users/new" class="btn btn-primary">Create First User</a>
+    <% } %>
+  </div>
+<% } else { %>
+  <div class="cards-grid">
+    <% users.forEach(user => { %>
+      <% 
+        const childCount = (typeof countMap !== 'undefined' && countMap[user._id.toString()]) || 0;
+        const initials = ((user.firstName ? user.firstName[0] : '') + (user.lastName ? user.lastName[0] : '')).toUpperCase() || 'U';
+      %>
+      <div class="glass-card interactive-card user-card" id="user-card-<%= user._id %>">
+        <div class="user-card-header">
+          <div class="avatar"><%= initials %></div>
+          <div class="user-meta-info">
+            <h3 class="name"><%= user.firstName %> <%= user.lastName || '' %></h3>
+            <span class="email"><%= user.email %></span>
+          </div>
+        </div>
+
+        <div class="info-list">
+          <div class="info-item">
+            <i class="fa-solid fa-phone icon"></i>
+            <span><%= user.phone || 'No phone provided' %></span>
+          </div>
+          <div class="info-item">
+            <i class="fa-solid fa-child icon"></i>
+            <span class="badge <%= childCount > 0 ? 'badge-primary' : 'badge-amber' %>">
+              <%= childCount %> <%= childCount === 1 ? 'Child' : 'Children' %>
+            </span>
+          </div>
+        </div>
+
+        <div class="user-card-footer">
+          <a href="/users/<%= user._id %>" class="btn btn-primary btn-sm" id="view-profile-<%= user._id %>">
+            <i class="fa-solid fa-id-card"></i>
+            <span>View Profile</span>
+          </a>
+          <a href="/users/<%= user._id %>/children-new" class="btn btn-secondary btn-sm" title="Add Child to this User">
+            <i class="fa-solid fa-plus"></i>
+            <span>Add Child</span>
+          </a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('../partials/footer') %>
