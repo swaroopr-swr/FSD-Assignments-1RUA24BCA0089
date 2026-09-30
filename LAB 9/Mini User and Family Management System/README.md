@@ -169,7 +169,22 @@ Mini User and Family Management System/
 │   │   └── edit.ejs                  # Edit child form (PATCH)
 │   ├── 404.ejs & 404.html            # Custom 404 error page
 │   └── error.ejs                     # General & invalid ID error page
-└── public/
-    ├── css/style.css                 # Glassmorphic dark theme design system
-    └── style.css                     # Stylesheet entrypoint
+├── public/
+│   ├── css/style.css                 # Glassmorphic dark theme design system
+│   └── style.css                     # Stylesheet entrypoint
+└── ss/                               # Screenshots & previews
 ```
+
+---
+
+## 📸 Screenshots & Previews
+
+### User Directory & Profiles
+![User Directory](<./ss/Screenshot 2026-09-30 at 11.36.12 AM.png>)
+
+### Family Profile & Children List
+![Family Profile](<./ss/Screenshot 2026-09-30 at 11.36.37 AM.png>)
+
+### Add / Edit Child Form
+![Child Form](<./ss/Screenshot 2026-09-30 at 11.37.05 AM.png>)
+
