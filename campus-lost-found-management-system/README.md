@@ -8,11 +8,14 @@ A full-stack campus property office application built with **Node.js, Express.js
 
 This repository is organized by project phases to enable independent review, evaluation, and progression:
 
-```
 campus-lost-found-management-system/
 ├── README.md                      # Project landing page (this file)
 ├── .gitignore                     # Repository-level ignore rules
 ├── .env.example                   # Atlas environment variables template
+│
+├── demo-screenshots/              # Visual proof of running app & Atlas data
+│   ├── README.md                  # Screenshots index & walkthrough
+│   └── 01-08-*.png                # 8 high-resolution interface captures
 │
 ├── Phase-1/                       # Complete, runnable Phase 1 application
 │   ├── README.md                  # Comprehensive Phase 1 documentation
@@ -27,6 +30,16 @@ campus-lost-found-management-system/
 └── Phase-2/                       # Planned Phase 2 claims & resolution system
     └── README.md                  # Phase 2 specification & requirements plan
 ```
+
+---
+
+## Live Demonstration Screenshots
+
+Explore visual captures of the running system in [`demo-screenshots/`](./demo-screenshots/):
+- **Empty & Active States:** Initial empty drawers vs. populated ledgers with live document counts (`08-home-page-active-records.png`).
+- **Student Dossiers:** Official identity cards with `REGISTERED` stamps (`02-student-profile-dossier.png`).
+- **Form Validation:** Field error highlighting in rust red with preserved ballot inputs (`03-lost-item-form-validation.png`).
+- **Hang-Tag Cards & Case Files:** Physical hang tags with strings and case sheets with `LOST` and `AVAILABLE` stamps (`04-lost-item-case-file.png`, `06-found-item-case-file.png`).
 
 ---
 

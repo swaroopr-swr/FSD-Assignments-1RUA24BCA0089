@@ -128,3 +128,4 @@ Phase 1 is intentionally scoped to core recording, cataloging, and student ident
 
 - [`docs/phase1-explanation.md`](./docs/phase1-explanation.md): Deep architectural breakdown, data model relationships, form submission lifecycles, and a 2-minute live demo script.
 - [`docs/phase1-test-checklist.md`](./docs/phase1-test-checklist.md): 14-point test execution matrix covering field validations, bad ID resilience, and empty states.
+- [`../demo-screenshots/`](../demo-screenshots/): 8 live captures of the running application demonstrating student profiles, form validation, case files, hang tags, and live Atlas statistics.
