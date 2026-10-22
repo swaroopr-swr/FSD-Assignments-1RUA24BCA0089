@@ -1,0 +1,10 @@
+<% 
+  let stampClass = 'stamp-lost';
+  const s = (typeof status !== 'undefined' && status) ? status.toLowerCase() : 'lost';
+  if (s === 'found' || s === 'available') {
+    stampClass = 'stamp-found';
+  } else if (s === 'resolved' || s === 'returned') {
+    stampClass = 'stamp-resolved';
+  }
+%>
+<span class="status-stamp <%= stampClass %>"><%= status %></span>

@@ -1,0 +1,90 @@
+<%- include('partials/head', { title: item.itemName + ' — Case File' }) %>
+<%- include('partials/masthead') %>
+
+<% 
+  const refCode = 'LF-' + item._id.toString().slice(-6).toUpperCase();
+  const dateFormatted = new Date(item.dateFound).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+  const filedFormatted = new Date(item.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+%>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <div class="breadcrumb-nav">
+      <a href="/found-items">Found Items</a> / <span><%= item.itemName %></span>
+    </div>
+
+    <div class="case-file-layout">
+      <!-- Main Case Sheet -->
+      <article class="case-sheet" style="border-top: 4px solid var(--found-blue);">
+        <div class="case-sheet-header">
+          <div>
+            <div class="mono-label" style="color: var(--found-blue); margin-bottom: 4px;">Found Property Case · <%= refCode %></div>
+            <h1 style="margin: 0; font-size: 2.1rem;"><%= item.itemName %></h1>
+          </div>
+          <div>
+            <%- include('partials/status-stamp', { status: item.status }) %>
+          </div>
+        </div>
+
+        <table class="case-table">
+          <tbody>
+            <tr>
+              <th>Reference</th>
+              <td><span class="code-ref" style="font-weight: bold;"><%= refCode %></span></td>
+            </tr>
+            <tr>
+              <th>Category</th>
+              <td><%= item.category %></td>
+            </tr>
+            <tr>
+              <th>Location Discovered</th>
+              <td><%= item.foundLocation %></td>
+            </tr>
+            <tr>
+              <th>Date Discovered</th>
+              <td><%= dateFormatted %></td>
+            </tr>
+            <tr>
+              <th>Description</th>
+              <td style="white-space: pre-wrap; line-height: 1.7;"><%= item.description %></td>
+            </tr>
+            <tr>
+              <th>Receipt Lodged</th>
+              <td style="font-size: 0.95rem; color: var(--ink-soft);"><%= filedFormatted %></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="margin-top: 24px;">
+          <a href="/found-items" class="btn btn-secondary">&larr; Back to Found Ledger</a>
+        </div>
+      </article>
+
+      <!-- Side Card: Finder Dossier -->
+      <aside class="case-side-card">
+        <div class="mono-label" style="color: var(--ink-soft); border-bottom: 1px dashed var(--line-strong); padding-bottom: 6px; margin-bottom: 12px;">
+          Finder Record
+        </div>
+        
+        <h3 style="margin-bottom: 6px;"><%= item.reportedBy ? item.reportedBy.fullName : 'Campus Student' %></h3>
+        <p class="mono-label" style="color: var(--ink-soft); margin-bottom: 16px;">
+          Dept: <%= item.reportedBy ? item.reportedBy.department : 'General' %>
+        </p>
+
+        <% if (item.reportedBy) { %>
+          <div style="margin-top: 16px;">
+            <a href="/students/<%= item.reportedBy._id %>" class="btn btn-secondary btn-sm" style="width: 100%;">View Student Dossier &rarr;</a>
+          </div>
+        <% } %>
+
+        <div style="margin-top: 24px; padding-top: 16px; border-top: 1px dotted var(--line); font-size: 0.85rem; color: var(--ink-soft);">
+          <em>If this item belongs to you, visit the Property Office or reach out to verify proof of ownership.</em>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

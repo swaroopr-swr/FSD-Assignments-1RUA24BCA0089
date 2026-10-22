@@ -1,0 +1,123 @@
+<%- include('partials/head', { title: 'Report Lost Item' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 760px;">
+    <%- include('partials/flash') %>
+
+    <div class="form-card" style="border-top: 4px solid var(--rust);">
+      <div style="border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 28px;">
+        <span class="mono-label" style="color: var(--rust);">Filing Slip · Notice of Loss</span>
+        <h1 style="font-size: 1.9rem; margin: 6px 0 0;">Report a <em>Lost Item</em></h1>
+      </div>
+
+      <form method="POST" action="/lost-items" novalidate>
+        <!-- Section 01: The Item -->
+        <fieldset class="form-section" style="border: 0; padding: 0;">
+          <legend class="form-section-title">01 — The Item</legend>
+
+          <div class="form-group">
+            <label for="itemName" class="form-label">Item Name / Title</label>
+            <input 
+              type="text" 
+              id="itemName" 
+              name="itemName" 
+              value="<%= typeof values !== 'undefined' ? values.itemName || '' : '' %>" 
+              class="form-input" 
+              placeholder="e.g. Blue Dell Laptop with stickers" 
+              required
+              <% if (typeof errors !== 'undefined' && errors.itemName) { %>aria-invalid="true" aria-describedby="itemName-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.itemName) { %>
+              <p class="field-error" id="itemName-error"><%= errors.itemName %></p>
+            <% } %>
+          </div>
+
+          <div class="form-group">
+            <span class="form-label">Category (Ballot Selection)</span>
+            <div class="ballot-grid" role="radiogroup" aria-label="Item Category">
+              <% categories.forEach(function(cat) { %>
+                <label class="ballot-option">
+                  <input 
+                    type="radio" 
+                    name="category" 
+                    value="<%= cat %>"
+                    <%= (typeof values !== 'undefined' && values.category === cat) ? 'checked' : '' %>
+                  >
+                  <span><%= cat %></span>
+                </label>
+              <% }); %>
+            </div>
+            <% if (typeof errors !== 'undefined' && errors.category) { %>
+              <p class="field-error" id="category-error"><%= errors.category %></p>
+            <% } %>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="form-label">Detailed Description (Distinct markings, brand, serial, color)</label>
+            <textarea 
+              id="description" 
+              name="description" 
+              class="form-textarea" 
+              placeholder="Describe distinguishing scratches, stickers, contents, or serial numbers..."
+              rows="5"
+              required
+              <% if (typeof errors !== 'undefined' && errors.description) { %>aria-invalid="true" aria-describedby="description-error"<% } %>
+            ><%= typeof values !== 'undefined' ? values.description || '' : '' %></textarea>
+            <% if (typeof errors !== 'undefined' && errors.description) { %>
+              <p class="field-error" id="description-error"><%= errors.description %></p>
+            <% } %>
+          </div>
+        </fieldset>
+
+        <!-- Section 02: Where and When -->
+        <fieldset class="form-section" style="border: 0; padding: 0;">
+          <legend class="form-section-title">02 — Where and When</legend>
+
+          <div class="form-group">
+            <label for="lastSeenLocation" class="form-label">Last Seen Campus Location</label>
+            <input 
+              type="text" 
+              id="lastSeenLocation" 
+              name="lastSeenLocation" 
+              value="<%= typeof values !== 'undefined' ? values.lastSeenLocation || '' : '' %>" 
+              class="form-input" 
+              placeholder="e.g. Central Library 2nd Floor Reading Room" 
+              required
+              <% if (typeof errors !== 'undefined' && errors.lastSeenLocation) { %>aria-invalid="true" aria-describedby="lastSeenLocation-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.lastSeenLocation) { %>
+              <p class="field-error" id="lastSeenLocation-error"><%= errors.lastSeenLocation %></p>
+            <% } %>
+          </div>
+
+          <div class="form-group">
+            <label for="dateLost" class="form-label">Date Lost</label>
+            <input 
+              type="date" 
+              id="dateLost" 
+              name="dateLost" 
+              value="<%= typeof values !== 'undefined' ? values.dateLost || '' : '' %>" 
+              class="form-input" 
+              required
+              max="<%= new Date().toISOString().split('T')[0] %>"
+              <% if (typeof errors !== 'undefined' && errors.dateLost) { %>aria-invalid="true" aria-describedby="dateLost-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.dateLost) { %>
+              <p class="field-error" id="dateLost-error"><%= errors.dateLost %></p>
+            <% } %>
+          </div>
+        </fieldset>
+
+        <hr class="perforated-divider">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <a href="/lost-items" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-rust">File Lost Item Slip &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

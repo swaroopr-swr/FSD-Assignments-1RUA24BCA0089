@@ -1,0 +1,48 @@
+<%- include('partials/head', { title: 'Report an Item' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 800px;">
+    <%- include('partials/flash') %>
+
+    <div style="border-bottom: 2px solid var(--ink); padding-bottom: var(--space-12); margin-bottom: var(--space-24);">
+      <div class="mono-label" style="color: var(--rust); margin-bottom: 4px;">Filing Desk</div>
+      <h1>Lodge a <em>Property Notice</em></h1>
+      <p style="color: var(--ink-soft); margin-bottom: 0;">
+        Select the appropriate filing slip to record a missing possession or register an article found across campus.
+      </p>
+    </div>
+
+    <div class="chooser-grid">
+      <!-- Lost Card -->
+      <div class="chooser-card card-lost">
+        <div>
+          <div class="status-stamp stamp-lost" style="margin-bottom: 16px;">NOTICE SLIP</div>
+          <h2 class="chooser-card-title">I Lost <em>Something</em></h2>
+          <p class="chooser-card-desc">
+            File a missing property tag with the last known location, date, and distinct identifiers so finders can match it.
+          </p>
+        </div>
+        <div>
+          <a href="/lost-items/new" class="btn btn-rust" style="width: 100%;">File Lost Report &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Found Card -->
+      <div class="chooser-card card-found">
+        <div>
+          <div class="status-stamp stamp-found" style="margin-bottom: 16px;">RECEIPT SLIP</div>
+          <h2 class="chooser-card-title">I Found <em>Something</em></h2>
+          <p class="chooser-card-desc">
+            Log an item discovered on campus premises to help the rightful owner identify and reclaim their property.
+          </p>
+        </div>
+        <div>
+          <a href="/found-items/new" class="btn btn-secondary" style="width: 100%; border-color: var(--found-blue); color: var(--found-blue);">File Found Report &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

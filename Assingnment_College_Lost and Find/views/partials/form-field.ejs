@@ -1,0 +1,16 @@
+<div class="form-group">
+  <label for="<%= id %>" class="form-label"><%= label %></label>
+  <input 
+    type="<%= typeof type !== 'undefined' ? type : 'text' %>" 
+    id="<%= id %>" 
+    name="<%= name %>" 
+    value="<%= typeof value !== 'undefined' ? value : '' %>" 
+    class="form-input"
+    <% if (typeof placeholder !== 'undefined' && placeholder) { %>placeholder="<%= placeholder %>"<% } %>
+    <% if (typeof required !== 'undefined' && required) { %>required<% } %>
+    <% if (typeof errors !== 'undefined' && errors[name]) { %>aria-invalid="true" aria-describedby="<%= id %>-error"<% } %>
+  >
+  <% if (typeof errors !== 'undefined' && errors[name]) { %>
+    <p class="field-error" id="<%= id %>-error"><%= errors[name] %></p>
+  <% } %>
+</div>

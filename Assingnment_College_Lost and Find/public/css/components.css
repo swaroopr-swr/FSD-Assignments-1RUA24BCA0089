@@ -1,0 +1,514 @@
+/* ==========================================================================
+   BUTTONS (Rubber Stamp Style)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 18px;
+  min-height: 44px;
+  min-width: 44px;
+  border: 2px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: var(--stamp-shadow);
+  border-radius: 0;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.btn-primary {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.btn-primary:hover {
+  background-color: #2b334a;
+  color: var(--paper);
+}
+
+.btn-secondary {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+.btn-secondary:hover {
+  background-color: var(--paper-shade);
+}
+
+.btn-rust {
+  background-color: var(--rust);
+  color: var(--paper);
+  border-color: var(--rust-deep);
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.72rem;
+  min-height: 34px;
+}
+
+/* ==========================================================================
+   STATUS STAMP BADGES
+   ========================================================================== */
+.status-stamp {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 3px 8px;
+  border: 2px solid currentColor;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+}
+
+.stamp-lost {
+  color: var(--rust);
+  border-color: var(--rust);
+}
+
+.stamp-found {
+  color: var(--found-blue);
+  border-color: var(--found-blue);
+}
+
+.stamp-available {
+  color: var(--found-blue);
+  border-color: var(--found-blue);
+}
+
+.stamp-resolved,
+.stamp-returned {
+  color: var(--olive);
+  border-color: var(--olive);
+}
+
+/* ==========================================================================
+   HANG TAG CARDS (Item Tags)
+   ========================================================================== */
+.item-tag-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tag String and Eyelet */
+.tag-string-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -10px;
+  z-index: 2;
+}
+
+.tag-string {
+  width: 2px;
+  height: 14px;
+  background-color: var(--ink-soft);
+}
+
+.tag-eyelet {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+}
+
+.item-tag {
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  padding: var(--space-24) var(--space-20) var(--space-16);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--tag-shadow);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.item-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--tag-hover-shadow);
+}
+
+.item-tag.tag-lost {
+  border-color: var(--rust);
+}
+
+.item-tag.tag-found {
+  border-color: var(--found-blue);
+}
+
+.tag-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-8);
+  margin-bottom: var(--space-12);
+}
+
+.tag-ref {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+
+.tag-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin-bottom: var(--space-4);
+  color: var(--ink);
+}
+
+.tag-category {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-16);
+}
+
+.tag-details-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-16);
+  font-size: 0.85rem;
+}
+
+.tag-details-table tr {
+  border-bottom: 1px dotted var(--line);
+}
+
+.tag-details-table td {
+  padding: 6px 0;
+  vertical-align: top;
+}
+
+.tag-details-table td.label-cell {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  width: 35%;
+}
+
+.tag-details-table td.value-cell {
+  font-family: var(--serif);
+  color: var(--ink);
+}
+
+.tag-divider {
+  border: 0;
+  border-top: 1px dashed var(--line-strong);
+  margin: auto 0 var(--space-12);
+}
+
+.tag-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag-link {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   FILING SLIP FORMS
+   ========================================================================== */
+.form-card {
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(29, 35, 51, 0.2);
+  padding: var(--space-32);
+}
+
+.form-section {
+  margin-bottom: var(--space-32);
+}
+
+.form-section-title {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 6px;
+  margin-bottom: var(--space-20);
+}
+
+.form-group {
+  margin-bottom: var(--space-24);
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* Underline Inputs */
+.form-input,
+.form-select {
+  width: 100%;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 8px 4px;
+  transition: border-bottom-color 0.15s ease;
+  min-height: 44px;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-bottom: 2px solid var(--rust);
+}
+
+/* Ruled-line Textarea */
+.form-textarea {
+  width: 100%;
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 32px;
+  color: var(--ink);
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    var(--line) 31px,
+    var(--line) 32px
+  );
+  border: 1px solid var(--line-strong);
+  padding: 4px 8px;
+  resize: vertical;
+  min-height: 128px;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--rust);
+}
+
+/* Ballot-style category radios */
+.ballot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-12);
+  margin-top: var(--space-8);
+}
+
+.ballot-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 6px 4px;
+}
+
+.ballot-option input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink);
+  border-radius: 0;
+  background-color: var(--paper);
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  margin: 0;
+}
+
+.ballot-option input[type="radio"]::before {
+  content: "✕";
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--rust);
+  display: none;
+  line-height: 1;
+}
+
+.ballot-option input[type="radio"]:checked::before {
+  display: block;
+}
+
+.ballot-option input[type="radio"]:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 2px;
+}
+
+/* Perforated divider */
+.perforated-divider {
+  border: 0;
+  border-top: 2px dashed var(--line-strong);
+  margin: var(--space-32) 0;
+}
+
+/* Field error label */
+.field-error {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--rust-deep);
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   FLASH BANNERS
+   ========================================================================== */
+.flash-banner {
+  padding: var(--space-12) var(--space-16);
+  border-left: 6px solid var(--ink);
+  background-color: var(--paper-shade);
+  margin-bottom: var(--space-24);
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.flash-banner.flash-success {
+  border-left-color: var(--olive);
+  background-color: #E2ECE0;
+}
+
+.flash-banner.flash-notice {
+  border-left-color: var(--found-blue);
+  background-color: #E1E8F0;
+}
+
+.flash-banner.flash-error {
+  border-left-color: var(--rust-deep);
+  background-color: #F8E5E2;
+}
+
+.flash-type {
+  font-family: var(--mono);
+  font-weight: bold;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.flash-message {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   FILTER BAR
+   ========================================================================== */
+.filter-bar {
+  background-color: var(--paper-shade);
+  border: 1px solid var(--line-strong);
+  padding: var(--space-16) var(--space-20);
+  margin-bottom: var(--space-24);
+}
+
+.filter-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  align-items: flex-end;
+}
+
+.filter-input-wrap {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-input-wrap label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.filter-results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--space-12);
+  padding-top: var(--space-8);
+  border-top: 1px dotted var(--line);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   EMPTY STATE (Empty Drawer)
+   ========================================================================== */
+.empty-drawer {
+  border: 2px dashed var(--line-strong);
+  padding: var(--space-48) var(--space-24);
+  text-align: center;
+  background-color: var(--paper);
+  margin-top: var(--space-24);
+}
+
+.empty-drawer-title {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  margin-bottom: var(--space-8);
+  color: var(--ink);
+}
+
+.empty-drawer-hint {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-24);
+}

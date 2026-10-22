@@ -1,0 +1,19 @@
+<%- include('partials/head', { title: '500 — System Error' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <div class="error-box">
+      <div class="error-stamp" style="border-color: var(--rust-deep); color: var(--rust-deep);">500 ERROR</div>
+      <h1 style="font-size: 1.8rem; margin-bottom: 16px;"><%= typeof message !== 'undefined' && message ? message : 'An unexpected error occurred in the property registry.' %></h1>
+      <p style="color: var(--ink-soft); margin-bottom: 32px;">
+        The office ledger encountered an issue while processing your request. Please try again or return home.
+      </p>
+      <div>
+        <a href="/" class="btn btn-primary">&larr; Return to Property Office Home</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>
