@@ -16,3 +16,7 @@ Visual proof of the running application connected to MongoDB Atlas, demonstratin
 | **06** | [`06-found-item-case-file.png`](./06-found-item-case-file.png) | Found Item Case File | Case file `LF-44FF68` for Laptop Charger with blue `AVAILABLE` stamp and green flash success banner. |
 | **07** | [`07-found-items-ledger.png`](./07-found-items-ledger.png) | Found Items Ledger | Found property repository showing active hang-tag for discovered property. |
 | **08** | [`08-home-page-active-records.png`](./08-home-page-active-records.png) | Home Desk (Populated State) | Live counts updated to `1` Lost, `1` Found, and `1` Student with dual columns showing latest property tags. |
+| **09** | [`09-atlas-students-collection.png`](./09-atlas-students-collection.png) | Atlas: `students` Collection | Live document verification in MongoDB Atlas Data Explorer for student `swaroop`. |
+| **10** | [`10-atlas-founditems-collection.png`](./10-atlas-founditems-collection.png) | Atlas: `founditems` Collection | Live document verification for Laptop Charger with status `Available` and `reportedBy` ObjectId reference. |
+| **11** | [`11-atlas-lostitems-collection.png`](./11-atlas-lostitems-collection.png) | Atlas: `lostitems` Collection | Live document verification for ID Card with status `Lost` and relational `reportedBy` reference. |
+
