@@ -1,0 +1,39 @@
+> campus-lost-found@1.0.0 test
+> node --test tests/phase2.test.js
+
+
+[TEST SETUP] Connecting to dedicated test database...
+[TEST SETUP] Purging test database collections...
+[TEST SETUP] Spawning Phase 2 server on port 3999...
+[TEST SETUP] Server ready and accepting connections.
+
+▶ Campus Lost & Found — Phase 2 Comprehensive Test Suite
+  ✔ 1. Successful lost and found item creation by Student A (851.701208ms)
+  ✔ 2. Invalid ID format (/found-items/abc) returns 404 (53.80425ms)
+  ✔ 3. Valid format but non-existent ID returns 404 (104.921916ms)
+  ✔ 4. Signed-out claim submission redirects to /sign-in (302) (5.673208ms)
+  ✔ 5. Finder cannot claim their own reported item (returns 403) (151.645791ms)
+  ✔ 6. Claim with blank/whitespace reason returns 400 Bad Request (412.978375ms)
+  ✔ 7. Claim with short reason (<10 characters) returns 400 Bad Request (186.490584ms)
+  ✔ 8. Successful claim submission: starts as Pending, ignores body status/claimedBy spoofing (344.535083ms)
+  ✔ 9. Duplicate claim by same student on same item is rejected (returns 409) (513.500333ms)
+  ✔ 10. Unauthorized approval attempt by Student B (non-finder) returns 403 and leaves claim Pending (230.623333ms)
+  ✔ 11. Student C lodges a second claim on the item (pre-approval multi-claim scenario) (381.634625ms)
+  ✔ 12. Finder approves Student B claim: claim Approved, item Returned, other claims auto-Rejected (857.722792ms)
+  ✔ 13. Deciding an already-decided claim returns 409 Conflict (139.070875ms)
+  ✔ 14. Submitting a new claim on a Returned item returns 409 Conflict (280.156875ms)
+  ✔ 15. PATCH /found-items/:id/status business rule enforcement (839.425708ms)
+
+[TEST TEARDOWN] Shutting down test server and closing DB connection...
+  ✔ 16. Search and filtering on found items and my-claims (1811.540083ms)
+[TEST TEARDOWN] Cleaned up successfully.
+
+✔ Campus Lost & Found — Phase 2 Comprehensive Test Suite (12767.39575ms)
+ℹ tests 16
+ℹ suites 1
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12953.921208

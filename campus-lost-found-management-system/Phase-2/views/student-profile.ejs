@@ -1,0 +1,88 @@
+<%- include('partials/head', { title: student.fullName + ' — Profile' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <div class="breadcrumb-nav">
+      <a href="/">Property Office</a> / <span>Student Dossier</span>
+    </div>
+
+    <!-- Student ID Card Presentation -->
+    <section class="student-id-card">
+      <div class="id-header">
+        <span class="id-title">Official Campus Identity Record</span>
+        <span class="status-stamp stamp-resolved">REGISTERED</span>
+      </div>
+
+      <h1 class="id-name"><%= student.fullName %></h1>
+
+      <table class="id-table">
+        <tbody>
+          <tr>
+            <td class="id-label">Department:</td>
+            <td class="id-val"><strong><%= student.department %></strong></td>
+          </tr>
+          <tr>
+            <td class="id-label">Email:</td>
+            <td class="id-val"><%= student.email %></td>
+          </tr>
+          <tr>
+            <td class="id-label">Contact:</td>
+            <td class="id-val"><%= student.contactNumber %></td>
+          </tr>
+          <tr>
+            <td class="id-label">On file since:</td>
+            <td class="id-val"><%= new Date(student.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Student's Reports -->
+    <div class="home-split-grid" style="margin-top: 40px;">
+      <!-- Lost Reports Filed -->
+      <section>
+        <div style="border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px;">
+          <h2>Lost Reports <em>Filed</em> (<%= lostItems.length %>)</h2>
+        </div>
+
+        <% if (lostItems.length === 0) { %>
+          <%- include('partials/empty-state', {
+            title: 'No lost items filed by this student.',
+            hint: 'Reports filed under this identity will appear here.'
+          }) %>
+        <% } else { %>
+          <div class="tag-grid" style="grid-template-columns: 1fr;">
+            <% lostItems.forEach(function(item) { %>
+              <%- include('partials/item-tag', { item: item, type: 'lost' }) %>
+            <% }); %>
+          </div>
+        <% } %>
+      </section>
+
+      <!-- Found Reports Filed -->
+      <section>
+        <div style="border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px;">
+          <h2>Found Items <em>Logged</em> (<%= foundItems.length %>)</h2>
+        </div>
+
+        <% if (foundItems.length === 0) { %>
+          <%- include('partials/empty-state', {
+            title: 'No found items logged by this student.',
+            hint: 'Items handed in or recorded will appear here.'
+          }) %>
+        <% } else { %>
+          <div class="tag-grid" style="grid-template-columns: 1fr;">
+            <% foundItems.forEach(function(item) { %>
+              <%- include('partials/item-tag', { item: item, type: 'found' }) %>
+            <% }); %>
+          </div>
+        <% } %>
+      </section>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

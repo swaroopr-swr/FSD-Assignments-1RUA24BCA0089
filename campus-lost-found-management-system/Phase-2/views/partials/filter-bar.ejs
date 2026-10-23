@@ -1,0 +1,60 @@
+<%
+  const hasFilter = (typeof q !== 'undefined' && q) || 
+                    (typeof selectedCategory !== 'undefined' && selectedCategory) || 
+                    (typeof selectedStatus !== 'undefined' && selectedStatus);
+  const showStatus = typeof statuses !== 'undefined' && statuses && statuses.length > 0;
+%>
+<div class="filter-bar">
+  <form method="GET" action="<%= actionUrl %>" class="filter-form">
+    <div class="filter-input-wrap">
+      <label for="search-input">Search name or location</label>
+      <input 
+        type="text" 
+        id="search-input" 
+        name="q" 
+        value="<%= typeof q !== 'undefined' ? q : '' %>" 
+        class="form-input" 
+        placeholder="e.g. Library, blue bottle, umbrella...">
+    </div>
+
+    <div class="filter-input-wrap">
+      <label for="category-select">Category</label>
+      <select id="category-select" name="category" class="form-select">
+        <option value="">All Categories</option>
+        <% categories.forEach(function(cat) { %>
+          <option value="<%= cat %>" <%= (typeof selectedCategory !== 'undefined' && selectedCategory === cat) ? 'selected' : '' %>>
+            <%= cat %>
+          </option>
+        <% }); %>
+      </select>
+    </div>
+
+    <% if (showStatus) { %>
+      <div class="filter-input-wrap">
+        <label for="status-select">Status</label>
+        <select id="status-select" name="status" class="form-select">
+          <option value="">All Statuses</option>
+          <% statuses.forEach(function(st) { %>
+            <option value="<%= st %>" <%= (typeof selectedStatus !== 'undefined' && selectedStatus === st) ? 'selected' : '' %>>
+              <%= st %>
+            </option>
+          <% }); %>
+        </select>
+      </div>
+    <% } %>
+
+    <div class="filter-actions">
+      <button type="submit" class="btn btn-secondary">Search</button>
+      <% if (hasFilter) { %>
+        <a href="<%= actionUrl %>" class="btn btn-sm">Clear</a>
+      <% } %>
+    </div>
+  </form>
+
+  <div class="filter-results-info">
+    <span><%= itemsCount %> <%= itemsCount === 1 ? 'TAG' : 'TAGS' %> FOUND</span>
+    <% if (hasFilter) { %>
+      <span>Filter applied</span>
+    <% } %>
+  </div>
+</div>
