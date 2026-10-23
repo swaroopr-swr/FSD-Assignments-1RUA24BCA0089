@@ -77,7 +77,7 @@ a {
   transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
-a:hover {
+a:not(.btn):hover {
   color: var(--rust);
 }
 
