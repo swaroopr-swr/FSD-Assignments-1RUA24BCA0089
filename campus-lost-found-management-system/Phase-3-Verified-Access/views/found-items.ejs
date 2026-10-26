@@ -1,0 +1,56 @@
+<%- include('partials/head', { title: 'Found Items' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 24px;">
+      <div>
+        <span class="mono-label" style="color: var(--found-blue);">Repository · In Custody / Logged</span>
+        <h1 style="margin: 4px 0 0;">Found <em>Items</em> Ledger</h1>
+      </div>
+      <div>
+        <a href="/found-items/new" class="btn btn-primary" style="background-color: var(--found-blue); border-color: var(--ink);">+ Report Found Item</a>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <%- include('partials/filter-bar', {
+      actionUrl: '/found-items',
+      categories: categories,
+      selectedCategory: selectedCategory,
+      statuses: ['Available', 'Returned'],
+      selectedStatus: typeof selectedStatus !== 'undefined' ? selectedStatus : '',
+      q: q,
+      itemsCount: items.length
+    }) %>
+
+    <!-- Items Grid / Empty State -->
+    <% if (items.length === 0) { %>
+      <% if (q || selectedCategory || (typeof selectedStatus !== 'undefined' && selectedStatus)) { %>
+        <%- include('partials/empty-state', {
+          title: 'No tags match your search.',
+          hint: 'Try adjusting your search terms or clearing the active filters.',
+          ctaText: 'Clear Filters',
+          ctaUrl: '/found-items'
+        }) %>
+      <% } else { %>
+        <%- include('partials/empty-state', {
+          title: 'No found items have been reported yet.',
+          hint: 'All handed-in property will appear here.',
+          ctaText: 'Report Found Item',
+          ctaUrl: '/found-items/new'
+        }) %>
+      <% } %>
+    <% } else { %>
+      <div class="tag-grid">
+        <% items.forEach(function(item) { %>
+          <%- include('partials/item-tag', { item: item, type: 'found' }) %>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

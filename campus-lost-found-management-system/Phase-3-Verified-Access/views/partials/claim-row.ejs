@@ -1,0 +1,59 @@
+<%
+  const claimant = claim.claimedBy || {};
+  const submittedDate = new Date(claim.createdAt).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+  const reviewedDate = claim.reviewedAt ? new Date(claim.reviewedAt).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit'
+  }) : null;
+%>
+<article class="claim-card-row">
+  <div class="claim-row-header">
+    <div class="claimant-info">
+      <span class="claimant-name"><%= claimant.fullName || 'Student Claimant' %></span>
+      <span class="claimant-meta">
+        <%= claimant.department ? claimant.department + ' · ' : '' %><%= claimant.email || 'Email unlisted' %>
+      </span>
+    </div>
+    <div>
+      <%- include('status-stamp', { status: claim.status }) %>
+    </div>
+  </div>
+
+  <div class="claim-reason-block">
+    <%= claim.reason %>
+  </div>
+
+  <div class="claim-row-footer">
+    <div class="claim-date-meta">
+      <span>Filed: <%= submittedDate %></span>
+      <% if (reviewedDate) { %>
+        <span> · Decided: <%= reviewedDate %></span>
+      <% } %>
+    </div>
+
+    <% if (isFinder && item.status === 'Available' && claim.status === 'Pending') { %>
+      <div class="claim-actions-group">
+        <!-- Approve Action: Form method-override to PATCH -->
+        <form method="POST" action="/claims/<%= claim._id %>/status?_method=PATCH" data-confirm="Approving marks this item Returned and cannot be undone. Confirm approval?">
+          <input type="hidden" name="status" value="Approved">
+          <button type="submit" class="btn btn-approve btn-sm">Approve</button>
+        </form>
+
+        <!-- Reject Action: Form method-override to PATCH -->
+        <form method="POST" action="/claims/<%= claim._id %>/status?_method=PATCH">
+          <input type="hidden" name="status" value="Rejected">
+          <button type="submit" class="btn btn-reject btn-sm">Reject</button>
+        </form>
+      </div>
+    <% } %>
+  </div>
+</article>

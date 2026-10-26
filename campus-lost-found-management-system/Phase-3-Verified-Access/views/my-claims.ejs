@@ -1,0 +1,86 @@
+<%- include('partials/head', { title: 'My Claims — Property Office' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <div style="border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 24px;">
+      <span class="mono-label" style="color: var(--found-blue);">Student Dossier · Assertions of Ownership</span>
+      <h1 style="margin: 4px 0 0;">My <em>Claims</em> Ledger</h1>
+    </div>
+
+    <!-- Status Filter Tabs -->
+    <div class="my-claims-filter-strip">
+      <span class="mono-label" style="color: var(--ink-soft); margin-right: 8px;">Filter Status:</span>
+      <a href="/my-claims" class="filter-tab <%= !selectedStatus ? 'active' : '' %>">All Claims</a>
+      <a href="/my-claims?status=Pending" class="filter-tab <%= selectedStatus === 'Pending' ? 'active' : '' %>">Pending</a>
+      <a href="/my-claims?status=Approved" class="filter-tab <%= selectedStatus === 'Approved' ? 'active' : '' %>">Approved</a>
+      <a href="/my-claims?status=Rejected" class="filter-tab <%= selectedStatus === 'Rejected' ? 'active' : '' %>">Rejected</a>
+    </div>
+
+    <!-- Claims List or Empty State -->
+    <% if (claims.length === 0) { %>
+      <% if (selectedStatus) { %>
+        <%- include('partials/empty-state', {
+          title: 'No claims match this status filter.',
+          hint: 'Try selecting a different status or view all claims.',
+          ctaText: 'View All Claims',
+          ctaUrl: '/my-claims'
+        }) %>
+      <% } else { %>
+        <%- include('partials/empty-state', {
+          title: "You haven't submitted any claims yet.",
+          hint: 'If you recognize an article in the found property ledger, submit a claim slip to establish ownership.',
+          ctaText: 'Browse Found Items',
+          ctaUrl: '/found-items'
+        }) %>
+      <% } %>
+    <% } else { %>
+      <div class="claims-list">
+        <% claims.forEach(function(claim) { %>
+          <% 
+            const item = claim.foundItem || {};
+            const refCode = item._id ? 'LF-' + item._id.toString().slice(-6).toUpperCase() : 'LF-UNKNOWN';
+            const submittedDate = new Date(claim.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            const reviewedDate = claim.reviewedAt ? new Date(claim.reviewedAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : null;
+          %>
+          <article class="my-claim-item-card">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; border-bottom: 1px dotted var(--line); padding-bottom: 8px;">
+              <div>
+                <span class="mono-label" style="color: var(--found-blue);"><%= refCode %> · <%= item.category || 'Item' %></span>
+                <h3 style="margin: 4px 0 0; font-size: 1.3rem;">
+                  <% if (item._id) { %>
+                    <a href="/found-items/<%= item._id %>" style="color: var(--ink); text-decoration: underline;"><%= item.itemName %></a>
+                  <% } else { %>
+                    <span style="color: var(--ink-soft); font-style: italic;">Item No Longer Available</span>
+                  <% } %>
+                </h3>
+              </div>
+              <div>
+                <%- include('partials/status-stamp', { status: claim.status }) %>
+              </div>
+            </div>
+
+            <div class="claim-reason-block">
+              <strong>Your proof of ownership:</strong><br>
+              <%= claim.reason %>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);">
+              <span>Submitted on: <%= submittedDate %></span>
+              <% if (reviewedDate) { %>
+                <span>Reviewed on: <%= reviewedDate %></span>
+              <% } %>
+              <% if (item._id) { %>
+                <a href="/found-items/<%= item._id %>" class="btn btn-secondary btn-sm">Inspect Case File &rarr;</a>
+              <% } %>
+            </div>
+          </article>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('partials/footer') %>
