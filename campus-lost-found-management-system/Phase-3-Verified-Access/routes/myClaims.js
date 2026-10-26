@@ -19,9 +19,24 @@ router.get('/', requireAuth, async (req, res, next) => {
       filter.status = selectedStatus;
     }
 
-    const claims = await Claim.find(filter)
-      .populate('foundItem')
+    const rawClaims = await Claim.find(filter)
+      .populate({
+        path: 'foundItem',
+        populate: {
+          path: 'reportedBy',
+          select: 'fullName department contactNumber'
+        }
+      })
       .sort({ createdAt: -1 });
+
+    const claims = rawClaims.map((c) => {
+      const claimObj = c.toObject();
+      // Privacy rule: Only reveal finder contact details if the claim was approved
+      if (claimObj.status !== 'Approved' && claimObj.foundItem && claimObj.foundItem.reportedBy) {
+        delete claimObj.foundItem.reportedBy.contactNumber;
+      }
+      return claimObj;
+    });
 
     res.render('my-claims', {
       currentPath: '/my-claims',

@@ -1,91 +1,36 @@
 const express = require('express');
 const router = express.Router();
+
 const Student = require('../models/Student');
 const LostItem = require('../models/LostItem');
 const FoundItem = require('../models/FoundItem');
-const { isValidObjectId, validateStudent } = require('../utils/validators');
+const { isValidObjectId } = require('../utils/validators');
 
 /**
  * GET /students/new
- * Renders the new student registration slip.
+ * Discontinued legacy route: redirects permanently to verified registration (C5).
  */
 router.get('/new', (req, res) => {
-  res.render('student-new', {
-    currentPath: '/students/new',
-    errors: {},
-    values: {}
-  });
+  res.redirect(301, '/register');
 });
 
 /**
  * POST /students
- * Creates a new student record and signs the student in.
+ * Discontinued legacy route: returns 410 Gone explaining registrar verification requirement (C5).
  */
-router.post('/', async (req, res, next) => {
-  const values = {
-    fullName: req.body.fullName,
-    email: req.body.email,
-    department: req.body.department,
-    contactNumber: req.body.contactNumber
-  };
-
-  const errors = validateStudent(values);
-
-  // Check for duplicate email before save
-  if (!errors.email && values.email) {
-    try {
-      const existing = await Student.findOne({ email: values.email.trim().toLowerCase() });
-      if (existing) {
-        errors.email = 'A student profile is already registered with this email address.';
-      }
-    } catch (err) {
-      return next(err);
-    }
-  }
-
-  if (Object.keys(errors).length > 0) {
-    return res.status(400).render('student-new', {
-      currentPath: '/students/new',
-      errors,
-      values
-    });
-  }
-
-  try {
-    const student = new Student({
-      fullName: values.fullName.trim(),
-      email: values.email.trim().toLowerCase(),
-      department: values.department.trim(),
-      contactNumber: values.contactNumber.trim()
-    });
-
-    await student.save();
-
-    // Automatically sign in the newly registered student
-    res.cookie('studentId', student._id.toString(), {
-      signed: true,
-      httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000
-    });
-
-    req.flash('success', `Student profile registered successfully for ${student.fullName}.`);
-    res.redirect(`/students/${student._id}`);
-  } catch (err) {
-    // Catch MongoDB duplicate key error (E11000) as safety fallback
-    if (err.code === 11000) {
-      return res.status(400).render('student-new', {
-        currentPath: '/students/new',
-        errors: { email: 'A student profile is already registered with this email address.' },
-        values
-      });
-    }
-    next(err);
-  }
+router.post('/', (req, res) => {
+  res.status(410).render('error', {
+    status: 410,
+    title: '410 — Registration Method Discontinued',
+    message: 'Direct profile creation without registrar verification is no longer supported. Please register via the two-step verification portal at /register.'
+  });
 });
 
 /**
  * GET /students/:id
- * Displays the student's profile dossier and all lost & found items filed by them.
+ * Displays the sanitized student profile and their filed lost & found property tags.
+ * Privacy rule: Exposes name, department, and registration timestamp only.
+ * Private contact numbers, institutional emails, and USNs are never rendered publicly (C7).
  */
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
@@ -98,10 +43,11 @@ router.get('/:id', async (req, res, next) => {
   }
 
   try {
-    const student = await Student.findById(id);
-    if (!student) {
+    // Select only public profile fields: name, department, createdAt
+    const student = await Student.findById(id).select('fullName department createdAt isVerified');
+    if (!student || !student.isVerified) {
       return res.status(404).render('404', {
-        message: 'No student profile was found with that reference.'
+        message: 'No verified student profile was found with that reference.'
       });
     }
 

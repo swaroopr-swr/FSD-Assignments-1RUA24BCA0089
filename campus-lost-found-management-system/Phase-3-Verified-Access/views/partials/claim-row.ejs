@@ -20,7 +20,10 @@
     <div class="claimant-info">
       <span class="claimant-name"><%= claimant.fullName || 'Student Claimant' %></span>
       <span class="claimant-meta">
-        <%= claimant.department ? claimant.department + ' · ' : '' %><%= claimant.email || 'Email unlisted' %>
+        <%= claimant.department ? claimant.department : 'General' %>
+        <% if (claim.status === 'Approved' && (claimant.contactNumber || claimant.email)) { %>
+          · <strong style="color: var(--olive); font-family: var(--mono);">Contact: <%= claimant.contactNumber || claimant.email %></strong>
+        <% } %>
       </span>
     </div>
     <div>

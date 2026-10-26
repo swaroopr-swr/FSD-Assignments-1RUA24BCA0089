@@ -9,6 +9,8 @@ const Student = require('../models/Student');
 const FoundItem = require('../models/FoundItem');
 const LostItem = require('../models/LostItem');
 const Claim = require('../models/Claim');
+const RosterEntry = require('../models/RosterEntry');
+const { hashPassword } = require('../utils/passwords');
 
 const TEST_PORT = 3999;
 const BASE_URL = `http://127.0.0.1:${TEST_PORT}`;
@@ -61,13 +63,16 @@ function extractStudentCookie(res) {
 }
 
 /**
- * Helper to sign in via POST /sign-in and retrieve cookie
+ * Helper to sign in via POST /sign-in and retrieve cookie (with Origin & password)
  */
-async function signInStudent(email) {
+async function signInStudent(email, password = 'TestPassword123!') {
   const res = await fetch(`${BASE_URL}/sign-in`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({ email }).toString(),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Origin: BASE_URL
+    },
+    body: new URLSearchParams({ email, password }).toString(),
     redirect: 'manual'
   });
   return extractStudentCookie(res);
@@ -83,11 +88,14 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       Student.deleteMany({}),
       FoundItem.deleteMany({}),
       LostItem.deleteMany({}),
-      Claim.deleteMany({})
+      Claim.deleteMany({}),
+      RosterEntry.deleteMany({})
     ]);
 
     // Ensure Compound Index exists on Claim
     await Claim.init();
+    await Student.init();
+    await RosterEntry.init();
 
     console.log(`[TEST SETUP] Spawning Phase 2 server on port ${TEST_PORT}...`);
     serverProcess = spawn('node', ['index.js'], {
@@ -127,25 +135,66 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
     }
     console.log('[TEST SETUP] Server ready and accepting connections.\n');
 
-    // Seed test students directly in MongoDB
+    // Seed test students directly in MongoDB with verified roster references
+    const defaultPasswordHash = await hashPassword('TestPassword123!');
+
+    const [rosA, rosB, rosC] = await RosterEntry.create([
+      {
+        usn: '1RUA24BCA0001',
+        fullName: 'Finder Alice',
+        email: 'alice.finder@rvu.edu.in',
+        department: 'Computer Applications',
+        isRegistered: true
+      },
+      {
+        usn: '1RUA24BCA0002',
+        fullName: 'Claimant Bob',
+        email: 'bob.claimant@rvu.edu.in',
+        department: 'Mechanical Engineering',
+        isRegistered: true
+      },
+      {
+        usn: '1RUA24BCA0003',
+        fullName: 'Claimant Charlie',
+        email: 'charlie.claimant@rvu.edu.in',
+        department: 'Civil Engineering',
+        isRegistered: true
+      }
+    ]);
+
     const [stA, stB, stC] = await Student.create([
       {
         fullName: 'Finder Alice',
-        email: 'alice.finder@college.edu',
+        usn: '1RUA24BCA0001',
+        email: 'alice.finder@rvu.edu.in',
         department: 'Computer Applications',
-        contactNumber: '9876543210'
+        contactNumber: '9876543210',
+        passwordHash: defaultPasswordHash,
+        isVerified: true,
+        verifiedAt: new Date(),
+        rosterEntry: rosA._id
       },
       {
         fullName: 'Claimant Bob',
-        email: 'bob.claimant@college.edu',
+        usn: '1RUA24BCA0002',
+        email: 'bob.claimant@rvu.edu.in',
         department: 'Mechanical Engineering',
-        contactNumber: '8765432109'
+        contactNumber: '8765432109',
+        passwordHash: defaultPasswordHash,
+        isVerified: true,
+        verifiedAt: new Date(),
+        rosterEntry: rosB._id
       },
       {
         fullName: 'Claimant Charlie',
-        email: 'charlie.claimant@college.edu',
+        usn: '1RUA24BCA0003',
+        email: 'charlie.claimant@rvu.edu.in',
         department: 'Civil Engineering',
-        contactNumber: '7654321098'
+        contactNumber: '7654321098',
+        passwordHash: defaultPasswordHash,
+        isVerified: true,
+        verifiedAt: new Date(),
+        rosterEntry: rosC._id
       }
     ]);
 
@@ -154,9 +203,9 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
     studentCId = stC._id.toString();
 
     // Authenticate students and retain session cookies
-    cookieStudentA = await signInStudent('alice.finder@college.edu');
-    cookieStudentB = await signInStudent('bob.claimant@college.edu');
-    cookieStudentC = await signInStudent('charlie.claimant@college.edu');
+    cookieStudentA = await signInStudent('alice.finder@rvu.edu.in');
+    cookieStudentB = await signInStudent('bob.claimant@rvu.edu.in');
+    cookieStudentC = await signInStudent('charlie.claimant@rvu.edu.in');
 
     assert.ok(cookieStudentA, 'Student A session cookie must be present');
     assert.ok(cookieStudentB, 'Student B session cookie must be present');
@@ -178,6 +227,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({
@@ -205,6 +255,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({
@@ -243,7 +294,10 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
   it('4. Signed-out claim submission redirects to /sign-in (302)', async () => {
     const res = await fetch(`${BASE_URL}/found-items/${foundItemId}/claims`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL
+      },
       body: new URLSearchParams({
         reason: 'This is my watch with an engraved initials AB on the back cover.'
       }).toString(),
@@ -258,6 +312,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({
@@ -275,6 +330,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentB
       },
       body: new URLSearchParams({
@@ -291,6 +347,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentB
       },
       body: new URLSearchParams({
@@ -305,6 +362,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentB
       },
       body: new URLSearchParams({
@@ -329,6 +387,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentB
       },
       body: new URLSearchParams({
@@ -350,6 +409,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentB
       },
       body: new URLSearchParams({
@@ -368,6 +428,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentC
       },
       body: new URLSearchParams({
@@ -388,6 +449,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({
@@ -419,6 +481,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({
@@ -430,19 +493,33 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
   });
 
   it('14. Submitting a new claim on a Returned item returns 409 Conflict', async () => {
-    // Create new student D
+    // Create new student D with verified roster entry
+    const rosD = await RosterEntry.create({
+      usn: '1RUA24BCA0004',
+      fullName: 'Late Claimant Dave',
+      email: 'dave.late@rvu.edu.in',
+      department: 'Physics',
+      isRegistered: true
+    });
+    const defaultPasswordHash = await hashPassword('TestPassword123!');
     const stD = await Student.create({
       fullName: 'Late Claimant Dave',
-      email: 'dave.late@college.edu',
+      usn: '1RUA24BCA0004',
+      email: 'dave.late@rvu.edu.in',
       department: 'Physics',
-      contactNumber: '9123456780'
+      contactNumber: '9123456780',
+      passwordHash: defaultPasswordHash,
+      isVerified: true,
+      verifiedAt: new Date(),
+      rosterEntry: rosD._id
     });
-    const cookieStudentD = await signInStudent('dave.late@college.edu');
+    const cookieStudentD = await signInStudent('dave.late@rvu.edu.in');
 
     const res = await fetch(`${BASE_URL}/found-items/${foundItemId}/claims`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentD
       },
       body: new URLSearchParams({
@@ -462,6 +539,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentB
       },
       body: new URLSearchParams({ status: 'Returned' }).toString()
@@ -473,6 +551,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({ status: 'Available' }).toString()
@@ -484,6 +563,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({ status: 'Returned' }).toString()
@@ -505,6 +585,7 @@ describe('Campus Lost & Found — Phase 2 Comprehensive Test Suite', () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
+        Origin: BASE_URL,
         Cookie: cookieStudentA
       },
       body: new URLSearchParams({ status: 'Returned' }).toString()

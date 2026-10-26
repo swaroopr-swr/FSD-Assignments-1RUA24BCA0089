@@ -12,19 +12,20 @@
       <a href="/report" class="<%= typeof currentPath !== 'undefined' && currentPath === '/report' ? 'active' : '' %>">Report an Item</a>
       <% if (currentStudent) { %>
         <a href="/my-claims" class="<%= typeof currentPath !== 'undefined' && currentPath.startsWith('/my-claims') ? 'active' : '' %>">My Claims</a>
+        <a href="/dashboard" class="<%= typeof currentPath !== 'undefined' && currentPath.startsWith('/dashboard') ? 'active' : '' %>">Dashboard</a>
       <% } %>
     </nav>
 
     <div class="masthead-auth">
       <% if (currentStudent) { %>
-        <span>Signed in as <a href="/students/<%= currentStudent._id %>"><strong><%= currentStudent.fullName %></strong></a></span>
+        <span><a href="/dashboard"><strong><%= currentStudent.fullName %></strong></a> <span style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft);">(<%= currentStudent.usn %>)</span></span>
         <form method="POST" action="/sign-out">
           <button type="submit" class="btn btn-secondary btn-sm">Sign out</button>
         </form>
       <% } else { %>
         <a href="/sign-in">Sign in</a>
         <span>·</span>
-        <a href="/students/new">Register</a>
+        <a href="/register">Register</a>
       <% } %>
     </div>
   </div>

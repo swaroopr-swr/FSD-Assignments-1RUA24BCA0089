@@ -1,0 +1,135 @@
+<%- include('partials/head', { title: 'Register · Step 2 Security Details' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 640px; margin: 40px auto;">
+    <%- include('partials/flash') %>
+
+    <div class="breadcrumb-nav">
+      <a href="/">Property Office</a> / <a href="/register">Registration</a> / <span>Security Setup</span>
+    </div>
+
+    <section class="form-card" style="border-top: 4px solid var(--found-blue);">
+      <div style="border-bottom: 1px dashed var(--line-strong); padding-bottom: 12px; margin-bottom: 24px;">
+        <span class="mono-label" style="color: var(--found-blue);">Step 02 of 02 · Account Security</span>
+        <h1 style="margin: 6px 0 0; font-size: 1.8rem;">Complete Verified Profile</h1>
+        <p style="color: var(--ink-soft); margin: 6px 0 0; font-size: 0.95rem;">
+          Registrar details verified. Please set your contact number and password.
+        </p>
+      </div>
+
+      <!-- Verified Registrar Identity Badge (Read-Only) -->
+      <div style="background: var(--bg-soft); border: 1px solid var(--line-strong); padding: 16px; margin-bottom: 24px; border-radius: 3px;">
+        <div class="mono-label" style="color: var(--ink-soft); margin-bottom: 8px;">Verified Registrar Record</div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <tbody>
+            <tr>
+              <td style="color: var(--ink-soft); padding: 4px 0; width: 35%;">Full Name:</td>
+              <td style="font-weight: bold; color: var(--ink);"><%= roster.fullName %></td>
+            </tr>
+            <tr>
+              <td style="color: var(--ink-soft); padding: 4px 0;">USN:</td>
+              <td style="font-family: var(--mono); color: var(--ink);"><%= roster.usn %></td>
+            </tr>
+            <tr>
+              <td style="color: var(--ink-soft); padding: 4px 0;">Institutional Email:</td>
+              <td style="color: var(--ink);"><%= roster.email %></td>
+            </tr>
+            <tr>
+              <td style="color: var(--ink-soft); padding: 4px 0;">Department:</td>
+              <td style="color: var(--ink);"><%= roster.department %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <% if (typeof errors !== 'undefined' && errors.form) { %>
+        <div class="field-error-msg" style="color: var(--rust-deep); background: #fdf2f2; border-left: 3px solid var(--rust); padding: 12px; margin-bottom: 20px; font-size: 0.9rem;">
+          <%= errors.form %>
+        </div>
+      <% } %>
+
+      <form method="POST" action="/register" novalidate>
+        <div class="form-group">
+          <label for="contactNumber" class="form-label">
+            Mobile Contact Number <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input
+            type="tel"
+            id="contactNumber"
+            name="contactNumber"
+            class="form-input <%= (typeof errors !== 'undefined' && errors.contactNumber) ? 'input-error' : '' %>"
+            placeholder="e.g. 9876543210"
+            value="<%= (typeof values !== 'undefined' && values.contactNumber) ? values.contactNumber : '' %>"
+            required
+            maxlength="10"
+          >
+          <div style="font-size: 0.8rem; color: var(--ink-soft); margin-top: 4px;">
+            10-digit Indian mobile number. Revealed only to finders/owners upon claim approval.
+          </div>
+          <% if (typeof errors !== 'undefined' && errors.contactNumber) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.contactNumber %>
+            </div>
+          <% } %>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="password" class="form-label">
+            Password <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-input <%= (typeof errors !== 'undefined' && errors.password) ? 'input-error' : '' %>"
+            placeholder="At least 8 characters"
+            required
+            minlength="8"
+            maxlength="128"
+            autocomplete="new-password"
+          >
+          <div style="font-size: 0.8rem; color: var(--ink-soft); margin-top: 4px;">
+            Must be 8 to 128 characters and distinct from your email or USN.
+          </div>
+          <% if (typeof errors !== 'undefined' && errors.password) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.password %>
+            </div>
+          <% } %>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="confirmPassword" class="form-label">
+            Confirm Password <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            class="form-input <%= (typeof errors !== 'undefined' && errors.confirmPassword) ? 'input-error' : '' %>"
+            placeholder="Re-enter password"
+            required
+            minlength="8"
+            maxlength="128"
+            autocomplete="new-password"
+          >
+          <% if (typeof errors !== 'undefined' && errors.confirmPassword) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.confirmPassword %>
+            </div>
+          <% } %>
+        </div>
+
+        <div style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <a href="/register" style="font-size: 0.9rem; color: var(--ink-soft);">&larr; Back to Step 1</a>
+          <button type="submit" class="btn btn-primary">
+            Complete Registration &rarr;
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

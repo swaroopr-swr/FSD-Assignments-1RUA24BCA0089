@@ -2,8 +2,10 @@ const Student = require('../models/Student');
 const { isValidObjectId } = require('../utils/validators');
 
 /**
- * Middleware to load the currently authenticated student from signed cookies.
+ * Middleware to load the currently authenticated verified student from signed cookies.
  * Attaches the student to both req.currentStudent and res.locals.currentStudent.
+ * Note: passwordHash is configured with select: false in Student schema, so it is never
+ * attached to req or res.locals (C7).
  */
 async function loadCurrentStudent(req, res, next) {
   const studentId = req.signedCookies.studentId;
@@ -24,8 +26,8 @@ async function loadCurrentStudent(req, res, next) {
 
   try {
     const student = await Student.findById(studentId);
-    if (!student) {
-      // Student was deleted or does not exist
+    if (!student || !student.isVerified) {
+      // Student was deleted or is not verified
       res.clearCookie('studentId');
       res.locals.currentStudent = null;
       req.currentStudent = null;
@@ -44,12 +46,12 @@ async function loadCurrentStudent(req, res, next) {
 }
 
 /**
- * Route protection middleware.
- * Ensures an active student session exists before accessing reporting routes.
+ * Route protection middleware (C11).
+ * Strictly requires an active, verified student session before accessing filing or claim actions.
  */
-function requireAuth(req, res, next) {
-  if (!req.currentStudent) {
-    req.flash('notice', 'Please sign in with your college email or create a profile to report an item.');
+function requireVerifiedStudent(req, res, next) {
+  if (!req.currentStudent || !req.currentStudent.isVerified) {
+    req.flash('notice', 'Please sign in with your verified college account to proceed.');
     return res.redirect('/sign-in');
   }
   next();
@@ -57,5 +59,6 @@ function requireAuth(req, res, next) {
 
 module.exports = {
   loadCurrentStudent,
-  requireAuth
+  requireVerifiedStudent,
+  requireAuth: requireVerifiedStudent // Backward compatible alias
 };

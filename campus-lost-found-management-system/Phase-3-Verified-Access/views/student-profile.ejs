@@ -9,11 +9,11 @@
       <a href="/">Property Office</a> / <span>Student Dossier</span>
     </div>
 
-    <!-- Student ID Card Presentation -->
+    <!-- Student ID Card Presentation (Public view: Name and Department only per Privacy Policy) -->
     <section class="student-id-card">
       <div class="id-header">
         <span class="id-title">Official Campus Identity Record</span>
-        <span class="status-stamp stamp-resolved">REGISTERED</span>
+        <span class="status-stamp stamp-resolved">VERIFIED STUDENT</span>
       </div>
 
       <h1 class="id-name"><%= student.fullName %></h1>
@@ -25,19 +25,15 @@
             <td class="id-val"><strong><%= student.department %></strong></td>
           </tr>
           <tr>
-            <td class="id-label">Email:</td>
-            <td class="id-val"><%= student.email %></td>
-          </tr>
-          <tr>
-            <td class="id-label">Contact:</td>
-            <td class="id-val"><%= student.contactNumber %></td>
-          </tr>
-          <tr>
-            <td class="id-label">On file since:</td>
+            <td class="id-label">Registration Record:</td>
             <td class="id-val"><%= new Date(student.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) %></td>
           </tr>
         </tbody>
       </table>
+
+      <div style="margin-top: 16px; font-size: 0.85rem; color: var(--ink-soft); border-top: 1px dashed var(--line-strong); padding-top: 12px;">
+        <em>Privacy notice: Contact details are protected and shared solely between finders and verified claimants upon approved claim resolution.</em>
+      </div>
     </section>
 
     <!-- Student's Reports -->
@@ -62,7 +58,7 @@
         <% } %>
       </section>
 
-      <!-- Found Reports Filed -->
+      <!-- Found Items Logged -->
       <section>
         <div style="border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px;">
           <h2>Found Items <em>Logged</em> (<%= foundItems.length %>)</h2>

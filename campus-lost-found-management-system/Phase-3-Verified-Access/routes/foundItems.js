@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const FoundItem = require('../models/FoundItem');
 const Claim = require('../models/Claim');
+const Student = require('../models/Student');
 const CATEGORIES = require('../utils/categories');
 const { requireAuth } = require('../middleware/currentStudent');
 const { isValidObjectId, escapeRegex, validateItem, validateClaim } = require('../utils/validators');
@@ -147,16 +148,34 @@ router.get('/:id', async (req, res, next) => {
     let userClaim = null;
 
     if (isFinder) {
-      // The finder sees the full claims ledger
-      claims = await Claim.find({ foundItem: item._id })
-        .populate('claimedBy', 'fullName department email')
+      // The finder sees the full claims ledger.
+      // Privacy rule: Claimant contact details are revealed to the finder ONLY after approval.
+      const rawClaims = await Claim.find({ foundItem: item._id })
+        .populate('claimedBy', 'fullName department email contactNumber')
         .sort({ createdAt: -1 });
+
+      claims = rawClaims.map((c) => {
+        const claimObj = c.toObject();
+        if (claimObj.status !== 'Approved' && claimObj.claimedBy) {
+          delete claimObj.claimedBy.contactNumber;
+          delete claimObj.claimedBy.email;
+        }
+        return claimObj;
+      });
     } else if (req.currentStudent) {
       // A non-finder student sees only their own claim if submitted
       userClaim = await Claim.findOne({
         foundItem: item._id,
         claimedBy: req.currentStudent._id
       });
+
+      // Privacy rule: If claim was approved, reveal finder's contact number to the claimant
+      if (userClaim && userClaim.status === 'Approved') {
+        const finderWithContact = await Student.findById(item.reportedBy._id).select('fullName department contactNumber');
+        if (finderWithContact) {
+          item.reportedBy = finderWithContact;
+        }
+      }
     }
 
     res.render('found-item-details', {

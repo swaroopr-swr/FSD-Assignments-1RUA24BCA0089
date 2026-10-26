@@ -87,7 +87,7 @@
         <% if (userClaim.status === 'Pending') { %>
           — <em>Awaiting finder review.</em>
         <% } else if (userClaim.status === 'Approved') { %>
-          — <strong style="color: var(--olive);">Claim Approved! Contact the finder or Property Office to collect your item.</strong>
+          — <strong style="color: var(--olive);">Claim Approved! <%= (item.reportedBy && item.reportedBy.contactNumber) ? 'Contact finder at ' + item.reportedBy.contactNumber + ' to coordinate collection.' : 'Contact the Property Office to collect your item.' %></strong>
         <% } else if (userClaim.status === 'Rejected') { %>
           — <span style="color: var(--rust-deep);">Claim rejected by finder.</span>
         <% } %>

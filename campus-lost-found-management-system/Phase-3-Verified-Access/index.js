@@ -9,9 +9,13 @@ const flashMiddleware = require('./middleware/flash');
 const { loadCurrentStudent } = require('./middleware/currentStudent');
 
 const Claim = require('./models/Claim');
+const Student = require('./models/Student');
+const RosterEntry = require('./models/RosterEntry');
 
 const homeRoutes = require('./routes/home');
 const sessionRoutes = require('./routes/session');
+const registrationRoutes = require('./routes/registration');
+const dashboardRoutes = require('./routes/dashboard');
 const studentsRoutes = require('./routes/students');
 const lostItemsRoutes = require('./routes/lostItems');
 const foundItemsRoutes = require('./routes/foundItems');
@@ -56,6 +60,8 @@ app.use(loadCurrentStudent);
 // Mount application routes
 app.use('/', homeRoutes);
 app.use('/', sessionRoutes);
+app.use('/register', registrationRoutes);
+app.use('/dashboard', dashboardRoutes);
 app.use('/students', studentsRoutes);
 app.use('/lost-items', lostItemsRoutes);
 app.use('/found-items', foundItemsRoutes);
@@ -99,12 +105,16 @@ async function startServer() {
   try {
     await mongoose.connect(MONGODB_URI);
 
-    // Synchronize compound unique index for claims at startup
-    await Claim.init();
+    // Synchronize unique and compound indexes at startup
+    await Promise.all([
+      Claim.init(),
+      Student.init(),
+      RosterEntry.init()
+    ]);
 
     console.log('================================================================');
     console.log('✔ Connected successfully to MongoDB Atlas database');
-    console.log('✔ Claim model compound unique indexes verified and built');
+    console.log('✔ Claim, Student and RosterEntry indexes verified and built');
     console.log('================================================================');
 
     const server = app.listen(PORT, () => {

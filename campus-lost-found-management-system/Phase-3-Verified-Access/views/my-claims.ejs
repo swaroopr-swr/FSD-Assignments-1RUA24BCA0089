@@ -67,6 +67,12 @@
               <%= claim.reason %>
             </div>
 
+            <% if (claim.status === 'Approved' && item.reportedBy && item.reportedBy.contactNumber) { %>
+              <div style="background: #eef7ee; border: 1px solid #c2e2c2; padding: 10px 14px; margin: 12px 0; border-radius: 3px; font-size: 0.88rem; color: #1e5c1e;">
+                <strong>Claim Approved!</strong> Contact finder <strong><%= item.reportedBy.fullName %></strong> (<%= item.reportedBy.department %>) at <strong style="font-family: var(--mono);"><%= item.reportedBy.contactNumber %></strong> to coordinate retrieval.
+              </div>
+            <% } %>
+
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft);">
               <span>Submitted on: <%= submittedDate %></span>
               <% if (reviewedDate) { %>
