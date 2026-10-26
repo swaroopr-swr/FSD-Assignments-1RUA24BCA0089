@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "node --test tests/phase2.test.js"
+    "test": "node --test tests/phase2.test.js",
+    "test:verified": "node --test tests/verified-access.test.js",
+    "seed:roster": "node scripts/seed-roster.js",
+    "admin:hash": "node scripts/admin-hash.js",
+    "reset:dev": "node scripts/reset-dev-data.js"
   },
   "keywords": [
     "express",
