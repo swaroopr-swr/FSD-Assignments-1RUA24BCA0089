@@ -1,0 +1,15 @@
+# Netlify clean URLs & redirects
+/about          /about.html         200
+/hod            /hod.html           200
+/programs       /programs.html      200
+/faculty        /faculty.html       200
+/labs           /labs.html          200
+/research       /research.html      200
+/placements     /placements.html    200
+/gallery        /gallery.html       200
+/events         /events.html        200
+/downloads      /downloads.html     200
+/contact        /contact.html       200
+
+# Fallback 404
+/*              /404.html           404

@@ -1,0 +1,112 @@
+<%- include('partials/head', { title: 'Home' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <!-- Hero Section -->
+    <section class="hero-block">
+      <h1 class="hero-statement">
+        The campus repository for <em>lost possessions</em>, unclaimed articles, and registered property.
+      </h1>
+      <p class="meta-text" style="color: var(--ink-soft); max-width: 650px;">
+        Official property desk record system. File lost item slips, browse discovered items, and verify ownership through your student identity.
+      </p>
+      <div class="hero-actions">
+        <a href="/lost-items" class="btn btn-secondary">Browse Lost</a>
+        <a href="/found-items" class="btn btn-secondary">Browse Found</a>
+        <a href="/report" class="btn btn-primary">Report an Item</a>
+      </div>
+    </section>
+
+    <!-- Live Live-Count Statistics Strip -->
+    <section class="stats-strip" aria-label="Campus Property Statistics">
+      <div class="stat-item">
+        <span class="stat-number"><%= stats.lostCount %></span>
+        <span class="stat-label">Lost Reports Filed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number"><%= stats.foundCount %></span>
+        <span class="stat-label">Found Items Logged</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number"><%= stats.studentsCount %></span>
+        <span class="stat-label">Students Registered</span>
+      </div>
+    </section>
+
+    <!-- Two-column Recent Items Grid -->
+    <div class="home-split-grid">
+      <!-- Latest Lost Reports -->
+      <section>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 8px;">
+          <h2>Latest <em>Lost</em> Items</h2>
+          <a href="/lost-items" class="mono-label">All Lost &rarr;</a>
+        </div>
+
+        <% if (latestLost.length === 0) { %>
+          <%- include('partials/empty-state', {
+            title: 'No lost items have been reported yet.',
+            hint: 'Check back soon or report an item you misplaced.',
+            ctaText: 'Report Lost Item',
+            ctaUrl: '/lost-items/new'
+          }) %>
+        <% } else { %>
+          <div class="tag-grid" style="grid-template-columns: 1fr; margin-top: 16px;">
+            <% latestLost.forEach(function(item) { %>
+              <%- include('partials/item-tag', { item: item, type: 'lost' }) %>
+            <% }); %>
+          </div>
+        <% } %>
+      </section>
+
+      <!-- Latest Found Reports -->
+      <section>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 8px;">
+          <h2>Latest <em>Found</em> Items</h2>
+          <a href="/found-items" class="mono-label">All Found &rarr;</a>
+        </div>
+
+        <% if (latestFound.length === 0) { %>
+          <%- include('partials/empty-state', {
+            title: 'No found items have been reported yet.',
+            hint: 'All handed-in property will appear here.',
+            ctaText: 'Report Found Item',
+            ctaUrl: '/found-items/new'
+          }) %>
+        <% } else { %>
+          <div class="tag-grid" style="grid-template-columns: 1fr; margin-top: 16px;">
+            <% latestFound.forEach(function(item) { %>
+              <%- include('partials/item-tag', { item: item, type: 'found' }) %>
+            <% }); %>
+          </div>
+        <% } %>
+      </section>
+    </div>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+      <h2>How the <em>Property Office</em> Operates</h2>
+      <div class="how-steps">
+        <div class="step-box">
+          <div class="step-num">01 / IDENTITY</div>
+          <h3 class="step-title">Student Profile</h3>
+          <p class="step-desc">Register with your college email. Every tag is verified against an active student record to prevent anonymous misuse.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">02 / FILING</div>
+          <h3 class="step-title">Lodge Property Slips</h3>
+          <p class="step-desc">File precise lost reports or log items you discovered on campus, specifying dates, categories, and exact locations.</p>
+        </div>
+        <div class="step-box">
+          <div class="step-num">03 / RESOLUTION</div>
+          <h3 class="step-title">Verified Inquiries</h3>
+          <p class="step-desc">Search through hang tags. Reach out to reporters or the campus property desk to verify ownership and recover items.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

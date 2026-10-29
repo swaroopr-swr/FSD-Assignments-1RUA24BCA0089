@@ -1,0 +1,74 @@
+{
+  "stats": [
+    {
+      "id": "publications",
+      "count": "350+",
+      "title": "Publications",
+      "description": "Peer-reviewed research papers published in Scopus, IEEE, and SCI-indexed international journals and conferences.",
+      "buttonText": "View Publications",
+      "actionLink": "#publications-list"
+    },
+    {
+      "id": "projects",
+      "count": "75+",
+      "title": "Sponsored Projects",
+      "description": "Faculty and student research projects addressing real-world industrial challenges and societal impact problems.",
+      "buttonText": "Explore Projects",
+      "actionLink": "#projects-list"
+    },
+    {
+      "id": "patents",
+      "count": "25+",
+      "title": "Patents Filed & Granted",
+      "description": "Novel technological inventions and computational frameworks legally protected through national and international IPR.",
+      "buttonText": "View Patents",
+      "actionLink": "#patents-list"
+    },
+    {
+      "id": "collaborations",
+      "count": "40+",
+      "title": "Active Collaborations",
+      "description": "Memorandums of Understanding (MoUs) and partnerships with top-tier tech enterprises, incubators, and research labs.",
+      "buttonText": "Explore Partners",
+      "actionLink": "#collaborations-list"
+    }
+  ],
+  "thrustAreas": [
+    {
+      "title": "Applied Machine Learning & NLP",
+      "summary": "Exploring transformers, multilingual sentiment analysis, biomedical diagnosis via vision transformers, and edge AI deployment."
+    },
+    {
+      "title": "Distributed Cloud & Edge Systems",
+      "summary": "High-throughput microservices architectures, latency-sensitive IoT gateways, and zero-trust edge cloud orchestration."
+    },
+    {
+      "title": "Cyber Security & Cryptographic Protocols",
+      "summary": "Post-quantum cryptosystems, decentralized identity verification, malware binary classification, and smart contract verification."
+    },
+    {
+      "title": "Data Engineering & Computational Biology",
+      "summary": "Multi-omics pattern mining, scalable genomic sequencing workflows, and predictive modeling for public healthcare."
+    }
+  ],
+  "samplePapers": [
+    {
+      "title": "Federated Learning for Privacy-Preserving Health Analytics in IoT Edge Networks",
+      "authors": "Dr. Thenmozhi, et al.",
+      "journal": "IEEE Internet of Things Journal (2025)",
+      "badge": "Scopus Q1"
+    },
+    {
+      "title": "Scalable Anomaly Detection in Big Data Streams Using Hybrid Ensembles",
+      "authors": "Dr. Mahadev Kalyanrao Patil, et al.",
+      "journal": "Springer Journal of Big Data (2025)",
+      "badge": "SCI Indexed"
+    },
+    {
+      "title": "Zero-Trust Microsegmentation in Containerized Kubernetes Deployments",
+      "authors": "Prof. Sharath Shetty, Prof. Mohammed Danish",
+      "journal": "International Conference on Cloud Computing & Networks (2026)",
+      "badge": "IEEE Conference"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+<% 
+  const refCode = 'LF-' + item._id.toString().slice(-6).toUpperCase();
+  const isLost = type === 'lost';
+  let tagClass = isLost ? 'tag-lost' : 'tag-found';
+  if (item.status === 'Returned') {
+    tagClass += ' tag-returned';
+  }
+  const locationLabel = isLost ? 'Last seen' : 'Found at';
+  const locationVal = isLost ? item.lastSeenLocation : item.foundLocation;
+  const dateLabel = isLost ? 'Date lost' : 'Date found';
+  const dateRaw = isLost ? item.dateLost : item.dateFound;
+  const dateVal = dateRaw ? new Date(dateRaw).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
+  const detailUrl = isLost ? `/lost-items/${item._id}` : `/found-items/${item._id}`;
+  const reporterName = item.reportedBy ? item.reportedBy.fullName : 'Campus Student';
+%>
+<div class="item-tag-wrapper">
+  <div class="tag-string-holder" aria-hidden="true">
+    <div class="tag-string"></div>
+    <div class="tag-eyelet"></div>
+  </div>
+  
+  <article class="item-tag <%= tagClass %>">
+    <div class="tag-header">
+      <span class="tag-ref"><%= refCode %></span>
+      <%- include('./status-stamp', { status: item.status }) %>
+    </div>
+
+    <h3 class="tag-title"><%= item.itemName %></h3>
+    <div class="tag-category"><%= item.category %></div>
+
+    <table class="tag-details-table">
+      <tbody>
+        <tr>
+          <td class="label-cell"><%= locationLabel %></td>
+          <td class="value-cell"><%= locationVal %></td>
+        </tr>
+        <tr>
+          <td class="label-cell"><%= dateLabel %></td>
+          <td class="value-cell"><%= dateVal %></td>
+        </tr>
+        <tr>
+          <td class="label-cell">Reporter</td>
+          <td class="value-cell"><%= reporterName %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="tag-divider">
+
+    <div class="tag-footer">
+      <a href="<%= detailUrl %>" class="tag-link">Open tag &rarr;</a>
+    </div>
+  </article>
+</div>

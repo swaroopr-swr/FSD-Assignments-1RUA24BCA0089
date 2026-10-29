@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="600" height="420">
+  <defs>
+    <linearGradient id="g_gallery6.svg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B3C49"/>
+      <stop offset="100%" stop-color="#061F26"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="420" fill="url(#g_gallery6.svg)"/>
+  <circle cx="300" cy="180" r="120" fill="#FBBF24" opacity="0.1"/>
+  <g transform="translate(50, 160)">
+    <rect width="110" height="24" rx="12" fill="#FBBF24" opacity="0.2"/>
+    <text x="55" y="16" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" fill="#FBBF24" text-anchor="middle" letter-spacing="1">EVENT HIGHLIGHT</text>
+    <text x="0" y="60" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="800" fill="#FFFFFF">Annual Convocation & Felicitations</text>
+    <text x="0" y="90" font-family="'Inter', sans-serif" font-size="14" fill="#CBD5E1">Celebrating BCA Graduates & Honors</text>
+  </g>
+  <rect x="50" y="330" width="500" height="1" fill="rgba(255,255,255,0.1)"/>
+  <text x="50" y="365" font-family="'Inter', sans-serif" font-size="12" fill="#94A3B8">Department of Computer Applications • RV University</text>
+  <text x="550" y="365" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" fill="#FBBF24" text-anchor="end">Click to Enlarge ⤢</text>
+</svg>

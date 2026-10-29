@@ -1,0 +1,105 @@
+<%- include('partials/head', { title: 'Create Student Profile' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 680px;">
+    <%- include('partials/flash') %>
+
+    <div class="form-card">
+      <div style="border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 28px;">
+        <span class="mono-label" style="color: var(--ink-soft);">Registration Slip · Form 01</span>
+        <h1 style="font-size: 1.9rem; margin: 6px 0 0;">Create <em>Student Profile</em></h1>
+      </div>
+
+      <form method="POST" action="/students" novalidate>
+        <!-- Section 01 -->
+        <fieldset class="form-section" style="border: 0; padding: 0;">
+          <legend class="form-section-title">01 — Personal Identity</legend>
+
+          <div class="form-group">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              value="<%= typeof values !== 'undefined' ? values.fullName || '' : '' %>" 
+              class="form-input" 
+              placeholder="e.g. Aditi Sharma" 
+              required
+              <% if (typeof errors !== 'undefined' && errors.fullName) { %>aria-invalid="true" aria-describedby="fullName-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.fullName) { %>
+              <p class="field-error" id="fullName-error"><%= errors.fullName %></p>
+            <% } %>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">College Email Address</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              value="<%= typeof values !== 'undefined' ? values.email || '' : '' %>" 
+              class="form-input" 
+              placeholder="aditi@college.edu" 
+              required
+              <% if (typeof errors !== 'undefined' && errors.email) { %>aria-invalid="true" aria-describedby="email-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.email) { %>
+              <p class="field-error" id="email-error"><%= errors.email %></p>
+            <% } %>
+          </div>
+        </fieldset>
+
+        <!-- Section 02 -->
+        <fieldset class="form-section" style="border: 0; padding: 0;">
+          <legend class="form-section-title">02 — Department &amp; Contact</legend>
+
+          <div class="form-group">
+            <label for="department" class="form-label">Department / Faculty</label>
+            <input 
+              type="text" 
+              id="department" 
+              name="department" 
+              value="<%= typeof values !== 'undefined' ? values.department || '' : '' %>" 
+              class="form-input" 
+              placeholder="e.g. Computer Science &amp; Engineering" 
+              required
+              <% if (typeof errors !== 'undefined' && errors.department) { %>aria-invalid="true" aria-describedby="department-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.department) { %>
+              <p class="field-error" id="department-error"><%= errors.department %></p>
+            <% } %>
+          </div>
+
+          <div class="form-group">
+            <label for="contactNumber" class="form-label">Contact Number (10 digits starting with 6–9)</label>
+            <input 
+              type="tel" 
+              id="contactNumber" 
+              name="contactNumber" 
+              value="<%= typeof values !== 'undefined' ? values.contactNumber || '' : '' %>" 
+              class="form-input" 
+              placeholder="9876543210" 
+              required
+              maxlength="10"
+              <% if (typeof errors !== 'undefined' && errors.contactNumber) { %>aria-invalid="true" aria-describedby="contactNumber-error"<% } %>
+            >
+            <% if (typeof errors !== 'undefined' && errors.contactNumber) { %>
+              <p class="field-error" id="contactNumber-error"><%= errors.contactNumber %></p>
+            <% } %>
+          </div>
+        </fieldset>
+
+        <hr class="perforated-divider">
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+          <a href="/sign-in" class="btn btn-secondary">Already Registered? Sign In</a>
+          <button type="submit" class="btn btn-primary">File Registration Slip &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

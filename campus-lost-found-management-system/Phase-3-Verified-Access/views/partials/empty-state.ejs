@@ -1,0 +1,9 @@
+<div class="empty-drawer">
+  <h3 class="empty-drawer-title"><%= title %></h3>
+  <% if (typeof hint !== 'undefined' && hint) { %>
+    <p class="empty-drawer-hint"><%= hint %></p>
+  <% } %>
+  <% if (typeof ctaText !== 'undefined' && ctaText && typeof ctaUrl !== 'undefined' && ctaUrl) { %>
+    <a href="<%= ctaUrl %>" class="btn btn-secondary btn-sm"><%= ctaText %></a>
+  <% } %>
+</div>

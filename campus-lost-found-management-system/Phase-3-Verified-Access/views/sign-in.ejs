@@ -1,0 +1,85 @@
+<%- include('partials/head', { title: 'Sign In · Property Office' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 520px; margin: 40px auto;">
+    <%- include('partials/flash') %>
+
+    <div class="breadcrumb-nav">
+      <a href="/">Property Office</a> / <span>Student Sign In</span>
+    </div>
+
+    <section class="form-card" style="border-top: 4px solid var(--ink);">
+      <div style="border-bottom: 1px dashed var(--line-strong); padding-bottom: 12px; margin-bottom: 24px;">
+        <span class="mono-label" style="color: var(--found-blue);">Verified Student Access</span>
+        <h1 style="font-size: 1.8rem; margin: 6px 0 0;">Student <em>Sign In</em></h1>
+      </div>
+
+      <p style="font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 24px;">
+        Enter your institutional college email and account password to access your filing privileges and manage reports.
+      </p>
+
+      <% if (typeof errors !== 'undefined' && errors.form) { %>
+        <div class="field-error-msg" style="color: var(--rust-deep); background: #fdf2f2; border-left: 3px solid var(--rust); padding: 12px; margin-bottom: 20px; font-size: 0.9rem;">
+          <%= errors.form %>
+        </div>
+      <% } %>
+
+      <form method="POST" action="/sign-in" novalidate>
+        <div class="form-group">
+          <label for="email" class="form-label">
+            College Email Address <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            value="<%= typeof values !== 'undefined' ? values.email || '' : '' %>" 
+            class="form-input <%= (typeof errors !== 'undefined' && (errors.email || errors.form)) ? 'input-error' : '' %>" 
+            placeholder="e.g. yourname@rvu.edu.in" 
+            required
+            autocomplete="email"
+          >
+          <% if (typeof errors !== 'undefined' && errors.email) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.email %>
+            </div>
+          <% } %>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="password" class="form-label">
+            Password <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-input <%= (typeof errors !== 'undefined' && (errors.password || errors.form)) ? 'input-error' : '' %>" 
+            placeholder="Account password" 
+            required
+            autocomplete="current-password"
+          >
+          <% if (typeof errors !== 'undefined' && errors.password) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.password %>
+            </div>
+          <% } %>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In &rarr;</button>
+        </div>
+      </form>
+
+      <hr class="perforated-divider" style="margin: 28px 0;">
+
+      <div style="text-align: center;">
+        <p class="mono-label" style="margin-bottom: 8px;">First time visiting the Property Office?</p>
+        <a href="/register" class="btn btn-secondary btn-sm">Verify &amp; Register Account &rarr;</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

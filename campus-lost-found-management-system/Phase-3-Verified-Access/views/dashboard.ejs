@@ -1,0 +1,128 @@
+<%- include('partials/head', { title: 'Student Dashboard · Property Office' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <!-- Student Identity & Status Card -->
+    <section class="student-id-card" style="border-top: 4px solid var(--found-blue); margin-bottom: 32px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div class="mono-label" style="color: var(--found-blue); margin-bottom: 4px;">University Registrar Record · Verified Identity</div>
+          <h1 style="margin: 0 0 6px; font-size: 2rem;"><%= student.fullName %></h1>
+          <p style="margin: 0; color: var(--ink-soft); font-size: 1rem;">
+            <%= student.department %> · <strong style="font-family: var(--mono); color: var(--ink);"><%= student.usn %></strong>
+          </p>
+        </div>
+        <div>
+          <span class="status-stamp stamp-resolved" style="font-size: 0.95rem; padding: 6px 14px;">
+            VERIFIED STUDENT
+          </span>
+        </div>
+      </div>
+
+      <!-- Private Contact Details Note (Visible only here) -->
+      <div style="margin-top: 24px; padding: 14px 18px; background: var(--bg-soft); border-left: 3px solid var(--found-blue); border-radius: 2px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <span class="mono-label" style="color: var(--ink-soft);">Private Contact on Record:</span>
+            <span style="font-family: var(--mono); font-weight: bold; margin-left: 8px; color: var(--ink);"><%= student.contactNumber %></span>
+            <span style="color: var(--ink-soft); margin-left: 12px; font-size: 0.85rem;">(<%= student.email %>)</span>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--ink-soft);">
+            <em>Protected: Disclosed to claimants or finders only after formal claim approval.</em>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Metric Summaries -->
+    <section style="margin-bottom: 40px;">
+      <div class="mono-label" style="color: var(--ink-soft); margin-bottom: 12px;">Your Activity Ledger</div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 20px; border-radius: 3px;">
+          <div class="mono-label" style="color: var(--rust);">Lost Items Filed</div>
+          <div style="font-size: 2.2rem; font-weight: bold; color: var(--ink); margin: 6px 0;"><%= metrics.lostCount %></div>
+          <a href="/lost-items" style="font-size: 0.85rem; color: var(--ink-soft);">View Lost Property Ledger &rarr;</a>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 20px; border-radius: 3px;">
+          <div class="mono-label" style="color: var(--found-blue);">Found Items Logged</div>
+          <div style="font-size: 2.2rem; font-weight: bold; color: var(--ink); margin: 6px 0;"><%= metrics.foundCount %></div>
+          <a href="/found-items" style="font-size: 0.85rem; color: var(--ink-soft);">View Found Property Ledger &rarr;</a>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--line); padding: 20px; border-radius: 3px;">
+          <div class="mono-label" style="color: var(--olive);">Claims Lodged</div>
+          <div style="font-size: 2.2rem; font-weight: bold; color: var(--ink); margin: 6px 0;"><%= metrics.claimsCount %></div>
+          <a href="/my-claims" style="font-size: 0.85rem; color: var(--ink-soft);">Manage My Claims &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Claims Awaiting Your Decision -->
+    <section style="margin-bottom: 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 20px;">
+        <div>
+          <span class="mono-label" style="color: var(--rust);">Action Required</span>
+          <h2 style="margin: 4px 0 0; font-size: 1.5rem;">Claims Awaiting Your Decision (<%= pendingClaims.length %>)</h2>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--ink-soft);">
+          <em>Decisions are made strictly on each item's case file page.</em>
+        </div>
+      </div>
+
+      <% if (pendingClaims.length === 0) { %>
+        <%- include('partials/empty-state', {
+          title: 'No pending claims on your reported items.',
+          hint: 'When another student submits an ownership claim for an item you found, it will appear here for your review.'
+        }) %>
+      <% } else { %>
+        <div class="claims-list">
+          <% pendingClaims.forEach(function(claim) { %>
+            <% 
+              const item = claim.foundItem || {};
+              const claimant = claim.claimedBy || {};
+              const submittedDate = new Date(claim.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+            %>
+            <article class="claim-card-row" style="background: var(--bg-card); border-left: 4px solid var(--rust);">
+              <div class="claim-row-header">
+                <div>
+                  <span class="mono-label" style="color: var(--found-blue);">Found Item · <%= item.itemName %></span>
+                  <div style="font-size: 1.15rem; font-weight: bold; margin-top: 4px;">
+                    Claimant: <%= claimant.fullName || 'Student Claimant' %>
+                  </div>
+                  <div class="mono-label" style="color: var(--ink-soft);">
+                    Dept: <%= claimant.department || 'General' %>
+                  </div>
+                </div>
+                <div>
+                  <span class="status-stamp stamp-pending">PENDING YOUR REVIEW</span>
+                </div>
+              </div>
+
+              <div class="claim-reason-block" style="margin: 12px 0;">
+                <strong>Claimant's stated proof:</strong><br>
+                <%= claim.reason %>
+              </div>
+
+              <div class="claim-row-footer" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                <div class="claim-date-meta">
+                  <span>Filed on: <%= submittedDate %></span>
+                </div>
+                <div>
+                  <a href="/found-items/<%= item._id %>" class="btn btn-primary btn-sm">
+                    Open Case File &amp; Decide Claim &rarr;
+                  </a>
+                </div>
+              </div>
+            </article>
+          <% }); %>
+        </div>
+      <% } %>
+    </section>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

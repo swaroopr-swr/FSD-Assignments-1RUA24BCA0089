@@ -1,0 +1,35 @@
+:root {
+  /* Color Palette - Property Office */
+  --paper: #F3EBDD;
+  --paper-shade: #EBE0CC;
+  --ink: #1D2333;
+  --ink-soft: #4A5063;
+  --rust: #A8431F;
+  --rust-deep: #7E2F14;
+  --found-blue: #24456B;
+  --olive: #3F5F3A;
+  --line: rgba(29, 35, 51, 0.25);
+  --line-strong: rgba(29, 35, 51, 0.6);
+
+  /* Typography */
+  --serif: Georgia, 'Times New Roman', serif;
+  --mono: 'Courier New', Courier, monospace;
+
+  /* Spacing Scale */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* Layout */
+  --max-width: 1080px;
+
+  /* Shadows */
+  --stamp-shadow: 3px 3px 0 var(--ink);
+  --tag-shadow: 4px 4px 0 rgba(29, 35, 51, 0.15);
+  --tag-hover-shadow: 6px 6px 0 rgba(29, 35, 51, 0.22);
+}

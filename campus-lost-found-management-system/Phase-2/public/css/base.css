@@ -1,0 +1,115 @@
+/* Box sizing reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Base Body with faint dot grid */
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(circle, rgba(29, 35, 51, 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--serif);
+  font-weight: normal;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-16);
+}
+
+h1 em, h2 em {
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--space-12);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: var(--space-8);
+}
+
+p {
+  margin-bottom: var(--space-16);
+}
+
+/* Monospace & metadata elements */
+.mono-label,
+.meta-text,
+.stamp-text,
+.badge,
+nav,
+button,
+.btn,
+.code-ref {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+/* Links */
+a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:not(.btn):hover {
+  color: var(--rust);
+}
+
+/* Focus styles for keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

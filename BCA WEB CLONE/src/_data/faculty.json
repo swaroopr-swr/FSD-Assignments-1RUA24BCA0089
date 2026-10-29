@@ -1,0 +1,80 @@
+[
+  {
+    "id": "dr-sanjay-r",
+    "name": "Dr. Sanjay R. (Sample HOD)",
+    "designation": "Professor",
+    "role": "Head of Department",
+    "qualification": "Ph.D. in Computer Science & Engineering",
+    "email": "hod.bca@rvu.edu.in",
+    "cabin": "Block A - Room 101",
+    "research": "High Performance Computing, Distributed Systems, AI",
+    "bio": "Leading the Department of Computer Applications with a focus on experiential computing education, industry collaboration, and high-impact student research.",
+    "image": "assets/faculty/hod.png",
+    "isHod": true
+  },
+  {
+    "id": "dr-mahadev-patil",
+    "name": "Dr. Mahadev Kalyanrao Patil",
+    "designation": "Associate Professor",
+    "role": "Associate Professor",
+    "qualification": "Ph.D. in Data Science",
+    "email": "mahadev.patil@rvu.edu.in",
+    "cabin": "Block A - Room 205",
+    "research": "Data Analytics, Big Data, Predictive Modeling",
+    "bio": "Experienced educator and researcher specializing in large-scale data engineering, statistical modeling, and data science curriculum development.",
+    "image": "assets/faculty/Dr.-Mahadev-Kalyanrao-Patil-1.png",
+    "isHod": false
+  },
+  {
+    "id": "dr-thenmozhi",
+    "name": "Dr. Thenmozhi",
+    "designation": "Assistant Professor",
+    "role": "Assistant Professor",
+    "qualification": "Ph.D. in Computer Science",
+    "email": "thenmozhi@rvu.edu.in",
+    "cabin": "Block B - Room 301",
+    "research": "Artificial Intelligence, Deep Learning, Natural Language Processing",
+    "bio": "Active researcher in applied AI with numerous indexed journal publications, guiding undergraduate students in intelligent systems development.",
+    "image": "assets/faculty/Dr.-Thenmozhi-1.png",
+    "isHod": false
+  },
+  {
+    "id": "prof-mohammed-danish",
+    "name": "Prof. Mohammed Danish",
+    "designation": "Assistant Professor",
+    "role": "Assistant Professor",
+    "qualification": "Master of Computer Applications (MCA)",
+    "email": "mohammed.danish@rvu.edu.in",
+    "cabin": "Block B - Room 102",
+    "research": "Machine Learning, Full Stack Web Development",
+    "bio": "Industry-experienced practitioner mentoring students across web development frameworks, software engineering principles, and ML pipelines.",
+    "image": "assets/faculty/Prof.-Mohammed-Danish-1.png",
+    "isHod": false
+  },
+  {
+    "id": "prof-sharath-shetty",
+    "name": "Prof. Sharath Shetty B R",
+    "designation": "Assistant Professor",
+    "role": "Assistant Professor",
+    "qualification": "Master of Computer Applications (MCA)",
+    "email": "sharath.shetty@rvu.edu.in",
+    "cabin": "Block B - Room 102",
+    "research": "Cloud Computing, DevOps, Networking Systems",
+    "bio": "Specialist in cloud platforms and containerization, driving hands-on laboratory experiences in distributed infrastructure and cloud security.",
+    "image": "assets/faculty/Prof.-Sharath-Shetty-B-R.png",
+    "isHod": false
+  },
+  {
+    "id": "prof-sasikala-j",
+    "name": "Prof. Sasikala J",
+    "designation": "Assistant Professor",
+    "role": "Assistant Professor",
+    "qualification": "M.Sc. Mathematics, M.Phil.",
+    "email": "sasikala.j@rvu.edu.in",
+    "cabin": "Block B - Room 102",
+    "research": "Discrete Mathematics, Graph Theory, Algorithm Analysis",
+    "bio": "Passionate mathematics mentor helping computer science students master the theoretical foundations of discrete structures and computational algorithms.",
+    "image": "assets/faculty/Prof.-Sasikala-Jeganathan1.png",
+    "isHod": false
+  }
+]

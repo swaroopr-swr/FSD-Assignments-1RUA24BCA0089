@@ -1,0 +1,18 @@
+<% 
+  let stampClass = 'stamp-lost';
+  const s = (typeof status !== 'undefined' && status) ? status.toLowerCase() : 'lost';
+  if (s === 'found' || s === 'available') {
+    stampClass = 'stamp-available';
+  } else if (s === 'resolved') {
+    stampClass = 'stamp-resolved';
+  } else if (s === 'returned') {
+    stampClass = 'stamp-returned';
+  } else if (s === 'pending') {
+    stampClass = 'stamp-pending';
+  } else if (s === 'approved') {
+    stampClass = 'stamp-approved';
+  } else if (s === 'rejected') {
+    stampClass = 'stamp-rejected';
+  }
+%>
+<span class="status-stamp <%= stampClass %>"><%= status %></span>

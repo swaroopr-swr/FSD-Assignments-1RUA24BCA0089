@@ -1,0 +1,26 @@
+{
+  "url": "https://bcarvu.netlify.app",
+  "name": "Department of Computer Applications",
+  "university": "RV University",
+  "city": "Bengaluru",
+  "state": "Karnataka",
+  "pincode": "560059",
+  "address": "RV University, RV Vidyanikethan Post, Mysuru Road, Bengaluru, Karnataka 560059",
+  "email": "bca@rvu.edu.in",
+  "phone": "+91 80 6818 8111",
+  "phoneDisplay": "+91 80 6818 8111",
+  "officeHours": "Monday – Friday: 9:00 AM – 5:00 PM",
+  "googleMapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8953155160913!2d77.49622547594582!3d12.914444587395568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3f20b335a963%3A0x6b44a1e9c20a1ce2!2sRV%20University!5e0!3m2!1sen!2sin!4v1716300000000!5m2!1sen!2sin",
+  "googleMapsDirections": "https://maps.google.com/?q=RV+University+Bengaluru",
+  "social": {
+    "linkedin": "https://www.linkedin.com/school/rv-university-bengaluru/",
+    "twitter": "https://twitter.com/RVU_Bengaluru",
+    "instagram": "https://www.instagram.com/rv_university/",
+    "youtube": "https://www.youtube.com/@rvuniversitybengaluru",
+    "github": "https://github.com/swaroopr-swr"
+  },
+  "meta": {
+    "description": "Official Website of the Department of Computer Applications, RV University, Bengaluru. Offering industry-aligned BCA programs, cutting-edge computing laboratories, and research excellence.",
+    "keywords": "BCA, Computer Applications, RV University, Bengaluru, Artificial Intelligence, Data Science, Cloud Computing, Cyber Security"
+  }
+}

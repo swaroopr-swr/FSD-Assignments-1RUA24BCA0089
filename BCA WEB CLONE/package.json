@@ -1,0 +1,23 @@
+{
+  "name": "bca-web-clone",
+  "version": "1.0.0",
+  "description": "RV University Department of Computer Applications - Refreshed and Accessible Website",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve",
+    "serve": "npx @11ty/eleventy --serve"
+  },
+  "keywords": [
+    "eleventy",
+    "bca",
+    "rvu",
+    "accessible",
+    "static-site"
+  ],
+  "author": "Swaroop R (1RUA24BCA0089)",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

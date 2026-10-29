@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ananya-sharma",
+    "name": "Ananya Sharma",
+    "role": "BCA Graduate (Batch of 2025)",
+    "company": "Cloud Consultant at Leading Tech Firm",
+    "image": "assets/images/student1.jpg",
+    "quote": "The Department of Computer Applications provided exceptional technical exposure, structured industry training, and supportive faculty mentors who guided me through every technical milestone."
+  },
+  {
+    "id": "rahul-verma",
+    "name": "Rahul Verma",
+    "role": "Software Development Engineer",
+    "company": "Enterprise Solutions Provider",
+    "image": "assets/images/student2.jpg",
+    "quote": "Modern computing laboratories and practical hands-on projects helped me build genuine confidence. Working on full-stack web and cloud architectures during my coursework set me apart in placements."
+  },
+  {
+    "id": "priya-nair",
+    "name": "Priya Nair",
+    "role": "Data Analyst & Researcher",
+    "company": "Global Analytics Advisory",
+    "image": "assets/images/student3.jpg",
+    "quote": "The research culture and innovation opportunities encouraged me to publish papers and explore cutting-edge AI systems. The faculty's open-door policy made learning deeply inspiring."
+  }
+]

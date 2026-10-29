@@ -23,7 +23,8 @@
   transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
 }
 
-.btn:hover {
+.btn:hover,
+a.btn:hover {
   text-decoration: none;
 }
 
@@ -37,7 +38,8 @@
   color: var(--paper);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+a.btn-primary:hover {
   background-color: #2b334a;
   color: var(--paper);
 }
@@ -47,14 +49,34 @@
   color: var(--ink);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover,
+a.btn-secondary:hover {
   background-color: var(--paper-shade);
+  color: var(--ink);
 }
 
 .btn-rust {
   background-color: var(--rust);
   color: var(--paper);
   border-color: var(--rust-deep);
+}
+
+.btn-rust:hover,
+a.btn-rust:hover {
+  background-color: var(--rust-deep);
+  color: var(--paper);
+}
+
+.btn-found {
+  background-color: var(--paper);
+  color: var(--found-blue);
+  border-color: var(--found-blue);
+}
+
+.btn-found:hover,
+a.btn-found:hover {
+  background-color: rgba(36, 69, 107, 0.08);
+  color: var(--found-blue);
 }
 
 .btn-sm {

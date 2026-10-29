@@ -1,0 +1,48 @@
+[
+  {
+    "id": "bca-regular",
+    "name": "Bachelor of Computer Applications (BCA)",
+    "badge": "Flagship Program",
+    "duration": "3 Years (6 Semesters)",
+    "degree": "Undergraduate Degree",
+    "eligibility": "Pass in 10+2 / PUC / Senior Secondary examination in any stream with a minimum of 50% aggregate marks (Mathematics / Computer Science / Statistics preferred).",
+    "overview": "A comprehensive undergraduate program that imparts robust foundations in programming languages, computer systems, modern web architectures, database design, and software engineering methodologies.",
+    "highlights": [
+      "Core mastery of C, C++, Java, Python, and modern JavaScript/TypeScript",
+      "Relational and NoSQL database modeling with SQL, MongoDB, and Redis",
+      "Systematic software development life cycle, Agile methods, and DevOps pipelines",
+      "Experiential lab assignments and a semester-long industry capstone project"
+    ],
+    "careers": [
+      "Software Development Engineer",
+      "Full Stack Web Developer",
+      "Systems & Database Administrator",
+      "Application Support Specialist"
+    ],
+    "syllabusLink": "/downloads.html#syllabus",
+    "syllabusDoc": "assets/docs/BCA-Curriculum-Structure-Sample.pdf"
+  },
+  {
+    "id": "bca-honours",
+    "name": "BCA (Honours / Honours with Research)",
+    "badge": "NEP 2020 Aligned (4 Years)",
+    "duration": "4 Years (8 Semesters)",
+    "degree": "Undergraduate Honours / Research Degree",
+    "eligibility": "10+2 with minimum 55% aggregate, or transition eligibility for 3-year BCA students meeting the academic CGPA threshold under NEP guidelines.",
+    "overview": "An advanced 4-year research-intensive program conforming to the National Education Policy (NEP 2020). Features deep specialization coursework, direct research mentorship, and a full-year dissertation or industrial fellowship.",
+    "highlights": [
+      "Independent research dissertation under faculty mentorship with publishable outcomes",
+      "Advanced subjects: Neural Networks, Cloud Distributed Systems, Quantum Foundations",
+      "Extended 6-month corporate internship or startup incubation tenure",
+      "Direct eligibility for 1-year Master’s programs or global PhD doctoral applications"
+    ],
+    "careers": [
+      "AI/ML Research Associate",
+      "Data Engineer & Analytics Consultant",
+      "Cloud Solutions Architect",
+      "Graduate Research Scholar"
+    ],
+    "syllabusLink": "/downloads.html#syllabus",
+    "syllabusDoc": "assets/docs/BCA-Honours-Curriculum-Sample.pdf"
+  }
+]

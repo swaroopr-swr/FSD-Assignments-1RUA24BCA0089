@@ -1,0 +1,47 @@
+<header class="site-header" role="banner">
+  <div class="container header-inner">
+    <!-- Brand / Logo -->
+    <a href="/index.html" class="brand-link" aria-label="Department of Computer Applications, RV University Home">
+      <img src="/assets/icons/RVU-logo.svg" alt="RV University Logo" class="brand-logo" width="44" height="44">
+      <div class="brand-text">
+        <span class="brand-department">Department of Computer Applications</span>
+        <span class="brand-university">RV University • Bengaluru</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation (12 Pages) -->
+    <nav class="nav-desktop" aria-label="Main Navigation">
+      {% for item in navigation %}
+        <a href="{{ item.url }}" 
+           class="nav-link {% if page.url | isActiveNav(item.url) %}active{% endif %}"
+           {% if page.url | isActiveNav(item.url) %}aria-current="page"{% endif %}>
+          {{ item.title }}
+        </a>
+      {% endfor %}
+    </nav>
+
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-label="Open navigation menu" aria-controls="mobileNavDrawer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileNavDrawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-nav-panel">
+      <ul class="mobile-nav-list">
+        {% for item in navigation %}
+          <li>
+            <a href="{{ item.url }}" 
+               class="mobile-nav-link {% if page.url | isActiveNav(item.url) %}active{% endif %}"
+               {% if page.url | isActiveNav(item.url) %}aria-current="page"{% endif %}>
+              {{ item.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</header>

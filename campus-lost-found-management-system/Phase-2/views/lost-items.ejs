@@ -1,0 +1,54 @@
+<%- include('partials/head', { title: 'Lost Items' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <%- include('partials/flash') %>
+
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 24px;">
+      <div>
+        <span class="mono-label" style="color: var(--rust);">Repository · Active Notices</span>
+        <h1 style="margin: 4px 0 0;">Lost <em>Items</em> Ledger</h1>
+      </div>
+      <div>
+        <a href="/lost-items/new" class="btn btn-primary">+ Report Lost Item</a>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <%- include('partials/filter-bar', {
+      actionUrl: '/lost-items',
+      categories: categories,
+      selectedCategory: selectedCategory,
+      q: q,
+      itemsCount: items.length
+    }) %>
+
+    <!-- Items Grid / Empty State -->
+    <% if (items.length === 0) { %>
+      <% if (q || selectedCategory) { %>
+        <%- include('partials/empty-state', {
+          title: 'No tags match your search.',
+          hint: 'Try adjusting your search terms or clearing the active filters.',
+          ctaText: 'Clear Filters',
+          ctaUrl: '/lost-items'
+        }) %>
+      <% } else { %>
+        <%- include('partials/empty-state', {
+          title: 'No lost items have been reported yet.',
+          hint: 'The lost property drawer is currently empty.',
+          ctaText: 'Report Lost Item',
+          ctaUrl: '/lost-items/new'
+        }) %>
+      <% } %>
+    <% } else { %>
+      <div class="tag-grid">
+        <% items.forEach(function(item) { %>
+          <%- include('partials/item-tag', { item: item, type: 'lost' }) %>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

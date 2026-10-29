@@ -1,0 +1,32 @@
+<header class="site-header">
+  <div class="container masthead-inner">
+    <a href="/" class="masthead-brand">
+      <span class="masthead-title">Campus Lost &amp; Found</span>
+      <span class="masthead-subline">Property Office</span>
+    </a>
+
+    <nav class="masthead-nav" aria-label="Main Navigation">
+      <a href="/" class="<%= typeof currentPath !== 'undefined' && currentPath === '/' ? 'active' : '' %>">Home</a>
+      <a href="/lost-items" class="<%= typeof currentPath !== 'undefined' && currentPath.startsWith('/lost-items') ? 'active' : '' %>">Lost Items</a>
+      <a href="/found-items" class="<%= typeof currentPath !== 'undefined' && currentPath.startsWith('/found-items') ? 'active' : '' %>">Found Items</a>
+      <a href="/report" class="<%= typeof currentPath !== 'undefined' && currentPath === '/report' ? 'active' : '' %>">Report an Item</a>
+      <% if (currentStudent) { %>
+        <a href="/my-claims" class="<%= typeof currentPath !== 'undefined' && currentPath.startsWith('/my-claims') ? 'active' : '' %>">My Claims</a>
+        <a href="/dashboard" class="<%= typeof currentPath !== 'undefined' && currentPath.startsWith('/dashboard') ? 'active' : '' %>">Dashboard</a>
+      <% } %>
+    </nav>
+
+    <div class="masthead-auth">
+      <% if (currentStudent) { %>
+        <span><a href="/dashboard"><strong><%= currentStudent.fullName %></strong></a> <span style="font-family: var(--mono); font-size: 0.8rem; color: var(--ink-soft);">(<%= currentStudent.usn %>)</span></span>
+        <form method="POST" action="/sign-out">
+          <button type="submit" class="btn btn-secondary btn-sm">Sign out</button>
+        </form>
+      <% } else { %>
+        <a href="/sign-in">Sign in</a>
+        <span>·</span>
+        <a href="/register">Register</a>
+      <% } %>
+    </div>
+  </div>
+</header>

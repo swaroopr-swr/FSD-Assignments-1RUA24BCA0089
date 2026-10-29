@@ -1,0 +1,51 @@
+<%- include('partials/head', { title: 'Sign In' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 520px;">
+    <%- include('partials/flash') %>
+
+    <div class="form-card">
+      <div style="border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 24px;">
+        <span class="mono-label" style="color: var(--ink-soft);">Property Office Entry</span>
+        <h1 style="font-size: 1.8rem; margin: 6px 0 0;">Student <em>Sign In</em></h1>
+      </div>
+
+      <p style="font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 24px;">
+        Enter your registered college email address to access your filing privileges and manage reports.
+      </p>
+
+      <form method="POST" action="/sign-in" novalidate>
+        <div class="form-group">
+          <label for="email" class="form-label">College Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            value="<%= typeof values !== 'undefined' ? values.email || '' : '' %>" 
+            class="form-input" 
+            placeholder="student@college.edu" 
+            required
+            <% if (typeof errors !== 'undefined' && errors.email) { %>aria-invalid="true" aria-describedby="email-error"<% } %>
+          >
+          <% if (typeof errors !== 'undefined' && errors.email) { %>
+            <p class="field-error" id="email-error"><%= errors.email %></p>
+          <% } %>
+        </div>
+
+        <div style="margin-top: 32px;">
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Sign In &rarr;</button>
+        </div>
+      </form>
+
+      <hr class="perforated-divider">
+
+      <div style="text-align: center;">
+        <p class="mono-label" style="margin-bottom: 8px;">First time visiting the Property Office?</p>
+        <a href="/students/new" class="btn btn-secondary btn-sm">Create Student Profile</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

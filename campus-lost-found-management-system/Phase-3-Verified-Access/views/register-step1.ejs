@@ -1,0 +1,87 @@
+<%- include('partials/head', { title: 'Register · Step 1 Verification' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container" style="max-width: 640px; margin: 40px auto;">
+    <%- include('partials/flash') %>
+
+    <div class="breadcrumb-nav">
+      <a href="/">Property Office</a> / <span>Student Registration</span>
+    </div>
+
+    <section class="form-card" style="border-top: 4px solid var(--ink);">
+      <div style="border-bottom: 1px dashed var(--line-strong); padding-bottom: 12px; margin-bottom: 24px;">
+        <span class="mono-label" style="color: var(--rust);">Step 01 of 02 · University Roster Check</span>
+        <h1 style="margin: 6px 0 0; font-size: 1.8rem;">Verify Student Identity</h1>
+        <p style="color: var(--ink-soft); margin: 6px 0 0; font-size: 0.95rem;">
+          To access the Property Office ledger, verify your university records with your RVU email and USN.
+        </p>
+      </div>
+
+      <% if (typeof errors !== 'undefined' && errors.form) { %>
+        <div class="field-error-msg" style="color: var(--rust-deep); background: #fdf2f2; border-left: 3px solid var(--rust); padding: 12px; margin-bottom: 20px; font-size: 0.9rem;">
+          <%= errors.form %>
+        </div>
+      <% } %>
+
+      <form method="POST" action="/register/verify" novalidate>
+        <div class="form-group">
+          <label for="email" class="form-label">
+            College Email Address <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input <%= (typeof errors !== 'undefined' && errors.email) ? 'input-error' : '' %>"
+            placeholder="e.g. yourname@rvu.edu.in"
+            value="<%= (typeof values !== 'undefined' && values.email) ? values.email : '' %>"
+            required
+            autocomplete="email"
+          >
+          <div style="font-size: 0.8rem; color: var(--ink-soft); margin-top: 4px;">
+            Must be your official university email ending in <code>@rvu.edu.in</code>
+          </div>
+          <% if (typeof errors !== 'undefined' && errors.email) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.email %>
+            </div>
+          <% } %>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label for="usn" class="form-label">
+            University Seat Number (USN) <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <input
+            type="text"
+            id="usn"
+            name="usn"
+            class="form-input <%= (typeof errors !== 'undefined' && errors.usn) ? 'input-error' : '' %>"
+            placeholder="e.g. 1RUA24BCA0001"
+            value="<%= (typeof values !== 'undefined' && values.usn) ? values.usn : '' %>"
+            required
+            style="text-transform: uppercase;"
+          >
+          <div style="font-size: 0.8rem; color: var(--ink-soft); margin-top: 4px;">
+            Official university registration number recorded by the registrar.
+          </div>
+          <% if (typeof errors !== 'undefined' && errors.usn) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-size: 0.8rem; margin-top: 4px;">
+              <%= errors.usn %>
+            </div>
+          <% } %>
+        </div>
+
+        <div style="margin-top: 32px; display: flex; justify-content: space-between; align-items: center;">
+          <a href="/sign-in" style="font-size: 0.9rem; color: var(--ink-soft);">Already have an account? Sign in &rarr;</a>
+          <button type="submit" class="btn btn-primary">
+            Verify with Registrar &rarr;
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

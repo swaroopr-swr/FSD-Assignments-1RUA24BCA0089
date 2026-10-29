@@ -1,0 +1,11 @@
+{
+  "name": "campus-lost-found-workspace",
+  "version": "2.0.0",
+  "description": "Campus Lost and Found Management System - Workspace Root",
+  "scripts": {
+    "start": "npm --prefix Phase-2 start",
+    "test": "npm --prefix Phase-2 test",
+    "dev": "npm --prefix Phase-2 run dev",
+    "start:phase1": "npm --prefix Phase-1 start"
+  }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "id": "syllabus",
+    "title": "BCA Program Syllabus & Course Schema",
+    "category": "Academic Curriculum",
+    "description": "Comprehensive course catalog, credit breakdown, evaluation guidelines, and detailed semester-wise subject syllabi for BCA and BCA Honours.",
+    "fileType": "PDF",
+    "fileSize": "1.8 MB",
+    "updated": "Academic Year 2026-27",
+    "downloadUrl": "assets/docs/BCA-Syllabus-2026-Sample.pdf",
+    "fileName": "BCA-Curriculum-Schema.pdf"
+  },
+  {
+    "id": "calendar",
+    "title": "University Academic Calendar",
+    "category": "Schedules & Dates",
+    "description": "Semester commencement schedules, continuous internal evaluation (CIE) windows, semester-end examinations, and official university holidays.",
+    "fileType": "PDF",
+    "fileSize": "640 KB",
+    "updated": "Odd & Even Semesters 2026",
+    "downloadUrl": "assets/docs/Academic-Calendar-2026-Sample.pdf",
+    "fileName": "RVU-Academic-Calendar-2026.pdf"
+  },
+  {
+    "id": "timetable",
+    "title": "Class & Laboratory Time Table",
+    "category": "Weekly Schedules",
+    "description": "Weekly lecture hours, tutorial slots, laboratory batches, room allocations, and faculty office consultation hours across all sections.",
+    "fileType": "PDF",
+    "fileSize": "480 KB",
+    "updated": "Current Semester",
+    "downloadUrl": "assets/docs/Class-TimeTable-Sample.pdf",
+    "fileName": "BCA-Class-TimeTable.pdf"
+  },
+  {
+    "id": "forms",
+    "title": "Department Forms & Student Notices",
+    "category": "Administrative Resources",
+    "description": "Standard requisition forms for elective choices, internship NOC approvals, lab access requests, re-evaluation forms, and academic guidelines.",
+    "fileType": "ZIP / PDF",
+    "fileSize": "1.2 MB",
+    "updated": "Latest Revision",
+    "downloadUrl": "assets/docs/Student-Forms-Kit-Sample.pdf",
+    "fileName": "Student-Forms-Kit.pdf"
+  }
+]

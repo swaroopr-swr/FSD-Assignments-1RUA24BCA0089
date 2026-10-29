@@ -1,0 +1,124 @@
+---
+layout: layouts/base.njk
+title: Academic Programs
+subtitle: Industry-oriented undergraduate computing degree programs preparing graduates for modern technology leadership.
+permalink: /programs.html
+metaDescription: Explore undergraduate degree offerings including BCA and 4-Year NEP BCA Honours with specializations in AI, Cloud, Data Science, and Cyber Security.
+---
+
+<section class="section section-white">
+  <div class="container">
+    
+    <!-- Section Introduction -->
+    <div class="section-header">
+      <span class="section-label">Degree Offerings</span>
+      <h2 class="section-title">Undergraduate Computing Programs</h2>
+      <p class="section-subtitle">
+        Curricula engineered to balance rigorous theoretical foundations with modern software development frameworks and applied problem-solving.
+      </p>
+    </div>
+
+    <!-- Programs Grid -->
+    <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 4rem;">
+      {% for prog in programs %}
+        <div class="card" id="{{ prog.id }}" style="border-top: 4px solid var(--color-primary); padding: 2.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div>
+              <span class="gallery-category-badge" style="margin-bottom: 0.5rem;">{{ prog.badge }}</span>
+              <h3 style="font-size: 1.85rem; color: var(--color-primary); margin-bottom: 0.25rem;">{{ prog.name }}</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0;">{{ prog.degree }}</p>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <a href="{{ prog.syllabusLink }}" class="btn btn-outline-teal btn-sm">
+                View Syllabus Details →
+              </a>
+              <a href="/{{ prog.syllabusDoc }}" download class="btn btn-primary btn-sm">
+                Download PDF ⤓
+              </a>
+            </div>
+          </div>
+
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem;">
+            {{ prog.overview }}
+          </p>
+
+          <div style="display: grid; grid-template-columns: 1fr; gap: 2rem; background-color: var(--bg-muted); padding: 1.75rem; border-radius: var(--radius-md); margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); margin-bottom: 0.35rem;">Duration</div>
+                <div style="font-weight: 700; color: var(--text-primary); font-size: 1.05rem;">{{ prog.duration }}</div>
+              </div>
+              <div>
+                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-accent); margin-bottom: 0.35rem;">Eligibility Criteria</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5;">{{ prog.eligibility }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+            <div>
+              <h4 style="font-size: 1.15rem; color: var(--color-primary); margin-bottom: 1rem;">Core Program Highlights</h4>
+              <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem;">
+                {% for hl in prog.highlights %}
+                  <li style="display: flex; gap: 0.65rem; font-size: 0.92rem; color: var(--text-secondary);">
+                    <span style="color: var(--color-accent); font-weight: 800;">✓</span>
+                    <span>{{ hl }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+              <h4 style="font-size: 1.15rem; color: var(--color-primary); margin-bottom: 0.75rem;">Career Pathways & Industry Roles</h4>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                {% for career in prog.careers %}
+                  <span class="filter-chip" style="cursor: default; background-color: #FFFFFF; font-size: 0.8rem;">
+                    💼 {{ career }}
+                  </span>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Specialization Elective Tracks -->
+    <div style="margin-top: 4rem;">
+      <div class="section-header">
+        <span class="section-label">Curricular Tracks</span>
+        <h2 class="section-title">Specialization Domains</h2>
+        <p class="section-subtitle">
+          In their upper semesters, students choose deep elective concentrations tailored to industry demands.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+        <div class="card" style="border-top: 3px solid #38BDF8;">
+          <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">🤖 Artificial Intelligence</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Machine learning pipelines, deep neural networks, computer vision, natural language processing, and prompt engineering.</p>
+          <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Tools: PyTorch, TensorFlow, OpenCV</div>
+        </div>
+
+        <div class="card" style="border-top: 3px solid #A78BFA;">
+          <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">☁️ Cloud & DevOps</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Virtualization, containerization with Docker, Kubernetes orchestration, Infrastructure as Code, and CI/CD automation.</p>
+          <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Tools: Docker, Kubernetes, AWS, Terraform</div>
+        </div>
+
+        <div class="card" style="border-top: 3px solid #F87171;">
+          <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">🛡️ Cyber Security & Forensics</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Ethical hacking, cryptographic systems, network defense, penetration testing, malware reverse engineering, and digital audit.</p>
+          <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Tools: Kali Linux, Wireshark, Metasploit</div>
+        </div>
+
+        <div class="card" style="border-top: 3px solid #FBBF24;">
+          <h4 style="color: var(--color-primary); margin-bottom: 0.5rem;">📊 Data Science & Analytics</h4>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">Big data processing, predictive modeling, statistical hypothesis testing, data visualization, and business intelligence.</p>
+          <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Tools: Python Pandas, Spark, Power BI, SQL</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

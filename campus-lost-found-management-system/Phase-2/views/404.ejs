@@ -1,0 +1,19 @@
+<%- include('partials/head', { title: '404 — Not Found' }) %>
+<%- include('partials/masthead') %>
+
+<main class="main-content">
+  <div class="container">
+    <div class="error-box">
+      <div class="error-stamp">404 NOT FOUND</div>
+      <h1 style="font-size: 1.8rem; margin-bottom: 16px;"><%= typeof message !== 'undefined' && message ? message : 'That reference isn\'t valid or the record cannot be located.' %></h1>
+      <p style="color: var(--ink-soft); margin-bottom: 32px;">
+        The filing slip, dossier, or registry index you requested does not exist in the property records.
+      </p>
+      <div>
+        <a href="/" class="btn btn-primary">&larr; Return to Property Office Home</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>

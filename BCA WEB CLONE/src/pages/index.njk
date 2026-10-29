@@ -1,0 +1,167 @@
+---
+layout: layouts/base.njk
+title: Home
+isHome: true
+permalink: /index.html
+metaDescription: Official website of the Department of Computer Applications, RV University, Bengaluru. Offering BCA programs, modern labs, research, and placement support.
+---
+
+<!-- Hero Section -->
+<section class="hero" aria-label="Department Introduction">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>School of Computer Science & Engineering</span>
+      </div>
+      <h1 class="hero-title">Department of Computer Applications</h1>
+      <p class="hero-tagline">
+        Empowering the next generation of technology innovators through experiential computing education, industry-aligned curricula, advanced research labs, and holistic career mentorship.
+      </p>
+      <div class="hero-actions">
+        <a href="/about.html" class="btn btn-primary">Explore Department →</a>
+        <a href="/faculty.html" class="btn btn-secondary">Meet Our Faculty</a>
+      </div>
+
+      <!-- Second Hero Slide / Future-Ready Feature -->
+      <div class="hero-slide-feature">
+        <div class="hero-feature-text">
+          <h3>Future Ready Computing Education</h3>
+          <p>Explore interdisciplinary BCA specializations in Artificial Intelligence, Cloud Infrastructure, and Cyber Defense.</p>
+        </div>
+        <a href="/programs.html" class="btn btn-primary btn-sm">View Programs →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Strip Component -->
+<section class="stats-strip" aria-label="Key Department Metrics">
+  <div class="container">
+    <div class="stats-grid">
+      {% for item in stats.heroStats %}
+        <div class="stat-item">
+          <div class="stat-number-wrapper">
+            <span class="stat-number" data-target="{{ item.value }}">{{ item.value }}</span>{{ item.suffix }}
+          </div>
+          <div class="stat-label">{{ item.label }}</div>
+          <div class="stat-description">{{ item.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    {% if stats.isSampleData %}
+      <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 1.5rem; margin-bottom: 0;">
+        *Note: {{ stats.disclaimer }}
+      </p>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Teaser Cards Section -->
+<section class="section section-muted" aria-labelledby="explore-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Department Highlights</span>
+      <h2 id="explore-heading" class="section-title">Discover Our Academic Ecosystem</h2>
+      <p class="section-subtitle">A balanced curriculum combining rigorous foundational theory with immediate industrial applicability.</p>
+    </div>
+
+    <div class="teaser-grid">
+      <!-- Teaser 1: About -->
+      <div class="card teaser-card">
+        <div>
+          <div class="teaser-icon" aria-hidden="true">🏛️</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--color-primary);">About Us</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Learn about our founding philosophy, institutional mission, and pedagogical values in computer applications.
+          </p>
+        </div>
+        <a href="/about.html" class="btn btn-outline-teal btn-sm" style="align-self: flex-start;">
+          Read Overview →
+        </a>
+      </div>
+
+      <!-- Teaser 2: Programs -->
+      <div class="card teaser-card">
+        <div>
+          <div class="teaser-icon" aria-hidden="true">🎓</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--color-primary);">Programs</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Explore our 3-Year BCA and 4-Year NEP BCA Honours programs with industry-certified technical electives.
+          </p>
+        </div>
+        <a href="/programs.html" class="btn btn-outline-teal btn-sm" style="align-self: flex-start;">
+          Explore Curricula →
+        </a>
+      </div>
+
+      <!-- Teaser 3: Placements -->
+      <div class="card teaser-card">
+        <div>
+          <div class="teaser-icon" aria-hidden="true">💼</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--color-primary);">Placements</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Review placement statistics, top recruitment partners, salary benchmarks, and student career transformations.
+          </p>
+        </div>
+        <a href="/placements.html" class="btn btn-outline-teal btn-sm" style="align-self: flex-start;">
+          Career Records →
+        </a>
+      </div>
+
+      <!-- Teaser 4: Events -->
+      <div class="card teaser-card">
+        <div>
+          <div class="teaser-icon" aria-hidden="true">📅</div>
+          <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--color-primary);">Events & News</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Stay informed with upcoming national hackathons, technical symposia, guest seminars, and student exhibitions.
+          </p>
+        </div>
+        <a href="/events.html" class="btn btn-outline-teal btn-sm" style="align-self: flex-start;">
+          Upcoming Events →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Student Testimonials Section -->
+<section class="section section-white" aria-labelledby="testimonials-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Student Voices</span>
+      <h2 id="testimonials-heading" class="section-title">Experiences That Inspire</h2>
+      <p class="section-subtitle">Hear firsthand how the department equips students to thrive in tech enterprises and research careers.</p>
+    </div>
+
+    <div class="testimonial-grid">
+      {% for item in testimonials %}
+        <div class="card testimonial-card">
+          <p class="testimonial-quote">{{ item.quote }}</p>
+          <div class="testimonial-author">
+            <img src="/{{ item.image }}" alt="{{ item.name }}" class="testimonial-avatar" width="48" height="48" loading="lazy">
+            <div>
+              <div class="testimonial-author-name">{{ item.name }}</div>
+              <div class="testimonial-author-role">{{ item.role }}</div>
+              <div style="font-size: 0.7rem; color: var(--color-accent); font-weight: 600;">{{ item.company }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action Banner -->
+<section class="section section-dark" style="padding: 3.5rem 0; text-align: center;">
+  <div class="container">
+    <h2 style="font-size: 1.85rem; margin-bottom: 1rem;">Ready to Join the Department of Computer Applications?</h2>
+    <p style="max-width: 650px; margin: 0 auto 2rem auto; color: #CBD5E1;">
+      Connect with admissions, explore scholarship opportunities, or schedule a campus visit at RV University.
+    </p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="/contact.html" class="btn btn-primary">Contact Admissions →</a>
+      <a href="/downloads.html#syllabus" class="btn btn-secondary">Download Syllabus</a>
+    </div>
+  </div>
+</section>

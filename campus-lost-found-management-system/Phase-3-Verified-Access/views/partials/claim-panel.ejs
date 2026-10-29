@@ -1,0 +1,139 @@
+<section class="claim-panel-section" aria-label="Claims and Resolution">
+  <% if (item.status === 'Returned') { %>
+    <!-- State: Item Returned -->
+    <div class="returned-notice-card">
+      <div class="large-returned-stamp">RETURNED</div>
+      <div>
+        <h3 style="margin: 0 0 6px; font-size: 1.25rem;">Custody Closed</h3>
+        <p style="margin: 0; color: var(--ink-soft);">
+          This item has been returned to its owner. No further claims may be lodged.
+        </p>
+      </div>
+    </div>
+
+    <% if (isFinder && claims && claims.length > 0) { %>
+      <!-- Finder ledger history for closed item -->
+      <div class="claim-ledger-box" style="margin-top: 24px;">
+        <div class="mono-label" style="color: var(--ink-soft); margin-bottom: 12px;">
+          Historical Claims Archive (<%= claims.length %>)
+        </div>
+        <div class="claims-list">
+          <% claims.forEach(function(c) { %>
+            <%- include('claim-row', { claim: c, item: item, isFinder: false }) %>
+          <% }); %>
+        </div>
+      </div>
+    <% } %>
+
+  <% } else if (!currentStudent) { %>
+    <!-- State: Signed Out Visitor -->
+    <div class="claim-slip-card" style="text-align: center; padding: 32px 20px;">
+      <div class="mono-label" style="color: var(--found-blue); margin-bottom: 8px;">Proof of Ownership</div>
+      <h3 style="margin-bottom: 8px;">Recognize this discovered property?</h3>
+      <p style="color: var(--ink-soft); max-width: 480px; margin: 0 auto 20px;">
+        To submit a claim slip and contact the finder, please sign in with your college email.
+      </p>
+      <a href="/sign-in" class="btn btn-primary">Sign in to claim this item</a>
+    </div>
+
+  <% } else if (isFinder) { %>
+    <!-- State: The Item Finder (Claims Ledger) -->
+    <div class="claim-ledger-box">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+        <div>
+          <span class="mono-label" style="color: var(--found-blue);">Finder Custody Ledger</span>
+          <h2 style="margin: 4px 0 0; font-size: 1.5rem;">Submitted Claims (<%= claims ? claims.length : 0 %>)</h2>
+        </div>
+      </div>
+
+      <% if (claims && claims.length > 0) { %>
+        <% if (item.status === 'Available') { %>
+          <div class="ledger-warning">
+            <strong>Notice to Finder:</strong> Approving a claim marks this item <em>Returned</em> and cannot be undone. All other pending claims will be automatically rejected.
+          </div>
+        <% } %>
+
+        <div class="claims-list">
+          <% claims.forEach(function(c) { %>
+            <%- include('claim-row', { claim: c, item: item, isFinder: true }) %>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <p style="color: var(--ink-soft); font-style: italic; margin: 16px 0;">
+          No claims have been submitted for this item yet.
+        </p>
+      <% } %>
+    </div>
+
+  <% } else if (userClaim) { %>
+    <!-- State: Claimant Who Already Submitted a Claim -->
+    <div class="claim-slip-card">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; border-bottom: 1px dashed var(--line-strong); padding-bottom: 12px;">
+        <div>
+          <span class="mono-label" style="color: var(--found-blue);">Your Submitted Claim Slip</span>
+          <h2 style="margin: 4px 0 0; font-size: 1.35rem;">Proof of Ownership Lodged</h2>
+        </div>
+        <div>
+          <%- include('status-stamp', { status: userClaim.status }) %>
+        </div>
+      </div>
+
+      <div class="claim-reason-block" style="margin-bottom: 16px;">
+        <%= userClaim.reason %>
+      </div>
+
+      <div style="font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft);">
+        Filed on <%= new Date(userClaim.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) %>
+        <% if (userClaim.status === 'Pending') { %>
+          — <em>Awaiting finder review.</em>
+        <% } else if (userClaim.status === 'Approved') { %>
+          — <strong style="color: var(--olive);">Claim Approved! <%= (item.reportedBy && item.reportedBy.contactNumber) ? 'Contact finder at ' + item.reportedBy.contactNumber + ' to coordinate collection.' : 'Contact the Property Office to collect your item.' %></strong>
+        <% } else if (userClaim.status === 'Rejected') { %>
+          — <span style="color: var(--rust-deep);">Claim rejected by finder.</span>
+        <% } %>
+      </div>
+    </div>
+
+  <% } else { %>
+    <!-- State: Authenticated Student (Not Finder, No Existing Claim, Item Available) -->
+    <div class="claim-slip-card">
+      <div style="border-bottom: 1px dashed var(--line-strong); padding-bottom: 12px; margin-bottom: 20px;">
+        <span class="mono-label" style="color: var(--found-blue);">Filing Slip · Property Claim</span>
+        <h2 style="margin: 4px 0 0; font-size: 1.4rem;">01 — Why this is yours</h2>
+      </div>
+
+      <form method="POST" action="/found-items/<%= item._id %>/claims" novalidate>
+        <div class="form-group">
+          <label for="claim-reason" class="form-label">
+            Describe details only the true owner would know <span style="color: var(--rust); font-weight: bold;">*</span>
+          </label>
+          <p style="font-size: 0.85rem; color: var(--ink-soft); margin: 0 0 8px;">
+            Specify unique scratches, contents, stickers, exact serial marks, or purchase receipts (10–500 characters).
+          </p>
+          <textarea
+            id="claim-reason"
+            name="reason"
+            rows="4"
+            class="form-textarea <%= (typeof claimErrors !== 'undefined' && claimErrors && claimErrors.reason) ? 'input-error' : '' %>"
+            placeholder="e.g. In the left zippered pocket there is a blue USB drive with my name on it..."
+            required
+            minlength="10"
+            maxlength="500"
+          ><%= (typeof claimValues !== 'undefined' && claimValues && claimValues.reason) ? claimValues.reason : '' %></textarea>
+
+          <% if (typeof claimErrors !== 'undefined' && claimErrors && claimErrors.reason) { %>
+            <div class="field-error-msg" style="color: var(--rust); font-family: var(--mono); font-size: 0.78rem; margin-top: 6px;">
+              <%= claimErrors.reason %>
+            </div>
+          <% } %>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
+          <button type="submit" class="btn btn-primary">
+            Submit claim &rarr;
+          </button>
+        </div>
+      </form>
+    </div>
+  <% } %>
+</section>

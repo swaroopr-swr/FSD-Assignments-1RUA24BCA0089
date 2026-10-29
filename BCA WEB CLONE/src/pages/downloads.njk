@@ -1,0 +1,61 @@
+---
+layout: layouts/base.njk
+title: Downloads & Resources
+subtitle: Download academic curricula, semester schedules, examination timetables, and administrative forms.
+permalink: /downloads.html
+metaDescription: Official downloadable documents for the Department of Computer Applications including BCA syllabus, academic calendar, timetables, and student forms.
+---
+
+<section class="section section-white">
+  <div class="container">
+    
+    <div class="section-header">
+      <span class="section-label">Student & Faculty Resources</span>
+      <h2 class="section-title">Official Department Documents</h2>
+      <p class="section-subtitle">
+        Access current academic syllabi, evaluation guidelines, calendar schedules, and official requisition forms.
+      </p>
+    </div>
+
+    <!-- 4 Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1080px; margin: 0 auto;">
+      {% for doc in downloads %}
+        <div class="card" id="{{ doc.id }}" style="border-top: 4px solid var(--color-primary); display: flex; flex-direction: column; justify-content: space-between; scroll-margin-top: 100px;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <span class="gallery-category-badge">{{ doc.category }}</span>
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted); background-color: var(--bg-muted); padding: 0.15rem 0.5rem; border-radius: var(--radius-sm);">
+                {{ doc.fileType }} • {{ doc.fileSize }}
+              </span>
+            </div>
+
+            <h3 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: 0.5rem;">{{ doc.title }}</h3>
+            
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+              {{ doc.description }}
+            </p>
+          </div>
+
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+              📅 Revised: <strong>{{ doc.updated }}</strong>
+            </div>
+            <a href="/{{ doc.downloadUrl }}" download="{{ doc.fileName }}" class="btn btn-primary btn-sm" style="width: 100%;">
+              Download File ({{ doc.fileType }}) ⤓
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Document Verification Notice -->
+    <div style="max-width: 800px; margin: 3.5rem auto 0 auto; text-align: center; background-color: var(--bg-muted); padding: 1.75rem; border-radius: var(--radius-md);">
+      <h4 style="font-size: 1.05rem; color: var(--color-primary); margin-bottom: 0.35rem;">Need an archived document or custom transcript?</h4>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+        For attested grade sheets, previous year question banks, or transfer certifications, contact the Department Administrative Office.
+      </p>
+      <a href="/contact.html" class="btn btn-outline-teal btn-sm">Contact Department Office →</a>
+    </div>
+
+  </div>
+</section>

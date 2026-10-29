@@ -1,0 +1,15 @@
+<section class="page-banner" aria-label="Page Title and Breadcrumb">
+  <div class="container">
+    <div class="banner-content">
+      <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <a href="/index.html">Home</a>
+        <span class="breadcrumb-separator" aria-hidden="true">›</span>
+        <span class="breadcrumb-current" aria-current="page">{{ title }}</span>
+      </nav>
+      <h1 class="banner-title">{{ title }}</h1>
+      {% if subtitle %}
+        <p class="banner-subtitle">{{ subtitle }}</p>
+      {% endif %}
+    </div>
+  </div>
+</section>
