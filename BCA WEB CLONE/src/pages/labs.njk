@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+title: Computing Laboratories
+subtitle: State-of-the-art infrastructure designed for experiential learning, systems programming, and applied technological research.
+permalink: /labs.html
+metaDescription: Six advanced computing laboratories supporting Programming, Artificial Intelligence, Cloud Computing, Networking, Cyber Security, and Big Data at RV University.
+---
+
+<section class="section section-white">
+  <div class="container">
+    
+    <div class="section-header">
+      <span class="section-label">Campus Facilities</span>
+      <h2 class="section-title">Specialized Computing Labs</h2>
+      <p class="section-subtitle">
+        Our department operates six purpose-built laboratories offering high-density workstations, dedicated hardware racks, and enterprise developer tools.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 2.5rem;">
+      {% for lab in labs %}
+        <div class="card" id="{{ lab.id }}" style="padding: 0; overflow: hidden; display: grid; grid-template-columns: 1fr; border-top: 4px solid var(--color-primary);">
+          <div style="display: grid; grid-template-columns: 1fr; md-grid-template-columns: 1fr 1fr;">
+            
+            <!-- Lab Image Visual -->
+            <div style="height: 280px; md-height: auto; background-color: var(--color-primary); overflow: hidden;">
+              <img src="/{{ lab.image }}" 
+                   alt="{{ lab.name }}" 
+                   style="width: 100%; height: 100%; object-fit: cover;" 
+                   loading="lazy">
+            </div>
+
+            <!-- Lab Details -->
+            <div style="padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <span class="gallery-category-badge" style="margin-bottom: 0.5rem;">Lab Facility</span>
+                <h3 style="font-size: 1.6rem; color: var(--color-primary); margin-bottom: 0.75rem;">{{ lab.name }}</h3>
+                <p style="font-size: 1rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.25rem;">
+                  {{ lab.lead }}
+                </p>
+
+                <div style="margin-bottom: 1.25rem;">
+                  <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem;">Systems & Hardware</div>
+                  <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">{{ lab.systems }}</div>
+                </div>
+
+                <div style="margin-bottom: 1.25rem;">
+                  <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.35rem;">Key Software & Tools</div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+                    {% for tool in lab.tools %}
+                      <span class="filter-chip" style="cursor: default; padding: 0.2rem 0.65rem; font-size: 0.78rem; background-color: var(--bg-muted);">
+                        {{ tool }}
+                      </span>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-muted);">
+                <strong>Pedagogical Focus:</strong> {{ lab.focus }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

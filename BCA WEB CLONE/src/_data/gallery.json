@@ -1,0 +1,56 @@
+[
+  {
+    "id": "gallery-1",
+    "title": "National Hackathon & CodeSprint",
+    "caption": "Student developers collaborating during the 24-hour inter-collegiate coding marathon in the Turing Programming Lab.",
+    "category": "Competitions",
+    "image": "assets/gallery/gallery1.svg",
+    "date": "July 2026",
+    "alt": "BCA students collaborating in the laboratory during the National Hackathon"
+  },
+  {
+    "id": "gallery-2",
+    "title": "AI & Computer Vision Workshop",
+    "caption": "Hands-on model training and neural architecture visualization session led by visiting industry research scientists.",
+    "category": "Workshops",
+    "image": "assets/gallery/gallery2.svg",
+    "date": "June 2026",
+    "alt": "Students and faculty engaging during the interactive AI and machine learning seminar"
+  },
+  {
+    "id": "gallery-3",
+    "title": "Cloud Computing & DevOps Lab",
+    "caption": "Live deployment of microservices and container orchestration clusters on university cloud infrastructure.",
+    "category": "Academics",
+    "image": "assets/gallery/gallery3.svg",
+    "date": "May 2026",
+    "alt": "Students deploying cloud native applications on enterprise servers"
+  },
+  {
+    "id": "gallery-4",
+    "title": "Research Symposium & Paper Presentations",
+    "caption": "Final-year scholars presenting novel computational findings to a jury of senior academicians and industry architects.",
+    "category": "Research",
+    "image": "assets/gallery/gallery4.svg",
+    "date": "April 2026",
+    "alt": "Undergraduate student presenting technical research slides before an academic panel"
+  },
+  {
+    "id": "gallery-5",
+    "title": "Robotics & IoT Innovation Showcase",
+    "caption": "Exhibition of student-designed embedded systems, edge sensors, and autonomous microcontroller prototypes.",
+    "category": "Innovation",
+    "image": "assets/gallery/gallery5.svg",
+    "date": "March 2026",
+    "alt": "Display of student IoT prototypes and robotics hardware at the department exhibition"
+  },
+  {
+    "id": "gallery-6",
+    "title": "Graduation Day & Student Felicitations",
+    "caption": "Celebrating the accomplishments, placement offers, and degree honors of our graduating BCA cohort.",
+    "category": "Celebrations",
+    "image": "assets/gallery/gallery6.svg",
+    "date": "February 2026",
+    "alt": "Graduating BCA students celebrating with degrees and medals at the annual convocation"
+  }
+]

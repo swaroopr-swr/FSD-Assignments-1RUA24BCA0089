@@ -1,0 +1,26 @@
+[
+  {
+    "id": "hackathon-winners",
+    "title": "National Hackathon Winners",
+    "tag": "Technical Excellence",
+    "description": "BCA student teams clinched First Place in the National Smart City Coding Marathon and Top 5 rankings in the All-India Hackathon, solving civic logistics with AI.",
+    "badge": "1st Prize Trophy",
+    "meta": "National Grand Finale 2026"
+  },
+  {
+    "id": "university-rank-holders",
+    "title": "University Rank Holders",
+    "tag": "Academic Distinction",
+    "description": "Consistent academic rigor reflected in department students achieving top university honors, gold medal distinctions, and perfect 10.0 SGPA semesters.",
+    "badge": "Top University Honors",
+    "meta": "Annual Convocation 2026"
+  },
+  {
+    "id": "startup-innovators",
+    "title": "Startup Innovators & Founders",
+    "tag": "Entrepreneurship",
+    "description": "Student entrepreneurs successfully incubated 3 tech startups through the RVU Center for Innovation & Entrepreneurship, securing seed funding and industry pilot contracts.",
+    "badge": "Incubated Ventures",
+    "meta": "CIE Incubation Cohort"
+  }
+]

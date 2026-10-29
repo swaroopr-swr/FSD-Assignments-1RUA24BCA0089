@@ -1,0 +1,70 @@
+---
+layout: layouts/base.njk
+title: Campus Gallery
+subtitle: Glimpses of academic life, competitive hackathons, laboratory workshops, and department celebrations.
+permalink: /gallery.html
+metaDescription: Visual showcase of hackathons, student workshops, research presentations, and graduation ceremonies at Department of Computer Applications, RV University.
+---
+
+<section class="section section-white">
+  <div class="container">
+    
+    <div class="section-header">
+      <span class="section-label">Department Life</span>
+      <h2 class="section-title">Moments & Milestones</h2>
+      <p class="section-subtitle">
+        Click any photograph to enlarge and navigate using keyboard arrow keys (← / →) or escape (Esc) to close.
+      </p>
+    </div>
+
+    <!-- 6-Image Grid -->
+    <div class="gallery-grid" role="region" aria-label="Department Image Gallery">
+      {% for item in gallery %}
+        <div class="card gallery-card" 
+             tabindex="0" 
+             role="button" 
+             aria-label="View {{ item.title }}: {{ item.caption }}" 
+             data-full-img="/{{ item.image }}" 
+             data-title="{{ item.title }}" 
+             data-caption="{{ item.caption }}">
+          <div class="gallery-thumb-wrapper">
+            <img src="/{{ item.image }}" 
+                 alt="{{ item.alt }}" 
+                 class="gallery-thumb" 
+                 width="400" 
+                 height="300" 
+                 loading="lazy">
+            <div class="gallery-overlay-hover">
+              <span class="gallery-category-badge">{{ item.category }}</span>
+              <div class="gallery-caption-title">{{ item.title }}</div>
+              <div style="font-size: 0.75rem; color: #E2E8F0; margin-top: 0.25rem;">{{ item.date }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Lightbox Modal Dialog (Keyboard Accessible) -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image Preview Dialog">
+      <div class="lightbox-dialog">
+        <!-- Close Button -->
+        <button type="button" class="lightbox-close-btn" aria-label="Close image preview">✕</button>
+
+        <!-- Preview Image Container -->
+        <div class="lightbox-image-container">
+          <img src="" class="lightbox-image" alt="Preview Image Display">
+        </div>
+
+        <!-- Lightbox Caption & Controls -->
+        <div class="lightbox-footer">
+          <div class="lightbox-caption-text">Image Caption</div>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous image">‹</button>
+            <button type="button" class="lightbox-btn lightbox-next" aria-label="Next image">›</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

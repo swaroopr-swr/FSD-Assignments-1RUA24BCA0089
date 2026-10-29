@@ -1,0 +1,14 @@
+[
+  { "title": "Home", "url": "/index.html" },
+  { "title": "About", "url": "/about.html" },
+  { "title": "HOD's Desk", "url": "/hod.html" },
+  { "title": "Programs", "url": "/programs.html" },
+  { "title": "Faculty", "url": "/faculty.html" },
+  { "title": "Labs", "url": "/labs.html" },
+  { "title": "Research", "url": "/research.html" },
+  { "title": "Placements", "url": "/placements.html" },
+  { "title": "Gallery", "url": "/gallery.html" },
+  { "title": "Events", "url": "/events.html" },
+  { "title": "Downloads", "url": "/downloads.html" },
+  { "title": "Contact", "url": "/contact.html" }
+]

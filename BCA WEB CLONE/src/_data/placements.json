@@ -1,0 +1,21 @@
+{
+  "headlineStats": [
+    { "label": "Highest CTC", "value": "₹18 LPA", "tag": "Sample Record", "description": "Offered by tier-1 product enterprise" },
+    { "label": "Average Package", "value": "₹6.5 LPA", "tag": "Sample Metric", "description": "Across competitive technical roles" },
+    { "label": "Placement Rate", "value": "97%", "tag": "Sample Ratio", "description": "Of eligible students successfully placed" },
+    { "label": "Hiring Partners", "value": "210+", "tag": "Active Corporate Network", "description": "MNCs, product companies, and unicorns" }
+  ],
+  "supportMetrics": [
+    { "count": "1,200+", "label": "Paid Internships Completed" },
+    { "count": "150+", "label": "Industry Bootcamps & Training" },
+    { "count": "2,500+", "label": "Global Tech Certifications" }
+  ],
+  "recruiters": [
+    { "name": "Tata Consultancy Services (TCS)", "logo": "assets/logos/tcs.svg", "tier": "Global IT Leader" },
+    { "name": "Infosys", "logo": "assets/logos/infosys.svg", "tier": "Digital Services Pioneer" },
+    { "name": "Wipro", "logo": "assets/logos/wipro.svg", "tier": "Technology Innovations" },
+    { "name": "Accenture", "logo": "assets/logos/accenture.svg", "tier": "Strategy & Consulting" },
+    { "name": "IBM", "logo": "assets/logos/ibm.svg", "tier": "Cloud & Enterprise AI" },
+    { "name": "Microsoft", "logo": "assets/logos/microsoft.svg", "tier": "Global Tech Leader" }
+  ]
+}

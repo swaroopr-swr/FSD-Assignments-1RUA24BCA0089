@@ -1,0 +1,56 @@
+[
+  {
+    "id": "programming-lab",
+    "name": "Programming Laboratory",
+    "image": "assets/labs/programming-lab.svg",
+    "lead": "Equipped with high-performance workstations supporting modern programming languages, IDEs, and development toolchains.",
+    "tools": ["C / C++", "Java JDK 21", "Python 3.12", "Node.js & React", "VS Code & Git"],
+    "systems": "60 Intel Core i7 Systems with 32GB RAM & NVMe SSDs",
+    "focus": "Algorithm design, data structures implementation, OOP paradigms, and collaborative software engineering."
+  },
+  {
+    "id": "ai-lab",
+    "name": "Artificial Intelligence Laboratory",
+    "image": "assets/labs/ai-lab.svg",
+    "lead": "Dedicated computing facility for neural network modeling, computer vision, natural language processing, and deep learning research.",
+    "tools": ["PyTorch", "TensorFlow", "CUDA Toolkits", "OpenCV", "Hugging Face Transformers"],
+    "systems": "High-Density GPU Workstations with NVIDIA RTX Ada Generation accelerators",
+    "focus": "Model training, generative AI exploration, predictive analytics, and computer vision pipelines."
+  },
+  {
+    "id": "cloud-lab",
+    "name": "Cloud Computing Laboratory",
+    "image": "assets/labs/cloud-lab.svg",
+    "lead": "Hands-on virtualization and cloud orchestration environment for deploying scalable, distributed microservices.",
+    "tools": ["Docker", "Kubernetes", "AWS Academy Suite", "Terraform", "Linux KVM"],
+    "systems": "Private OpenStack Cloud Cluster & Dedicated High-Speed Gigabit Uplinks",
+    "focus": "Virtual machine management, container orchestration, continuous deployment (CI/CD), and serverless architectures."
+  },
+  {
+    "id": "networking-lab",
+    "name": "Networking Laboratory",
+    "image": "assets/labs/networking-lab.svg",
+    "lead": "Cisco-equipped hardware laboratory designed for network configuration, packet analysis, and telecommunications simulations.",
+    "tools": ["Cisco Packet Tracer", "Wireshark", "GNS3", "Manageable Routers & Switches", "Fiber Patch Panels"],
+    "systems": "Modular Network Racks, Managed L2/L3 Switches, and Dedicated Test Benches",
+    "focus": "Routing protocols (OSPF, BGP), subnetting, firewall configuration, network diagnostics, and traffic monitoring."
+  },
+  {
+    "id": "cyber-lab",
+    "name": "Cyber Security Laboratory",
+    "image": "assets/labs/cyber-lab.svg",
+    "lead": "Sandboxed threat modeling and vulnerability testing lab for hands-on ethical hacking and digital forensics.",
+    "tools": ["Kali Linux", "Metasploit", "Burp Suite Pro", "Autopsy Forensics", "Snort IDS"],
+    "systems": "Air-gapped isolated virtual network segments with defensive telemetry tools",
+    "focus": "Penetration testing, cryptography implementation, digital forensics analysis, and vulnerability assessment."
+  },
+  {
+    "id": "database-lab",
+    "name": "Database & Big Data Laboratory",
+    "image": "assets/labs/database-lab.svg",
+    "lead": "Enterprise data management environment for relational databases, distributed data lakes, and business intelligence.",
+    "tools": ["PostgreSQL", "MongoDB", "Apache Spark", "Redis", "Power BI / Tableau"],
+    "systems": "High-throughput storage arrays and memory-optimized database instances",
+    "focus": "Query optimization, indexing strategies, ACID vs. BASE models, distributed data processing, and analytical dashboards."
+  }
+]

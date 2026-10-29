@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>{% if title and title != "Home" %}{{ title }} | Department of Computer Applications, RV University{% else %}Department of Computer Applications | RV University, Bengaluru{% endif %}</title>
+  
+  <meta name="description" content="{% if metaDescription %}{{ metaDescription }}{% else %}{{ site.meta.description }}{% endif %}">
+  <meta name="keywords" content="{{ site.meta.keywords }}">
+  <meta name="author" content="Department of Computer Applications, RV University">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% if title and title != "Home" %}{{ title }} | BCA RV University{% else %}Department of Computer Applications | RV University{% endif %}">
+  <meta property="og:description" content="{% if metaDescription %}{{ metaDescription }}{% else %}{{ site.meta.description }}{% endif %}">
+  <meta property="og:image" content="{{ site.url }}/assets/icons/RVU-logo.svg">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/RVU-logo.svg">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Inter with Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header & Navigation -->
+  {% include "components/header.njk" %}
+
+  <!-- Inner Page Banner (Rendered on all non-home pages) -->
+  {% if not isHome %}
+    {% include "components/banner.njk" %}
+  {% endif %}
+
+  <!-- Main Landmark -->
+  <main id="main-content" tabindex="-1">
+    {{ content | safe }}
+  </main>
+
+  <!-- Global Footer -->
+  {% include "components/footer.njk" %}
+
+  <!-- Client Scripting -->
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

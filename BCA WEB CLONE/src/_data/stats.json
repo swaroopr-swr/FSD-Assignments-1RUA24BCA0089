@@ -1,0 +1,27 @@
+{
+  "isSampleData": true,
+  "disclaimer": "Metrics displayed are illustrative sample figures for demonstration purposes and subject to official university verification.",
+  "heroStats": [
+    { "label": "Active Students", "value": 450, "suffix": "+", "description": "Undergraduate learners across batches" },
+    { "label": "Expert Faculty", "value": 25, "suffix": "+", "description": "Experienced academicians & researchers" },
+    { "label": "Specialized Labs", "value": 6, "suffix": "", "description": "State-of-the-art computing facilities" },
+    { "label": "Placement Rate", "value": 97, "suffix": "%", "description": "Successful career transitions" },
+    { "label": "Recruiting Partners", "value": 210, "suffix": "+", "description": "Global enterprise & startup recruiters" },
+    { "label": "Alumni Network", "value": 1200, "suffix": "+", "description": "Graduates thriving globally" }
+  ],
+  "placements": {
+    "highestPackage": "₹18 LPA",
+    "averagePackage": "₹6.5 LPA",
+    "placementRate": "97%",
+    "recruitingPartners": "210+",
+    "internshipsCompleted": "1200+",
+    "trainingPrograms": "150+",
+    "certificationsAchieved": "2500+"
+  },
+  "research": {
+    "publications": "350+",
+    "projects": "75+",
+    "patents": "25+",
+    "collaborations": "40+"
+  }
+}

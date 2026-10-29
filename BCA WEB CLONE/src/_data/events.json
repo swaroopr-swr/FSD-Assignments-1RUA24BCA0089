@@ -1,0 +1,52 @@
+[
+  {
+    "id": "event-1",
+    "title": "National Level Coding Competition & Hackathon",
+    "date": "10 July 2026",
+    "category": "Competition",
+    "time": "09:00 AM – 06:00 PM",
+    "venue": "Turing Computing Auditorium & Programming Labs",
+    "description": "Department students competed against 40+ universities across India in algorithmic problem solving, web security challenges, and system design, clinching top honors.",
+    "status": "Completed"
+  },
+  {
+    "id": "event-2",
+    "title": "AI & Machine Learning Hands-on Workshop",
+    "date": "25 June 2026",
+    "category": "Workshop",
+    "time": "10:00 AM – 04:30 PM",
+    "venue": "Artificial Intelligence Research Lab",
+    "description": "A three-day immersive masterclass delivered by senior data scientists from industry, covering Transformer architectures, fine-tuning LLMs, and computer vision deployment.",
+    "status": "Completed"
+  },
+  {
+    "id": "event-3",
+    "title": "Annual Campus Placement & Internship Conclave",
+    "date": "15 May 2026",
+    "category": "Career",
+    "time": "09:30 AM – 05:30 PM",
+    "venue": "RVU Placement Center & Interview Suites",
+    "description": "Over 25 premier technology corporations conducted on-campus recruitment and pre-placement discussions for pre-final and final year BCA students.",
+    "status": "Completed"
+  },
+  {
+    "id": "event-4",
+    "title": "Cloud Native Architecture & Kubernetes Bootcamp",
+    "date": "18 August 2026",
+    "category": "Bootcamp",
+    "time": "11:00 AM – 02:00 PM",
+    "venue": "Cloud Computing Laboratory",
+    "description": "Practical session exploring Docker containers, Helm charts, microservices telemetry, and automated CI/CD pipeline creation on public cloud platforms.",
+    "status": "Upcoming"
+  },
+  {
+    "id": "event-5",
+    "title": "Distinguished Speaker Series: Cyber Defense in 2026",
+    "date": "05 September 2026",
+    "category": "Guest Lecture",
+    "time": "02:00 PM – 04:00 PM",
+    "venue": "Main University Seminar Hall",
+    "description": "Keynote address by the Chief Information Security Officer (CISO) of a Fortune 500 company on contemporary threat vectors, ransomware prevention, and zero trust.",
+    "status": "Upcoming"
+  }
+]
