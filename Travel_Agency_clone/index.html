@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jadoo - Built for modern travelers seeking authentic journeys. Discover curated destinations, flights, stays, and unforgettable adventures." />
+  <title>Jadoo - Travel & Explore The World</title>
+
+  <!-- Google Fonts: Poppins (UI & Body) and Volkhov / Playfair Display (Headings) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600;700&family=Volkhov:wght@700&display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Accessible Skip Link for Keyboard Navigation -->
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- Faint decorative background glow at top left of hero -->
+  <div class="ambient-glow ambient-glow-left" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <!-- Jadoo Brand Logo -->
+      <a href="#" class="brand-logo" aria-label="Jadoo Home">
+        <span class="logo-text">Jad<span class="logo-oo"><span class="logo-dot"></span><span class="logo-dot"></span></span></span>
+      </a>
+
+      <!-- Desktop & Mobile Navigation Links -->
+      <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#destinations" class="nav-link">Destinations</a></li>
+          <li class="nav-item"><a href="#hotels" class="nav-link">Hotels</a></li>
+          <li class="nav-item"><a href="#flights" class="nav-link">Flights</a></li>
+          <li class="nav-item"><a href="#bookings" class="nav-link">Bookings</a></li>
+        </ul>
+
+        <!-- Right Side Nav Actions -->
+        <div class="nav-actions">
+          <a href="#login" class="nav-login" id="loginLink">Login</a>
+          <button type="button" class="btn btn-outline nav-signup" id="signupBtn">Sign up</button>
+
+          <!-- Language Dropdown -->
+          <div class="lang-selector" id="langSelector" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label="Select Language">
+            <span class="lang-text">EN</span>
+            <svg class="chevron-icon" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="lang-dropdown-menu" id="langMenu" role="menu">
+              <button type="button" class="lang-option active" role="menuitem">EN (English)</button>
+              <button type="button" class="lang-option" role="menuitem">ES (Español)</button>
+              <button type="button" class="lang-option" role="menuitem">FR (Français)</button>
+              <button type="button" class="lang-option" role="menuitem">DE (Deutsch)</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Hamburger Toggle Button -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="mainContent">
+
+    <!-- Section 5.2 & 4A: Hero Section -->
+    <section class="hero-section" id="hero">
+      <!-- Cream Blob Background sitting behind hero traveler image -->
+      <div class="hero-cream-blob" aria-hidden="true"></div>
+
+      <div class="container hero-container">
+        <!-- Hero Left Column: Copy & Actions -->
+        <div class="hero-content">
+          <p class="eyebrow eyebrow-hero">BEST DESTINATIONS AROUND THE WORLD</p>
+          <h1 class="hero-title">
+            Travel, <span class="highlight-enjoy">enjoy<svg class="brush-underline" viewBox="0 0 385 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="none"><path d="M3 14.5C80 5.5 240 -2 382 7.5" stroke="var(--orange)" stroke-width="8" stroke-linecap="round"/></svg></span> and live a new and full life
+          </h1>
+          <p class="hero-desc">
+            Built for modern explorers seeking authentic journeys. Discover curated stays, seamless itineraries, and unforgettable experiences across the globe.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary hero-cta-btn">Find out more</a>
+            <button type="button" class="btn-play-demo" id="playDemoBtn" aria-label="Play Demo Video">
+              <span class="play-icon-circle">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M13 8L1 15V1L13 8Z" fill="white"/>
+                </svg>
+              </span>
+              <span class="play-text">Play Demo</span>
+            </button>
+          </div>
+
+          <!-- Hero Search Bar (Addition from Section 5.2) -->
+          <form class="hero-search-bar" id="heroSearchForm" novalidate>
+            <div class="search-field">
+              <svg class="search-field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input type="text" id="searchDestination" placeholder="Where to? (e.g. Rome, London)" aria-label="Search destination" autocomplete="off" />
+            </div>
+
+            <div class="search-field">
+              <svg class="search-field-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+              <input type="date" id="searchDate" aria-label="Departure date" />
+            </div>
+
+            <button type="submit" class="btn btn-search" id="searchSubmitBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>Explore</span>
+            </button>
+
+            <!-- Inline Search Error -->
+            <div class="search-error" id="searchError" role="alert" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <!-- Hero Right Column: Traveler Image & Decorative Airplanes -->
+        <div class="hero-visual">
+          <!-- Upper Left Paper Airplane with dotted flight trail -->
+          <div class="paper-plane paper-plane-1" aria-hidden="true">
+            <svg class="flight-trail flight-trail-1" width="160" height="90" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 85 C40 40, 110 95, 155 10" stroke="#7A8BA6" stroke-width="1.8" stroke-dasharray="4 5"/>
+            </svg>
+            <svg class="airplane-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13" stroke="#2D7FF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" fill="#2D7FF9" stroke="#2D7FF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Cut-out photo of traveler with backpack & suitcase -->
+          <img src="assets/images/hero-img.png" alt="Happy traveler sitting on orange suitcase with travel backpack and passport" class="hero-image" width="600" height="690" />
+
+          <!-- Right Paper Airplane with dotted flight trail -->
+          <div class="paper-plane paper-plane-2" aria-hidden="true">
+            <svg class="flight-trail flight-trail-2" width="140" height="80" viewBox="0 0 140 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 10 C50 65, 100 20, 135 60" stroke="#7A8BA6" stroke-width="1.8" stroke-dasharray="4 5"/>
+            </svg>
+            <svg class="airplane-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13" stroke="#2D7FF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" fill="#2D7FF9" stroke="#2D7FF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5.3 & 4A: Services Section -->
+    <section class="services-section" id="services">
+      <!-- Decorative dotted grid in top right -->
+      <div class="dots-grid dots-grid-services" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <p class="eyebrow">CATEGORY</p>
+          <h2 class="section-title">We Offer Best Services</h2>
+        </div>
+
+        <!-- 4 Service Cards Grid -->
+        <div class="services-grid">
+          <!-- Card 1: Calculated Weather -->
+          <div class="service-card" tabindex="0">
+            <div class="service-icon-wrap icon-blob-yellow">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                <path d="M12 2v2"></path>
+                <path d="m4.93 4.93 1.41 1.41"></path>
+                <path d="M20 12h2"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Calculated Weather</h3>
+            <p class="service-desc">Built-in meteorological forecasts ensure your destination itinerary avoids seasonal storms and rain.</p>
+          </div>
+
+          <!-- Card 2: Best Flights (Highlighted by default) -->
+          <div class="service-card highlighted" tabindex="0">
+            <div class="service-icon-wrap icon-blob-red">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"></path>
+              </svg>
+            </div>
+            <h3 class="service-title">Best Flights</h3>
+            <p class="service-desc">Engaged preferential airline partnerships provide optimal non-stop routes and lowest ticket fees.</p>
+          </div>
+
+          <!-- Card 3: Local Events -->
+          <div class="service-card" tabindex="0">
+            <div class="service-icon-wrap icon-blob-orange">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="22"></line>
+              </svg>
+            </div>
+            <h3 class="service-title">Local Events</h3>
+            <p class="service-desc">Immerse in indigenous cultural festivals, private culinary gatherings, and live musical performances.</p>
+          </div>
+
+          <!-- Card 4: Customization -->
+          <div class="service-card" tabindex="0">
+            <div class="service-icon-wrap icon-blob-blue">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3 class="service-title">Customization</h3>
+            <p class="service-desc">Tailor every hotel tier, transit transfer, and daily excursion to match your personalized travel rhythm.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5.4 & 4A: Top Destinations Section -->
+    <section class="destinations-section" id="destinations">
+      <div class="container destinations-container">
+        <!-- Section Header -->
+        <div class="section-header text-center">
+          <p class="eyebrow">Top Selling</p>
+          <h2 class="section-title">Top Destinations</h2>
+        </div>
+
+        <!-- Filter / Active Search Notification -->
+        <div class="search-feedback-bar" id="searchFeedbackBar" style="display: none;">
+          <p id="searchFeedbackText">Showing destinations matching: <strong id="searchFilterTerm"></strong></p>
+          <button type="button" class="btn btn-sm btn-outline" id="clearSearchFilterBtn">Show All Destinations</button>
+        </div>
+
+        <!-- Dynamic Destination Cards Grid (Populated from data.js) -->
+        <div class="destinations-grid" id="destinationsGrid" aria-live="polite">
+          <!-- Populated via JavaScript -->
+        </div>
+
+        <!-- Loose Hand-Drawn Scribble Loops Decoration to the right of third card -->
+        <svg class="decor-scribble" width="96" height="252" viewBox="0 0 96 252" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M53.5 1.5C38 31 10 93.5 45.5 125.5C81 157.5 88 89.5 30 102.5C-28 115.5 10 200 45.5 214C81 228 88.5 240 68 250.5" stroke="#DF6951" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Section 5.5 & 4A: Booking Steps Section -->
+    <section class="booking-section" id="bookings">
+      <div class="container booking-container">
+        <!-- Left Column: Steps -->
+        <div class="booking-left">
+          <p class="eyebrow">Easy and Fast</p>
+          <h2 class="section-title text-left">Book Your Next Trip In 3 Easy Steps</h2>
+
+          <!-- Vertical Steps List -->
+          <div class="booking-steps-list">
+            <!-- Step 1: Choose Destination (Yellow) -->
+            <div class="step-item">
+              <div class="step-icon-tile tile-yellow" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                  <line x1="9" y1="3" x2="9" y2="18"></line>
+                  <line x1="15" y1="6" x2="15" y2="21"></line>
+                </svg>
+              </div>
+              <div class="step-text">
+                <h3 class="step-title">Choose Destination</h3>
+                <p class="step-desc">Select from over 500 hand-picked destinations worldwide tailored to your travel style and preferences.</p>
+              </div>
+            </div>
+
+            <!-- Step 2: Make Payment (Orange) -->
+            <div class="step-item">
+              <div class="step-icon-tile tile-orange" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                  <line x1="1" y1="10" x2="23" y2="10"></line>
+                </svg>
+              </div>
+              <div class="step-text">
+                <h3 class="step-title">Make Payment</h3>
+                <p class="step-desc">Complete your reservation securely through our multi-currency checkout with zero hidden booking surcharges.</p>
+              </div>
+            </div>
+
+            <!-- Step 3: Reach Airport (Dark Teal) -->
+            <div class="step-item">
+              <div class="step-icon-tile tile-teal" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"></path>
+                </svg>
+              </div>
+              <div class="step-text">
+                <h3 class="step-title">Reach Airport on Selected Date</h3>
+                <p class="step-desc">Receive your verified digital tickets, accommodation vouchers, and curated daily itinerary right to your phone.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Trip Preview Cards -->
+        <div class="booking-right">
+          <!-- Pale-blue background ambient glow -->
+          <div class="card-ambient-glow" aria-hidden="true"></div>
+
+          <!-- Main Trip Card (Trip To Greece) -->
+          <div class="trip-preview-card" id="greeceTripCard" tabindex="0">
+            <div class="trip-card-image-wrap">
+              <img src="assets/images/greece-card.jpg" alt="Woman in red dress looking over Santorini white rooftop" class="trip-card-img" width="300" height="200" />
+            </div>
+            <div class="trip-card-body">
+              <h3 class="trip-card-title">Trip To Greece</h3>
+              <p class="trip-card-subtitle">14-29 June | by Robbin Joseph</p>
+
+              <!-- Three tiny round action icons -->
+              <div class="trip-icon-row" aria-label="Trip perks">
+                <span class="trip-badge-icon" title="Eco-friendly stay">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>
+                </span>
+                <span class="trip-badge-icon" title="Custom map route">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon></svg>
+                </span>
+                <span class="trip-badge-icon" title="Instant digital pass">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </span>
+              </div>
+
+              <!-- Footer with People going & Interactive Heart Button -->
+              <div class="trip-card-footer">
+                <div class="people-going">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                    <line x1="9" y1="22" x2="9" y2="22.01"></line>
+                    <line x1="15" y1="22" x2="15" y2="22.01"></line>
+                    <line x1="9" y1="6" x2="9" y2="6.01"></line>
+                    <line x1="15" y1="6" x2="15" y2="6.01"></line>
+                    <line x1="9" y1="10" x2="9" y2="10.01"></line>
+                    <line x1="15" y1="10" x2="15" y2="10.01"></line>
+                  </svg>
+                  <span>24 people going</span>
+                </div>
+                <button type="button" class="btn-heart" id="tripHeartBtn" aria-label="Save Trip To Greece to favorites" aria-pressed="false">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Overlapping Secondary Card (Ongoing Trip to Rome) -->
+            <div class="trip-overlay-card">
+              <img src="assets/images/avatar-ongoing.jpg" alt="Ongoing traveler avatar" class="overlay-avatar" width="46" height="46" />
+              <div class="overlay-content">
+                <span class="overlay-tag">Ongoing</span>
+                <h4 class="overlay-title">Trip to Rome</h4>
+                <div class="overlay-progress-label">
+                  <span class="progress-highlight">40%</span> completed
+                </div>
+                <div class="progress-bar-track" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                  <div class="progress-bar-fill" style="width: 40%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5.6 & 4A: Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="container testimonials-container">
+        <!-- Left Column: Heading & Pagination Dots -->
+        <div class="testimonials-left">
+          <p class="eyebrow">TESTIMONIALS</p>
+          <h2 class="section-title text-left">What People Say About Us.</h2>
+
+          <!-- Pagination Dots -->
+          <div class="testimonial-dots" id="testimonialDots" role="tablist" aria-label="Testimonial slides">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Right Column: Overlapping Testimonial Cards & Chevrons -->
+        <div class="testimonials-right">
+          <div class="testimonial-cards-stack">
+            <!-- Active Front Card -->
+            <article class="testimonial-card front-card" id="activeTestimonialCard" aria-live="polite">
+              <img src="assets/images/avatar-mike.jpg" alt="Mike Taylor portrait" class="testimonial-avatar" id="testimonialAvatar" width="68" height="68" />
+              <blockquote class="testimonial-quote" id="testimonialQuote">
+                “On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no. Jadoo made booking our multi-city trip completely stress-free.”
+              </blockquote>
+              <div class="testimonial-author">
+                <h3 class="author-name" id="testimonialName">Mike Taylor</h3>
+                <p class="author-location" id="testimonialLocation">Lahore, Pakistan</p>
+              </div>
+            </article>
+
+            <!-- Background Secondary Card (Teaser for next testimonial) -->
+            <div class="testimonial-card back-card" id="backTestimonialCard" aria-hidden="true">
+              <div class="testimonial-author">
+                <h4 class="author-name" id="backTestimonialName">Chris Thomas</h4>
+                <p class="author-location" id="backTestimonialLocation">CEO of Red Button</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Up and Down Chevron Buttons -->
+          <div class="testimonial-nav-controls">
+            <button type="button" class="btn-chevron" id="prevTestimonialBtn" aria-label="Previous testimonial">
+              <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 8.5L8 1.5L1 8.5"/>
+              </svg>
+            </button>
+            <button type="button" class="btn-chevron" id="nextTestimonialBtn" aria-label="Next testimonial">
+              <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 1.5L8 8.5L15 1.5"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5.7 & 4A: Partners Strip -->
+    <section class="partners-section" id="partners" aria-label="Airline and Travel Partners">
+      <div class="container">
+        <div class="partners-strip">
+          <!-- Axon -->
+          <div class="partner-logo" title="Axon Travel Partner">
+            <span class="partner-text">axon</span>
+          </div>
+          <!-- Jetstar -->
+          <div class="partner-logo" title="Jetstar Airways">
+            <span class="partner-text">Jetstar<span class="partner-star">★</span></span>
+          </div>
+          <!-- Expedia -->
+          <div class="partner-logo" title="Expedia Partner">
+            <span class="partner-text">Expedia</span>
+          </div>
+          <!-- Qantas -->
+          <div class="partner-logo" title="Qantas Airways">
+            <span class="partner-text">QANTAS</span>
+          </div>
+          <!-- Alitalia -->
+          <div class="partner-logo" title="Alitalia Airlines">
+            <span class="partner-text">Alitalia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5.8 & 4A: Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+      <div class="container">
+        <!-- Wide rounded panel with lavender tint -->
+        <div class="newsletter-card">
+          <!-- Overlapping Circular Badge with Paper Plane Icon at top-right corner -->
+          <div class="newsletter-plane-badge" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </div>
+
+          <!-- Decorative concentric circular arcs & dot patterns in corners -->
+          <div class="newsletter-decor-circles" aria-hidden="true"></div>
+          <div class="newsletter-decor-dots" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <!-- Newsletter Header -->
+          <h2 class="newsletter-title">
+            Subscribe to get information, latest news and other interesting offers about Jadoo
+          </h2>
+
+          <!-- Newsletter Form with Inline Validation -->
+          <form class="newsletter-form" id="newsletterForm" novalidate>
+            <div class="newsletter-input-wrap">
+              <svg class="mail-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Your email" aria-label="Enter your email address" required />
+            </div>
+            <button type="submit" class="btn btn-subscribe" id="newsletterSubmitBtn">Subscribe</button>
+          </form>
+
+          <!-- Inline Feedback Message -->
+          <div class="newsletter-feedback" id="newsletterFeedback" role="alert" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional anchor targets for navbar links -->
+    <div id="hotels" style="position: relative; top: -80px;"></div>
+    <div id="flights" style="position: relative; top: -80px;"></div>
+  </main>
+
+  <!-- Section 5.9 & 4A: Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <!-- Col 1: Jadoo Logo & Tagline -->
+      <div class="footer-col footer-brand-col">
+        <a href="#" class="brand-logo" aria-label="Jadoo Home">
+          <span class="logo-text">Jadoo.</span>
+        </a>
+        <p class="footer-tagline">
+          Book your trip in minute, get full Control for much longer.
+        </p>
+      </div>
+
+      <!-- Col 2: Company Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#hero">About</a></li>
+          <li><a href="#services">Careers</a></li>
+          <li><a href="#bookings">Mobile</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Contact Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="#newsletter">Help/FAQ</a></li>
+          <li><a href="#newsletter">Press</a></li>
+          <li><a href="#partners">Affiliates</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: More Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">More</h4>
+        <ul class="footer-links">
+          <li><a href="#services">Airlinefees</a></li>
+          <li><a href="#services">Airline</a></li>
+          <li><a href="#destinations">Low fare tips</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Social Icons & App Badges -->
+      <div class="footer-col footer-app-col">
+        <!-- Social Icons Row -->
+        <div class="social-links-row" aria-label="Social media links">
+          <a href="https://facebook.com" class="social-icon-btn" aria-label="Jadoo on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="https://instagram.com" class="social-icon-btn social-instagram" aria-label="Jadoo on Instagram" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="https://twitter.com" class="social-icon-btn" aria-label="Jadoo on Twitter" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+          </a>
+        </div>
+
+        <p class="discover-app-text">Discover our app</p>
+
+        <!-- Store Badges -->
+        <div class="store-badges-row">
+          <!-- Google Play Badge -->
+          <a href="#playstore" class="store-badge-btn" aria-label="Get Jadoo on Google Play">
+            <svg class="store-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M3.609 1.814L13.793 12 3.61 22.186c-.347-.365-.544-.86-.544-1.42V3.235c0-.56.197-1.056.543-1.421zm11.238 11.239l2.457 2.457-11.523 6.653 9.066-9.11zm0-2.106L5.78 1.838l11.524 6.653-2.457 2.456zm1.468 1.053l3.633 2.098c.844.487.844 1.282 0 1.769l-3.633 2.098-2.122-2.122 2.122-2.143z"/>
+            </svg>
+            <div class="store-badge-text">
+              <span class="store-badge-small">GET IT ON</span>
+              <span class="store-badge-large">Google Play</span>
+            </div>
+          </a>
+
+          <!-- Apple App Store Badge -->
+          <a href="#appstore" class="store-badge-btn" aria-label="Download Jadoo on Apple App Store">
+            <svg class="store-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.76 1.04-1.82.93-2.87-.9.04-2 .6-2.65 1.36-.57.65-1.07 1.72-.93 2.75 1.01.08 2.03-.48 2.65-1.24z"/>
+            </svg>
+            <div class="store-badge-text">
+              <span class="store-badge-small">Available on the</span>
+              <span class="store-badge-large">Apple Store</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom text-center">
+      <p class="copyright-text">All rights reserved @ jadoo.co</p>
+    </div>
+  </footer>
+
+  <!-- Destination Detail Modal (Section 5.4) -->
+  <div class="modal-backdrop" id="destinationModal" role="dialog" aria-modal="true" aria-labelledby="modalCityTitle" hidden>
+    <div class="modal-dialog">
+      <button type="button" class="btn-close-modal" id="closeDestinationModalBtn" aria-label="Close destination modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-image-container">
+        <img src="" alt="" id="modalDestImage" class="modal-hero-img" />
+        <span class="modal-badge-category" id="modalDestCategory"></span>
+      </div>
+
+      <div class="modal-content-body">
+        <div class="modal-header-row">
+          <div>
+            <h3 class="modal-destination-title" id="modalCityTitle"></h3>
+            <p class="modal-destination-country" id="modalCountryText"></p>
+          </div>
+          <div class="modal-price-box">
+            <span class="modal-price-tag" id="modalPriceTag"></span>
+            <span class="modal-duration-tag" id="modalDaysTag"></span>
+          </div>
+        </div>
+
+        <div class="modal-rating-row">
+          <span class="stars-visual" aria-hidden="true">★★★★★</span>
+          <span class="rating-number" id="modalRatingText"></span>
+          <span class="reviews-count" id="modalReviewsText"></span>
+        </div>
+
+        <p class="modal-description" id="modalDescriptionText"></p>
+
+        <div class="modal-perks-list">
+          <div class="modal-perk-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified 4-Star Accommodation</span>
+          </div>
+          <div class="modal-perk-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Private Airport Transfers Included</span>
+          </div>
+          <div class="modal-perk-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Flexible Free Cancellation up to 72 hrs</span>
+          </div>
+        </div>
+
+        <div class="modal-footer-actions">
+          <button type="button" class="btn btn-primary btn-modal-book" id="modalBookNowBtn">Book Now</button>
+          <button type="button" class="btn btn-outline" id="modalCancelBtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Play Demo Video Modal (Section 5.2) -->
+  <div class="modal-backdrop" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle" hidden>
+    <div class="modal-dialog modal-dialog-video">
+      <button type="button" class="btn-close-modal" id="closeDemoModalBtn" aria-label="Close demo modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-video-header">
+        <h3 class="modal-destination-title" id="demoModalTitle">Discover the Jadoo Experience</h3>
+        <p class="modal-destination-country">See how our curated itineraries bring your dream destinations to life.</p>
+      </div>
+
+      <div class="video-mock-container" id="mockVideoPlayer">
+        <div class="video-overlay-poster">
+          <img src="assets/images/santorini.jpg" alt="Scenic Santorini Greek Island View" class="video-poster-img" />
+          <button type="button" class="video-play-trigger" id="videoPlayTrigger" aria-label="Start interactive video tour">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+              <polygon points="5,3 19,12 5,21"></polygon>
+            </svg>
+          </button>
+          <div class="video-caption-bar">
+            <span>Jadoo Virtual Showcase • 4K HDR Destination Reel</span>
+            <span>03:45</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer-actions">
+        <a href="#destinations" class="btn btn-primary" id="demoExploreBtn">Browse All Destinations</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Toast -->
+  <div class="toast-notification" id="toastNotification" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toastMessage">Action completed successfully!</span>
+  </div>
+
+  <!-- ES6 Main JavaScript Entrypoint -->
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
