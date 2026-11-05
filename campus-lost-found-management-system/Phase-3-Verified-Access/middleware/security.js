@@ -63,11 +63,19 @@ function verifyOrigin(req, res, next) {
   if (origin) {
     try {
       const parsedOrigin = new URL(origin);
-      if (parsedOrigin.host === host) {
+      // Allow same host or local React frontend development server (localhost:5173)
+      const isAllowedLocalDev =
+        (parsedOrigin.hostname === 'localhost' || parsedOrigin.hostname === '127.0.0.1') &&
+        (parsedOrigin.port === '5173' || parsedOrigin.port === '3000' || parsedOrigin.port === '3999');
+
+      if (parsedOrigin.host === host || isAllowedLocalDev) {
         return next();
       }
     } catch {
       // Malformed Origin header
+    }
+    if (req.path.startsWith('/api')) {
+      return res.status(403).json({ error: 'Cross-origin state-changing request blocked.' });
     }
     return res.status(403).render('error', {
       status: 403,
