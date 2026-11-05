@@ -21,6 +21,7 @@ const lostItemsRoutes = require('./routes/lostItems');
 const foundItemsRoutes = require('./routes/foundItems');
 const claimsRoutes = require('./routes/claims');
 const myClaimsRoutes = require('./routes/myClaims');
+const apiRoutes = require('./routes/api');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Request parsing & cookies: strict extended: false and 20kb payload limit (C6)
 app.use(express.urlencoded({ extended: false, limit: '20kb' }));
+app.use(express.json({ limit: '20kb' }));
 
 // Method-override: enables HTML forms to submit PATCH requests via query param (?_method=PATCH)
 app.use(methodOverride('_method'));
@@ -67,6 +69,7 @@ app.use('/lost-items', lostItemsRoutes);
 app.use('/found-items', foundItemsRoutes);
 app.use('/claims', claimsRoutes);
 app.use('/my-claims', myClaimsRoutes);
+app.use('/api', apiRoutes);
 
 // 404 handler for unmatched routes
 app.use((req, res) => {
