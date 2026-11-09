@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
@@ -12,6 +13,10 @@ if (!process.env.MONGO_URI || !process.env.JWT_SECRET) {
 
 const app = express();
 app.use(express.json());
+
+// Serve static UI client
+app.use('/ui', express.static(path.join(__dirname, 'public')));
+app.get('/app', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 app.get('/', (req, res) => res.json({ success: true, message: 'Auth API running' }));
 app.use('/api/auth', authRoutes);

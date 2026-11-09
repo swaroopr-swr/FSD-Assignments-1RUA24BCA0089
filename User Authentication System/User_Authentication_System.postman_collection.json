@@ -1,0 +1,145 @@
+{
+  "info": {
+    "_postman_id": "c1f73b88-8241-4c12-9c90-auth-system-collection",
+    "name": "User Authentication System (Express + MongoDB)",
+    "description": "API collection for User Authentication System covering registration, login with JWT, protected user profile, and RBAC admin dashboard.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5001",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/",
+          "host": ["{{baseUrl}}"],
+          "path": [""]
+        },
+        "description": "Check if Auth API server is running."
+      },
+      "response": []
+    },
+    {
+      "name": "1. Auth - Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Asha\",\n  \"email\": \"asha@test.com\",\n  \"password\": \"secret123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register"]
+        },
+        "description": "Registers a new user. Role defaults to 'student'. Passwords hashed with bcrypt (10 rounds)."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Auth - Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const res = pm.response.json();",
+              "if (res.token) {",
+              "    pm.collectionVariables.set('token', res.token);",
+              "    console.log('JWT token automatically saved to collection variable: token');",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"asha@test.com\",\n  \"password\": \"secret123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        },
+        "description": "Logs in with email and password. Automatically stores the returned JWT token into the collection variable {{token}}."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Users - Get Profile (Protected)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/users/profile",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "users", "profile"]
+        },
+        "description": "Protected endpoint requiring Bearer JWT. Returns the authenticated user's profile."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Admin - Dashboard (Admin Only)",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/admin/dashboard",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "admin", "dashboard"]
+        },
+        "description": "RBAC-restricted endpoint. Returns 200 OK for 'admin' role, 403 Forbidden for 'student' role."
+      },
+      "response": []
+    }
+  ]
+}

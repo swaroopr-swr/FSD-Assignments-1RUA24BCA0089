@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Authentication System</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="badge-tag">Course Practical</div>
+      <h1>User Authentication System</h1>
+      <p class="subtitle">RESTful API Client &bull; Express + MongoDB + JWT</p>
+      <div id="api-status" class="status-indicator">Connecting to API...</div>
+    </header>
+
+    <!-- Main Card -->
+    <main class="card">
+      <!-- Nav Tabs -->
+      <nav class="tabs" role="tablist">
+        <button id="tab-login" class="tab active" role="tab" aria-selected="true" aria-controls="view-login">Log In</button>
+        <button id="tab-register" class="tab" role="tab" aria-selected="false" aria-controls="view-register">Register</button>
+        <button id="tab-dashboard" class="tab hidden" role="tab" aria-selected="false" aria-controls="view-dashboard">Dashboard</button>
+      </nav>
+
+      <!-- Alert Box -->
+      <div id="alert-banner" class="alert hidden" role="status" aria-live="polite"></div>
+
+      <!-- VIEW: LOGIN -->
+      <section id="view-login" class="tab-panel active" role="tabpanel" aria-labelledby="tab-login">
+        <form id="form-login" novalidate>
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              autocomplete="username"
+              spellcheck="false"
+              placeholder="asha@test.com"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-password-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                autocomplete="current-password"
+                placeholder="••••••••"
+                required
+              >
+              <button type="button" class="btn-toggle-pw" data-target="login-password" aria-label="Toggle password visibility">Show</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+
+        <div class="form-footer">
+          <p>Don't have an account? <button type="button" class="btn-link" id="goto-register">Create one here</button></p>
+        </div>
+      </section>
+
+      <!-- VIEW: REGISTER -->
+      <section id="view-register" class="tab-panel" role="tabpanel" aria-labelledby="tab-register" hidden>
+        <form id="form-register" novalidate>
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input
+              type="text"
+              id="reg-name"
+              name="name"
+              autocomplete="name"
+              placeholder="Asha Sharma"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input
+              type="email"
+              id="reg-email"
+              name="email"
+              autocomplete="username"
+              spellcheck="false"
+              placeholder="asha@test.com"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Password (min 6 characters)</label>
+            <div class="input-password-wrapper">
+              <input
+                type="password"
+                id="reg-password"
+                name="password"
+                autocomplete="new-password"
+                minlength="6"
+                placeholder="At least 6 characters"
+                required
+              >
+              <button type="button" class="btn-toggle-pw" data-target="reg-password" aria-label="Toggle password visibility">Show</button>
+            </div>
+          </div>
+
+          <div class="info-note">
+            Role is automatically assigned to <strong>student</strong>. Admin role requires database promotion.
+          </div>
+
+          <button type="submit" class="btn btn-primary">Create Account</button>
+        </form>
+
+        <div class="form-footer">
+          <p>Already have an account? <button type="button" class="btn-link" id="goto-login">Log In</button></p>
+        </div>
+      </section>
+
+      <!-- VIEW: DASHBOARD (PROTECTED) -->
+      <section id="view-dashboard" class="tab-panel" role="tabpanel" aria-labelledby="tab-dashboard" hidden>
+        <div class="user-profile-header">
+          <div class="avatar" id="user-avatar">?</div>
+          <div>
+            <h2 id="user-name">User Name</h2>
+            <p id="user-email" class="muted-text">email@domain.com</p>
+          </div>
+          <span id="user-role-badge" class="badge">student</span>
+        </div>
+
+        <div class="profile-details">
+          <div class="detail-row">
+            <span class="detail-label">User ID:</span>
+            <span class="detail-value" id="user-id">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Member Since:</span>
+            <span class="detail-value" id="user-created">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">JWT Token:</span>
+            <span class="detail-value token-preview" id="user-token-preview">-</span>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Admin Check Section -->
+        <div class="admin-test-box">
+          <h3>Role-Based Access Control (RBAC) Test</h3>
+          <p class="muted-text">Test the admin dashboard route (<code>GET /api/admin/dashboard</code>) with your current token.</p>
+          <button type="button" id="btn-test-admin" class="btn btn-secondary">Test Admin Route</button>
+
+          <div id="admin-result" class="admin-result-box hidden"></div>
+        </div>
+
+        <div class="dashboard-actions">
+          <button type="button" id="btn-logout" class="btn btn-outline-danger">Log Out</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>Endpoints: <code>/api/auth/register</code> &bull; <code>/api/auth/login</code> &bull; <code>/api/users/profile</code> &bull; <code>/api/admin/dashboard</code></p>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

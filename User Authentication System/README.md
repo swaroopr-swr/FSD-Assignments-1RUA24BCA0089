@@ -49,6 +49,7 @@ User Authentication System/
 ├── server.js
 ├── README.md
 ├── PRD User Authentication System (Express + MongoDB).md
+├── User_Authentication_System.postman_collection.json
 ├── config/
 │   └── db.js
 ├── models/
@@ -62,6 +63,10 @@ User Authentication System/
 ├── routes/
 │   ├── authRoutes.js
 │   └── userRoutes.js
+├── public/
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
 └── screenshots/
     ├── 01-mongodb-verification.jpg
     ├── 02-admin-login-dashboard.jpg
@@ -159,6 +164,37 @@ When started, you will see:
 MongoDB connected: 127.0.0.1
 Server on port 5001
 ```
+
+---
+
+## 💻 Web Client (Frontend UI)
+
+A lightweight client interface is served directly by the Express server.
+- Open in your browser: **[http://localhost:5001/ui](http://localhost:5001/ui)** (or `http://localhost:5001/app`)
+- **Features**:
+  - Interactive **Registration** form with client validation.
+  - Interactive **Login** form with JWT token storage in `localStorage`.
+  - Authenticated **Profile / Dashboard** view displaying user metadata and role badge.
+  - Interactive **Role-Based Access Control (RBAC) Test Button** allowing students to see `403 Forbidden` and admins to see `200 OK`.
+  - Accessible password toggles, keyboard navigation, and live API status indicator.
+
+---
+
+## 📮 Postman Collection
+
+The file `User_Authentication_System.postman_collection.json` is provided in the repository root for testing all endpoints.
+
+### How to Import & Use in Postman:
+1. Open the **Postman** desktop application (or web client).
+2. Click **Import** in the top left.
+3. Select or drag-and-drop `User_Authentication_System.postman_collection.json`.
+4. The collection will appear with all 5 endpoints:
+   - `0. Health Check` (`GET {{baseUrl}}/`)
+   - `1. Auth - Register User` (`POST {{baseUrl}}/api/auth/register`)
+   - `2. Auth - Login` (`POST {{baseUrl}}/api/auth/login`) &mdash; *auto-saves JWT to variable*
+   - `3. Users - Get Profile` (`GET {{baseUrl}}/api/users/profile`)
+   - `4. Admin - Dashboard` (`GET {{baseUrl}}/api/admin/dashboard`)
+5. Click **Send** on `Auth - Login`. The collection test script automatically saves the `token` variable, so the protected routes (`Get Profile` and `Admin Dashboard`) work immediately without manual copy-pasting!
 
 ---
 
