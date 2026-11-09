@@ -59,9 +59,13 @@ User Authentication System/
 ├── middleware/
 │   ├── authMiddleware.js
 │   └── errorMiddleware.js
-└── routes/
-    ├── authRoutes.js
-    └── userRoutes.js
+├── routes/
+│   ├── authRoutes.js
+│   └── userRoutes.js
+└── screenshots/
+    ├── 01-mongodb-verification.jpg
+    ├── 02-admin-login-dashboard.jpg
+    └── 03-student-registration-login.jpg
 ```
 
 ---
@@ -258,6 +262,22 @@ curl http://localhost:5001/api/admin/dashboard \
 | 9 | Profile with valid token (200 + user details) | ✅ Passed |
 | 10 | Admin dashboard as student (403 Forbidden) | ✅ Passed |
 | 11 | Admin dashboard as admin (200 OK) | ✅ Passed |
+
+---
+
+## 📸 Execution Screenshots
+
+### 1. MongoDB Database Verification
+Verification of user document stored with bcrypt hashed password and `admin` role in `mongosh`:
+![MongoDB Verification](./screenshots/01-mongodb-verification.jpg)
+
+### 2. Admin Login & Dashboard Access (200 OK)
+Logging in as admin with JWT token generation and successfully accessing `/api/admin/dashboard`:
+![Admin Login & Dashboard](./screenshots/02-admin-login-dashboard.jpg)
+
+### 3. Student Registration & Login Flow
+Registering a new student (`POST /api/auth/register`), receiving default role `student`, and logging in:
+![Student Registration & Login](./screenshots/03-student-registration-login.jpg)
 
 ---
 
